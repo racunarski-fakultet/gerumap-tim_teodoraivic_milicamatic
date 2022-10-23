@@ -1,4 +1,6 @@
 package raf.dsw.gerumap.gui.swing.view;
 
-public class MenuBar {
+import javax.swing.*;
+
+public class MenuBar extends JMenuBar {
 }
