@@ -42,6 +42,15 @@ public class MainFrame extends JFrame {
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
 
+        //pravim po jedan panel za radnu povrsinu i za project explore
+        JPanel desktop=new JPanel();
+
+        JScrollPane scroll=new JScrollPane();
+        scroll.setMinimumSize(new Dimension(200,150));
+        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        getContentPane().add(split, BorderLayout.CENTER);
+        split.setDividerLocation(250);
+        split.setOneTouchExpandable(true);
 
     }
 
