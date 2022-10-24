@@ -12,9 +12,6 @@ public class ExitAction extends AbstractGeRuMapAction{
         putValue(SMALL_ICON, loadIcon("../images/exit.png"));
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
-
-        //testing branches
-
     }
 
     @Override
