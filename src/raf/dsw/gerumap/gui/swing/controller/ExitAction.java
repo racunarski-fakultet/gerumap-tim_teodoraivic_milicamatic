@@ -13,6 +13,8 @@ public class ExitAction extends AbstractGeRuMapAction{
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
 
+        //testing branches
+
     }
 
     @Override
