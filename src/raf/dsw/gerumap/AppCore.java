@@ -13,7 +13,6 @@ public class AppCore extends ApplicationFramework {
 
     }
 
-
     public static AppCore getInstance(){
         if (instance==null){
             instance = new AppCore();

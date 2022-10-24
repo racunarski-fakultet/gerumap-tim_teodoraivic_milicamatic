@@ -5,19 +5,17 @@ import java.net.URL;
 
 public abstract class AbstractGeRuMapAction extends AbstractAction {//osnovna implementacija action listenera
 
-    public Icon loadIcon(String FileName){
+    public Icon loadIcon(String fileName){
 
-        URL imageURL = getClass().getResource(FileName);
+        URL imageURL = getClass().getResource(fileName);
         Icon icon = null;
 
-        if(imageURL != null){
+        if (imageURL != null) {
             icon = new ImageIcon(imageURL);
         }
-        else{
-            System.err.println("Resource not found: " + FileName);
+        else {
+            System.err.println("Resource not found: " + fileName);
         }
-
         return icon;
-
     }
 }
