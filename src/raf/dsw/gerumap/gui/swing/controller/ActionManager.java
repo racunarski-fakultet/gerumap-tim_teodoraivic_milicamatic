@@ -7,6 +7,8 @@ public class ActionManager {
 
     private NewAction newAction;
 
+    private InfoAction infoAction;
+
     public ActionManager(){
         initialiseActions();
     }
@@ -14,6 +16,7 @@ public class ActionManager {
     private void initialiseActions(){
         exitAction = new ExitAction();
         newAction = new NewAction();
+        infoAction=new InfoAction();
     }
 
     public ExitAction getExitAction() {
@@ -30,5 +33,13 @@ public class ActionManager {
 
     public void setNewAction(NewAction newAction) {
         this.newAction = newAction;
+    }
+
+    public InfoAction getInfoAction() {
+        return infoAction;
+    }
+
+    public void setInfoAction(InfoAction infoAction) {
+        this.infoAction = infoAction;
     }
 }

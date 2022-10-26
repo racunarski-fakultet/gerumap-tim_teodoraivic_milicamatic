@@ -11,6 +11,7 @@ public class MenuBar extends JMenuBar {
         fileMenu.setMnemonic(KeyEvent.VK_F);
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
 
         this.add(fileMenu);
 
