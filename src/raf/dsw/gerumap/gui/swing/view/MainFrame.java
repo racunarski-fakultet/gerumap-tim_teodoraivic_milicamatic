@@ -16,6 +16,8 @@ public class MainFrame extends JFrame {
 
     private JToolBar toolBar;
 
+    private InfoDialog infoDialog;
+
     private MainFrame(){
 
     }
@@ -41,6 +43,8 @@ public class MainFrame extends JFrame {
 
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
+
+        infoDialog = new InfoDialog(this);
 
         //pravim po jedan panel za radnu povrsinu i za project explore
         JPanel desktop=new JPanel();
