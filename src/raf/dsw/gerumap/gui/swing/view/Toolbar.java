@@ -1,18 +1,23 @@
 package raf.dsw.gerumap.gui.swing.view;
 
 import com.sun.tools.javac.Main;
+import raf.dsw.gerumap.gui.swing.controller.ActionManager;
 
 import javax.swing.*;
 
 public class Toolbar extends JToolBar {
 
+
     public Toolbar(){
         super(HORIZONTAL);
         setFloatable(false);
 
-        add(MainFrame.getInstance().getActionManager().getExitAction());
-        add(MainFrame.getInstance().getActionManager().getNewAction());
-        add(MainFrame.getInstance().getActionManager().getInfoAction());
+        ActionManager actionManager = MainFrame.getInstance().getActionManager();
+
+        add(actionManager.getNewAction());
+        add(actionManager.getInfoAction());
+        add(actionManager.getExitAction());
+
 
 
     }

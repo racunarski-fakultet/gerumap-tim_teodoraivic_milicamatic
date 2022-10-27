@@ -70,4 +70,6 @@ public class MainFrame extends JFrame {
         return actionManager;
     }
 
+    public InfoDialog getInfoDialog() { return infoDialog; }
+
 }
