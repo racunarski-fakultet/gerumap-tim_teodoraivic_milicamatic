@@ -21,7 +21,7 @@ public class InfoDialog extends JDialog {
         prezime = new JLabel("Ivic");
         index = new JLabel("RN 58/2021");
 
-        URL url = InfoDialog.class.getClassLoader().getResource("raf/dsw/gerumap/gui/swing/images/slicica.jpg");
+        URL url = InfoDialog.class.getClassLoader().getResource("images/slicica.jpg");
         ImageIcon slika1 = new ImageIcon(url);
 
         this.setLayout(new GridBagLayout());

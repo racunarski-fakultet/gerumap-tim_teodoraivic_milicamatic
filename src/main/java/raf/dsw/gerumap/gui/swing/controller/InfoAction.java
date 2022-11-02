@@ -12,7 +12,7 @@ public class InfoAction extends AbstractGeRuMapAction{
 
     public InfoAction(){
 
-        putValue(SMALL_ICON, loadIcon("../images/info2.png"));
+        putValue(SMALL_ICON, loadIcon("/images/info2.png"));
         putValue(NAME, "Info");
         putValue(SHORT_DESCRIPTION, "Info");
 
