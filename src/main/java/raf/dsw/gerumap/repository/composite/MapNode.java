@@ -1,6 +1,4 @@
-package raf.dsw.gerumap.gui.swing.repository.composite;
-
-import java.util.Objects;
+package raf.dsw.gerumap.repository.composite;
 
 public class MapNode {
 

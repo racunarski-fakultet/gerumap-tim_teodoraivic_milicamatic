@@ -1,4 +1,4 @@
-package raf.dsw.gerumap.gui.swing.repository.composite;
+package raf.dsw.gerumap.repository.composite;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package raf.dsw.gerumap.gui.swing.repository.implementation;
+package raf.dsw.gerumap.repository.implementation;
 
-import raf.dsw.gerumap.gui.swing.repository.composite.MapNode;
-import raf.dsw.gerumap.gui.swing.repository.composite.MapNodeComposite;
+import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 public class ProjectExplorer extends MapNodeComposite {
 
