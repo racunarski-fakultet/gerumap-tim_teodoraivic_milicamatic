@@ -16,8 +16,7 @@ public class AppCore extends ApplicationFramework {
     public static AppCore getInstance(){
         if (instance==null){
             instance = new AppCore();
-        }
-        return instance;
+        }        return instance;
     }
 
     public void run(){
@@ -25,6 +24,7 @@ public class AppCore extends ApplicationFramework {
     }
 
     public static void main(String[] args) {
+        //test
         GUI gui=new SwingGui();
         ApplicationFramework appCore=AppCore.getInstance();
         appCore.initialise(gui);
