@@ -6,7 +6,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
-public class MapTreeSelectionListener implements TreeSelectionListener {
+public class  MapTreeSelectionListener implements TreeSelectionListener {
 
 
 

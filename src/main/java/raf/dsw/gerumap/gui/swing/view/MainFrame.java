@@ -1,7 +1,11 @@
 package raf.dsw.gerumap.gui.swing.view;
 
 
+import raf.dsw.gerumap.core.ApplicationFramework;
 import raf.dsw.gerumap.gui.swing.controller.ActionManager;
+import raf.dsw.gerumap.gui.swing.jTree.MapTree;
+import raf.dsw.gerumap.gui.swing.jTree.MapTreeImplementation;
+import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,16 +22,24 @@ public class MainFrame extends JFrame {
 
     private InfoDialog infoDialog;
 
+    private MapTree mapTree;
+
+    private MapTreeView projectExplorer;
+
+
+
     private MainFrame(){
 
     }
 
     private void initialise(){
         actionManager = new ActionManager();
-        initialiseGUI();
+        mapTree=new MapTreeImplementation();
+        projectExplorer=mapTree.generateTree(ApplicationFramework.getMapRepository().getProjectExplorer());
+        initialiseGUI(projectExplorer);
     }
 
-    private void initialiseGUI(){
+    private void initialiseGUI(MapTreeView projectExplorer){
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
@@ -49,7 +61,7 @@ public class MainFrame extends JFrame {
         //pravim po jedan panel za radnu povrsinu i za project explore
         JPanel desktop=new JPanel();
 
-        JScrollPane scroll=new JScrollPane();
+        JScrollPane scroll=new JScrollPane(this.projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
         JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split, BorderLayout.CENTER);
@@ -72,4 +84,11 @@ public class MainFrame extends JFrame {
 
     public InfoDialog getInfoDialog() { return infoDialog; }
 
+    public MapTree getMapTree() {
+        return mapTree;
+    }
+
+    public void setMapTree(MapTree mapTree) {
+        this.mapTree = mapTree;
+    }
 }
