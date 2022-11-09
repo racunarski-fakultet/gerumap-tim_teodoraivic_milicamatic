@@ -13,9 +13,4 @@ public class MindMap extends MapNodeComposite {
     public void addChild(MapNode child) {
 
     }
-
-    @Override
-    public void removeChild(MapNode child) {
-
-    }
 }
