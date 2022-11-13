@@ -1,6 +1,6 @@
 package raf.dsw.gerumap.repository.composite;
 
-public class MapNode {
+public class MapNode { //ne moze da ima decu
 
     private String name;
 

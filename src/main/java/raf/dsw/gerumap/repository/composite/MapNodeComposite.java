@@ -3,7 +3,7 @@ package raf.dsw.gerumap.repository.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MapNodeComposite extends MapNode {
+public abstract class MapNodeComposite extends MapNode { // moze da ima decu
 
     List <MapNode> children;
 

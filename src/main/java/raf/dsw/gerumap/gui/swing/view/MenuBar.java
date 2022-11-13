@@ -19,6 +19,9 @@ public class MenuBar extends JMenuBar {
         fileMenu.add(actionManager.getExitAction());
         fileMenu.add(actionManager.getNewAction());
         fileMenu.add(actionManager.getInfoAction());
+        fileMenu.add(actionManager.getDeleteAction());
+        fileMenu.add(actionManager.getEditAction());
+
 
         this.add(fileMenu);
         this.add(helpMenu);

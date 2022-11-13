@@ -9,6 +9,10 @@ public class ActionManager {
 
     private InfoAction infoAction;
 
+    private DeleteAction deleteAction;
+
+    private EditAction editAction;
+
     public ActionManager(){
         initialiseActions();
     }
@@ -17,6 +21,8 @@ public class ActionManager {
         exitAction = new ExitAction();
         newAction = new NewAction();
         infoAction=new InfoAction();
+        deleteAction=new DeleteAction();
+        editAction=new EditAction();
     }
 
     public ExitAction getExitAction() {
@@ -41,5 +47,21 @@ public class ActionManager {
 
     public void setInfoAction(InfoAction infoAction) {
         this.infoAction = infoAction;
+    }
+
+    public DeleteAction getDeleteAction() {
+        return deleteAction;
+    }
+
+    public void setDeleteAction(DeleteAction deleteAction) {
+        this.deleteAction = deleteAction;
+    }
+
+    public EditAction getEditAction() {
+        return editAction;
+    }
+
+    public void setEditAction(EditAction editAction) {
+        this.editAction = editAction;
     }
 }
