@@ -10,6 +10,7 @@ import raf.dsw.gerumap.repository.implementation.Project;
 import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.util.Random;
 
@@ -53,12 +54,28 @@ public class MapTreeImplementation implements MapTree {
         return null;
     }
 
-    public void removeChild(MapTreeItem child){
+    public void removeChild(DefaultMutableTreeNode root){
+        DefaultMutableTreeNode parent = (DefaultMutableTreeNode) root.getParent(); // root je ono sto se brise
+        treeModel.removeNodeFromParent(root);
+        MapNode mapNodeParent = ((MapTreeItem)parent).getMapNode(); //pravljenje Node-a od parenta
+        MapNode mapNodeChild = ((MapTreeItem)root).getMapNode(); // pravljenje node-a od root-a
+        ((MapNodeComposite)mapNodeParent).removeChild(mapNodeChild);
 
+
+        //MapNode zaBrisanje=child.getMapNode();
+        //MapNodeComposite parent= (MapNodeComposite) zaBrisanje.getParent();
+        //parent.getChildren().remove(zaBrisanje);
+        // problem je bio sto stvari moras da pozivas za drvo (treeModel itd)
     }
 
     @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public void rename(MapTreeItem node, String newName) {
+        node.setName(newName);
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 }

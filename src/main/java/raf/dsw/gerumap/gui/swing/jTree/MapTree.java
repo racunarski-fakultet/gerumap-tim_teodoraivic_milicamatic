@@ -5,6 +5,8 @@ import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 
 public interface MapTree {
 
@@ -14,6 +16,8 @@ public interface MapTree {
 
     MapTreeItem getSelectedNode();
 
-    void removeChild(MapTreeItem child);
+    void removeChild(DefaultMutableTreeNode root);
+
+    void rename(MapTreeItem node, String newName);
 
 }

@@ -1,5 +1,8 @@
 package raf.dsw.gerumap.gui.swing.controller;
 
+import raf.dsw.gerumap.gui.swing.view.EditDialog;
+import raf.dsw.gerumap.gui.swing.view.MainFrame;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -19,5 +22,12 @@ public class EditAction extends AbstractGeRuMapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        EditDialog editDialog=new EditDialog(MainFrame.getInstance(), "Edit", MainFrame.getInstance().getMapTree().getSelectedNode());
+        editDialog.setVisible(true);
+        editDialog.setModal(true);
+
+
+
+
     }
 }
