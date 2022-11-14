@@ -37,6 +37,8 @@ public class Project extends MapNodeComposite {
     }
 
     public void setAutor(String autor) {
+
         this.autor = autor;
+        notifySubscribers("author changed");
     }
 }

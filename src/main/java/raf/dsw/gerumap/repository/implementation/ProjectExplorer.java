@@ -35,4 +35,5 @@ public class ProjectExplorer extends MapNodeComposite {
 
         }
     }
+
 }
