@@ -22,6 +22,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.project.addSubs(this);
         nameLbl = new JLabel(project.getName());
         autorLbl = new JLabel(project.getAutor());
+
         add(nameLbl);
         add(autorLbl);
     }
@@ -33,8 +34,14 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        if(notification.equals("name changed")){
+        if(notification.equals("name changed")) {
             nameLbl.setText(project.getName());
         }
+        if(notification.equals("author changed")){
+            autorLbl.setText(project.getAutor());
+        }
+
     }
+
+
 }
