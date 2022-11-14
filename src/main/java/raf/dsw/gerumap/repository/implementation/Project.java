@@ -5,6 +5,8 @@ import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 public class Project extends MapNodeComposite {
 
+    private String autor;
+
     public Project(String name, MapNode parent) {
         super(name, parent);
     }
@@ -28,5 +30,13 @@ public class Project extends MapNodeComposite {
                 this.getChildren().remove(mindMap);
             }
         }
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 }

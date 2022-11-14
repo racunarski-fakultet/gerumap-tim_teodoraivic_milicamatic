@@ -3,6 +3,7 @@ package raf.dsw.gerumap.gui.swing.view;
 
 import raf.dsw.gerumap.core.ApplicationFramework;
 import raf.dsw.gerumap.gui.swing.controller.ActionManager;
+import raf.dsw.gerumap.gui.swing.controller.MyMouseListener;
 import raf.dsw.gerumap.gui.swing.jTree.MapTree;
 import raf.dsw.gerumap.gui.swing.jTree.MapTreeImplementation;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
@@ -26,6 +27,8 @@ public class MainFrame extends JFrame {
 
     private MapTreeView projectExplorer;
 
+    private JPanel desktop;
+
 
 
     private MainFrame(){
@@ -36,6 +39,7 @@ public class MainFrame extends JFrame {
         actionManager = new ActionManager();
         mapTree=new MapTreeImplementation();
         projectExplorer=mapTree.generateTree(ApplicationFramework.getMapRepository().getProjectExplorer());
+        projectExplorer.addMouseListener(new MyMouseListener());
         initialiseGUI(projectExplorer);
     }
 
@@ -59,7 +63,7 @@ public class MainFrame extends JFrame {
         infoDialog = new InfoDialog(this);
 
         //pravim po jedan panel za radnu povrsinu i za project explore
-        JPanel desktop=new JPanel();
+        desktop=new JPanel();
 
         JScrollPane scroll=new JScrollPane(this.projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
@@ -90,5 +94,9 @@ public class MainFrame extends JFrame {
 
     public void setMapTree(MapTree mapTree) {
         this.mapTree = mapTree;
+    }
+
+    public JPanel getDesktop() {
+        return desktop;
     }
 }
