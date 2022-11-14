@@ -19,7 +19,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public ProjectView(Project project) {
         this.project = project;
-        this.project.addSubs(this);
+        this.project.addSubs(this);                //projectView je sub za project(MapNode)
         nameLbl = new JLabel(project.getName());
         autorLbl = new JLabel(project.getAutor());
         add(nameLbl);

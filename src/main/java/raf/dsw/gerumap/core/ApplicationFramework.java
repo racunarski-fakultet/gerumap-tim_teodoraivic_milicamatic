@@ -4,6 +4,7 @@ public class ApplicationFramework {
 
     protected GUI gui;
     protected static MapRepository mapRepository;
+    protected static MessageGenerator messageGenerator;
 
     public void run(){
         this.gui.start();
@@ -26,4 +27,7 @@ public class ApplicationFramework {
         return mapRepository;
     }
 
+    public static MessageGenerator getMessageGenerator() {
+        return messageGenerator;
+    }
 }

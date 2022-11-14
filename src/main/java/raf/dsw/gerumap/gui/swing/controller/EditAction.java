@@ -24,7 +24,7 @@ public class EditAction extends AbstractGeRuMapAction{
     public void actionPerformed(ActionEvent e) {
         EditDialog editDialog=new EditDialog(MainFrame.getInstance(), "Edit", MainFrame.getInstance().getMapTree().getSelectedNode());
         editDialog.setVisible(true);
-        editDialog.setModal(true);
+        editDialog.setModal(true); //jedini otvoren prozor
 
 
 

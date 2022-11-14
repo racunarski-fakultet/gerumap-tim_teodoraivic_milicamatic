@@ -32,7 +32,7 @@ public class EditDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.getInstance().getMapTree().rename(mapTreeItem, textField.getText());
-                dispose();
+                dispose(); //zatvaranje na save
 
             }
         });

@@ -4,6 +4,9 @@ import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
+import raf.dsw.gerumap.repository.factory.ElementFactory;
+import raf.dsw.gerumap.repository.factory.MindMapFactory;
+import raf.dsw.gerumap.repository.factory.ProjectFactory;
 import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
@@ -46,11 +49,11 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
-            return new Project("Project" + new Random().nextInt(100), parent);
+            return new ProjectFactory().createNode("Project" + new Random().nextInt(100), parent);
         if (parent instanceof Project)
-            return new MindMap("Mind Map",parent);
+            return new MindMapFactory().createNode("MindMap", parent);
         if (parent instanceof MindMap)
-            return new Element("Element", parent);     //to do: napraviti brojac
+            return new ElementFactory().createNode("Element", parent);     //to do: napraviti brojac
         return null;
     }
 
