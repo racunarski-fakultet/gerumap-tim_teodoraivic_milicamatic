@@ -19,6 +19,7 @@ public class Toolbar extends JToolBar {
         add(actionManager.getExitAction());
         add(actionManager.getDeleteAction());
         add(actionManager.getEditAction());
+        add(actionManager.getAutorAction());
 
 
 

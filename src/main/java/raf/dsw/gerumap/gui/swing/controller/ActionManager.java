@@ -13,6 +13,8 @@ public class ActionManager {
 
     private EditAction editAction;
 
+    private AutorAction autorAction;
+
     public ActionManager(){
         initialiseActions();
     }
@@ -23,6 +25,7 @@ public class ActionManager {
         infoAction=new InfoAction();
         deleteAction=new DeleteAction();
         editAction=new EditAction();
+        autorAction=new AutorAction();
     }
 
     public ExitAction getExitAction() {
@@ -63,5 +66,13 @@ public class ActionManager {
 
     public void setEditAction(EditAction editAction) {
         this.editAction = editAction;
+    }
+
+    public AutorAction getAutorAction() {
+        return autorAction;
+    }
+
+    public void setAutorAction(AutorAction autorAction) {
+        this.autorAction = autorAction;
     }
 }
