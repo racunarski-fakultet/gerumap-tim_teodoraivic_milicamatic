@@ -1,17 +1,15 @@
 package raf.dsw.gerumap.gui.swing.view;
-
-import javax.accessibility.Accessible;
+import raf.dsw.gerumap.gui.swing.message.Message;
 import javax.swing.*;
 
 public class OptionPane extends JOptionPane{
 
-    //optionpane zovem kad GUI-u koji je subscriber za mesGen stigne update
 
     JFrame f;
 
-    public OptionPane(String notification) {
+    public OptionPane(Message message) {
         f=new JFrame();
-        JOptionPane.showMessageDialog(f, "option pane");
+        JOptionPane.showMessageDialog(f,message.getMessageContent());
     }
 
 }

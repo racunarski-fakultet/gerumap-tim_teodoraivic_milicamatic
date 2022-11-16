@@ -7,35 +7,24 @@ public class Message {                 //product koji pravimo i njega vraca fabr
     public String messageContent;
     public EventType eventType;
     private LocalDateTime dateTime;
+    private MessageType messageType;
 
 
-    public Message(String messageContent, EventType eventType) {
+    public Message(String messageContent, MessageType messageType, EventType eventType) {
         this.messageContent = messageContent;
         this.eventType = eventType;
-        this.dateTime = getDate();
+        this.dateTime = LocalDateTime.now();
+        this.messageType = messageType;
     }
-
 
 
     public String getMessageContent() {
         return messageContent;
     }
 
-    public void setMessageContent(String messageContent) {
-        this.messageContent = messageContent;
+
+    @Override
+    public String toString() {
+        return "["+eventType+"]" +"["+LocalDateTime.now()+ "]" +"["+messageContent+"]";
     }
-
-    public EventType getEventType() {
-        return eventType;
-    }
-
-    public void setEventType(EventType eventType) {
-        this.eventType = eventType;
-    }
-
-    public LocalDateTime getDate() {
-        return dateTime;
-    }
-
-
 }

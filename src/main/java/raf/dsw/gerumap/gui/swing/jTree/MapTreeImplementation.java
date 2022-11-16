@@ -7,7 +7,6 @@ import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 import raf.dsw.gerumap.repository.factory.ElementFactory;
 import raf.dsw.gerumap.repository.factory.MindMapFactory;
 import raf.dsw.gerumap.repository.factory.ProjectFactory;
-import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
@@ -26,6 +25,7 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
         MapTreeItem root = new MapTreeItem(projectExplorer);
+
         treeModel = new DefaultTreeModel(root);
         treeView = new MapTreeView(treeModel);
         return treeView;

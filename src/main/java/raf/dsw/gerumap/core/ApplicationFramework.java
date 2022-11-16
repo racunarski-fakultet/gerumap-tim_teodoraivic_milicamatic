@@ -10,9 +10,10 @@ public class ApplicationFramework {
         this.gui.start();
     }
 
-    public void initialise(GUI gui, MapRepository mapRepository){
+    public void initialise(GUI gui, MapRepository mapRepository, MessageGenerator messageGenerator){
         this.gui=gui;
         this.mapRepository=mapRepository;
+        this.messageGenerator = messageGenerator;
     }
 
     public GUI getGui() {

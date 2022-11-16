@@ -36,7 +36,9 @@ public class AuthorDialog extends JDialog {
                 if(project.getMapNode() instanceof Project){
                 ((Project) project.getMapNode()).setAutor(textField.getText());
                 revalidate();
+
                 }
+                dispose();
             }
         });
     }

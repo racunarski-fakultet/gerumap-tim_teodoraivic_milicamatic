@@ -1,5 +1,4 @@
 package raf.dsw.gerumap.gui.swing.controller;
-
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
