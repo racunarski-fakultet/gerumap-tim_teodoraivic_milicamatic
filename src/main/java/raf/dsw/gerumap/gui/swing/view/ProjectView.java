@@ -1,5 +1,4 @@
 package raf.dsw.gerumap.gui.swing.view;
-
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.repository.implementation.Project;
 
@@ -12,8 +11,6 @@ public class ProjectView extends JPanel implements ISubscriber {
     private JLabel nameLbl;
 
     private JLabel autorLbl;
-
-    //private JTabbedPane tabbedPane;
 
 
 
@@ -32,6 +29,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     }
 
 
+
     @Override
     public void update(Object notification) {
         if(notification.equals("name changed")) {
@@ -42,6 +40,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         }
 
     }
+
 
 
 }

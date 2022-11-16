@@ -1,5 +1,4 @@
 package raf.dsw.gerumap.gui.swing.controller;
-
 import raf.dsw.gerumap.gui.swing.view.EditDialog;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 
@@ -16,7 +15,6 @@ public class EditAction extends AbstractGeRuMapAction{
         putValue(NAME, "Edit");
         putValue(SHORT_DESCRIPTION, "Edit");
     }
-
 
 
 

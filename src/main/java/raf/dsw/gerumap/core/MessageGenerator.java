@@ -4,6 +4,6 @@ import raf.dsw.gerumap.gui.swing.message.Message;
 
 public interface MessageGenerator{ //simpleFactory
 
-     Message generateMessage();
+     Message generateMessage(Message message);
 
 }

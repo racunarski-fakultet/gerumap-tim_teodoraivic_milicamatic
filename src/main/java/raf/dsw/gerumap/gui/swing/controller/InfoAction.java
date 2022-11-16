@@ -1,6 +1,4 @@
 package raf.dsw.gerumap.gui.swing.controller;
-
-import raf.dsw.gerumap.gui.swing.view.InfoDialog;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
