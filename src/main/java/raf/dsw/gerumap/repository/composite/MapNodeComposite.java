@@ -20,6 +20,7 @@ public abstract class MapNodeComposite extends MapNode { // moze da ima decu
 
 
     public List<MapNode> getChildren() {
+        notifySubscribers("children added");
         return children;
     }
 

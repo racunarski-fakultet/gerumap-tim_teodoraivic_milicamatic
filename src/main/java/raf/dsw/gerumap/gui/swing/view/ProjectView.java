@@ -1,9 +1,13 @@
 package raf.dsw.gerumap.gui.swing.view;
 
 import raf.dsw.gerumap.core.ISubscriber;
+import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectView extends JPanel implements ISubscriber {
 
@@ -12,6 +16,11 @@ public class ProjectView extends JPanel implements ISubscriber {
     private JLabel nameLbl;
 
     private JLabel autorLbl;
+
+    private TabbedPane tp;
+
+    private List<MindMap> deca = new ArrayList<>();
+
 
     //private JTabbedPane tabbedPane;
 
@@ -25,6 +34,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
         add(nameLbl);
         add(autorLbl);
+
     }
 
     public Project getProject() {
