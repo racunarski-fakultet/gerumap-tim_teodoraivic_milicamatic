@@ -3,7 +3,11 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
+import java.util.List;
+
 public class MindMap extends MapNodeComposite {
+
+    List<MapNode> children = getChildren();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -15,6 +19,7 @@ public class MindMap extends MapNodeComposite {
             Element element=(Element) child;
             if (!this.getChildren().contains(element)){
                 this.getChildren().add(element);
+                notifySubscribers("mindmap added");
             }
         }
     }
@@ -26,7 +31,13 @@ public class MindMap extends MapNodeComposite {
             boolean contains=getChildren().contains(element);
             if (contains){
                 this.getChildren().remove(element);
+                notifySubscribers("mindmap removed");
             }
         }
+    }
+
+    @Override
+    public List<MapNode> getChildren() {
+        return children;
     }
 }

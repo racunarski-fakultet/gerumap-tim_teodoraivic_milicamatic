@@ -50,10 +50,12 @@ public class MapTreeImplementation implements MapTree {
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
             return new ProjectFactory().createNode("Project" + new Random().nextInt(100), parent);
-        if (parent instanceof Project)
+        if (parent instanceof Project) {
             return new MindMapFactory().createNode("MindMap", parent);
+        }
         if (parent instanceof MindMap)
-            return new ElementFactory().createNode("Element", parent);     //to do: napraviti brojac
+            return new ElementFactory().createNode("Element", parent);
+        //to do: napraviti brojac
         return null;
     }
 
