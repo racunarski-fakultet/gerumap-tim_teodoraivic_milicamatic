@@ -7,6 +7,8 @@ import raf.dsw.gerumap.gui.swing.controller.MyMouseListener;
 import raf.dsw.gerumap.gui.swing.jTree.MapTree;
 import raf.dsw.gerumap.gui.swing.jTree.MapTreeImplementation;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
+import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,11 +31,7 @@ public class MainFrame extends JFrame {
 
     private JPanel desktop;
 
-
-
-
-
-
+    private ProjectView projectView;
 
     private MainFrame(){
 
@@ -45,6 +43,17 @@ public class MainFrame extends JFrame {
         projectExplorer=mapTree.generateTree(ApplicationFramework.getMapRepository().getProjectExplorer());
         projectExplorer.addMouseListener(new MyMouseListener());
         initialiseGUI(projectExplorer);
+    }
+
+    public void showCurrentProjectView() {
+        MapNode currentMapNode = this.getMapTree().getSelectedNode().getMapNode();
+
+        if(currentMapNode instanceof Project) {
+            desktop.removeAll();
+            desktop.add(this.getProjectView());
+            desktop.revalidate();
+            desktop.repaint();
+        }
     }
 
     private void initialiseGUI(MapTreeView projectExplorer){
@@ -76,6 +85,14 @@ public class MainFrame extends JFrame {
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
 
+    }
+
+    private void replaceProjectView() {
+        projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+    }
+
+    public ProjectView getProjectView() {
+        return this.projectView;
     }
 
     public static MainFrame getInstance(){

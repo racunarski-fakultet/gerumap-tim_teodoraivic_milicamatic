@@ -11,28 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TabbedPane extends JTabbedPane implements ISubscriber {
+public class TabbedPane extends JTabbedPane{
 
 
     private List<JPanel> tabs;
 
-    private List<MapNode> maps;
+    //private List<MapNode> maps ; //kako inicijalizovati ovo da ne bude null;
 
     private ProjectView projectView;
 
 
 
-    public TabbedPane(ProjectView projectView, List<MapNode> maps) {
+    public TabbedPane(ProjectView projectView) {
 
         this.projectView = projectView;
 
-        this.projectView.getProject().addSubs(this);
-
-        this.maps = maps;
-
         tabs = new ArrayList<>();
 
-        for (MapNode map : maps){
+        for (MapNode map : projectView.getMaps()){
                 JPanel pan = new JPanel(); //pravi novi panel
 
                 this.addTab(map.getName(),pan); // dodaj panel na tabbedpane
@@ -48,15 +44,16 @@ public class TabbedPane extends JTabbedPane implements ISubscriber {
 
     }
 
-    @Override
-    public void update(Object notification) {
-        if(notification.equals("mape projekta uzete")){
-            this.setMaps(projectView.getProject().getMape(projectView.getProject()));
+    ///@Override
+    //public void update(Object notification) {
+       // if(notification.equals("mape projekta uzete")){
+           // this.setMaps(projectView.getProject().getMape(projectView.getProject()));
+            // proveri dal getproject vraca project
 
-        }
-    }
+       // }
+    //}
 
-    public void setMaps(List<MapNode> maps) {
-        this.maps = maps;
-    }
+   // public void setMaps(List<MapNode> maps) {
+    //    this.maps = maps;
+    //}
 }
