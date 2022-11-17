@@ -10,7 +10,7 @@ public class Project extends MapNodeComposite {
 
     private String autor;
 
-    private List<MindMap> mape;
+    private MindMap mindMap;
 
     private List<MapNode> children;
 
@@ -18,7 +18,8 @@ public class Project extends MapNodeComposite {
 
         super(name, parent);
 
-        mape = new ArrayList<>();
+        //mindMap = new MindMap(ime, this);
+
     }
 
     @Override
@@ -43,7 +44,6 @@ public class Project extends MapNodeComposite {
     }
 
 
-
     public String getAutor() {
         return autor;
     }
@@ -53,13 +53,11 @@ public class Project extends MapNodeComposite {
         notifySubscribers("author changed");
     }
 
-    public List<MapNode> getMape(Project project) {
-        notifySubscribers("mape projekta uzete");
-        System.out.println(project.getChildren());
-        return project.getChildren();
+    public List<MapNode> getMape() {
+        //notifySubscribers("mape projekta uzete");
+        System.out.println(getChildren()); //probelm u update notify i get mape
+        return getChildren();
     }
 
-    public void setMape(List<MindMap> mape) {
-        this.mape = mape;
-    }
+
 }

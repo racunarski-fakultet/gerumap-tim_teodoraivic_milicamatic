@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MindMap extends MapNodeComposite {
 
-    List<MapNode> children = getChildren();
+    List<MapNode> children = super.getChildren();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -36,8 +36,5 @@ public class MindMap extends MapNodeComposite {
         }
     }
 
-    @Override
-    public List<MapNode> getChildren() {
-        return children;
-    }
+
 }
