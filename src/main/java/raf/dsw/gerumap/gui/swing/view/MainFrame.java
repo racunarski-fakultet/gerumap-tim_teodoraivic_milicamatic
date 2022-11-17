@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 
         if(currentMapNode instanceof Project) {
             desktop.removeAll();
-            desktop.add(this.getProjectView());
+            desktop.add(this.replaceProjectView());
             desktop.revalidate();
             desktop.repaint();
         }
@@ -78,6 +78,7 @@ public class MainFrame extends JFrame {
         //pravim po jedan panel za radnu povrsinu i za project explore
         desktop=new JPanel();
 
+
         JScrollPane scroll=new JScrollPane(this.projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
         JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
@@ -87,8 +88,8 @@ public class MainFrame extends JFrame {
 
     }
 
-    private void replaceProjectView() {
-        projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+    private ProjectView replaceProjectView() {
+       return projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
     }
 
     public ProjectView getProjectView() {

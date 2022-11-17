@@ -7,8 +7,10 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 public class MyMouseListener implements MouseListener {
 
@@ -17,9 +19,23 @@ public class MyMouseListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if(e.getClickCount() == 2){
 
+            MainFrame m = MainFrame.getInstance();
+
             MainFrame.getInstance().showCurrentProjectView();
 
+            ProjectView projectView = m.getProjectView();
 
+            Project project = projectView.getProject();
+
+            System.out.println(project);
+
+            List<MapNode> children = project.getChildren();
+
+            System.out.println(children);
+
+            projectView.setMaps(children);
+
+            projectView.setTabbedPane();
         }
     }
 

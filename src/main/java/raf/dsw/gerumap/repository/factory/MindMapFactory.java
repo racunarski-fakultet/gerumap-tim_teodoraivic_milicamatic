@@ -16,7 +16,7 @@ public class MindMapFactory extends Factory implements NodeFactory {
 
     @Override
     public MapNode createNode(String naziv, MapNode parent) {
-        MapNode mindMap=new Element(naziv,parent);
+        MapNode mindMap=new MindMap(naziv,parent);
         return mindMap;
     }
 }
