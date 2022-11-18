@@ -5,10 +5,15 @@ import raf.dsw.gerumap.gui.swing.message.EventType;
 import raf.dsw.gerumap.gui.swing.message.Message;
 import raf.dsw.gerumap.gui.swing.message.MessageType;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
+import raf.dsw.gerumap.gui.swing.view.ProjectView;
+import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import static raf.dsw.gerumap.gui.swing.message.EventType.CanNotDeleteRoot;
 
@@ -26,7 +31,11 @@ public class DeleteAction extends AbstractGeRuMapAction {
     EventType eventType;
     @Override
     public void actionPerformed(ActionEvent e) {
-        MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
+        MainFrame m = MainFrame.getInstance();
+
+        MapTreeItem selected = m.getMapTree().getSelectedNode();
+
+        JPanel desktop = m.getDesktop();
 
         if (selected.isRoot()){
             eventType=CanNotDeleteRoot;
@@ -34,7 +43,11 @@ public class DeleteAction extends AbstractGeRuMapAction {
 
         }else {
 
-            MainFrame.getInstance().getMapTree().removeChild(selected);
+            m.getMapTree().removeChild(selected);
+            desktop.removeAll();
+            desktop.revalidate();
+            desktop.repaint();
+
         }
 
     }
