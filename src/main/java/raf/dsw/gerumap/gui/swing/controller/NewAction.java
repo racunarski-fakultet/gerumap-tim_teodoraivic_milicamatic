@@ -11,6 +11,7 @@ import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.Random;
 
 public class NewAction extends AbstractGeRuMapAction{
@@ -34,20 +35,20 @@ public class NewAction extends AbstractGeRuMapAction{
 
         MapNode mapNode = selected.getMapNode();
 
-        ProjectView projectView = m.getProjectView();
-
-        JPanel desktop = m.getDesktop();
-
         MainFrame.getInstance().getMapTree().addChild(selected);
 
 
 
         if(mapNode instanceof MindMap){
 
-            ((MindMap) selected.getMapNode()).addChild(mapNode);
-            projectView.getTp().removeAll();
-            projectView.setTabbedPane();
+            ProjectView projectView = m.getProjectView();
 
+            if(projectView != null){
+                projectView.getTp().removeAll();
+                projectView.setTabbedPane();
+            }
+
+            JPanel desktop = m.getDesktop();
 
             desktop.revalidate();
         }

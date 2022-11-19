@@ -5,6 +5,7 @@ import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Project extends MapNodeComposite {
 
@@ -18,7 +19,6 @@ public class Project extends MapNodeComposite {
 
         super(name, parent);
 
-        //mindMap = new MindMap(ime, this);
 
     }
 
@@ -26,12 +26,12 @@ public class Project extends MapNodeComposite {
     public void addChild(MapNode child) {
         if (child!=null && child instanceof MindMap){
             MindMap mindMap=(MindMap) child;
-            // TODO fix & override contains
-//            if (!this.getChildren().contains(mindMap)){
+            //TODO fix & override contains
+           // if (!this.getChildren().contains(mindMap)){
                 System.out.println("here");
                 this.getChildren().add(mindMap);
-//            }
-        }
+             }
+      // }
     }
 
     @Override
@@ -55,11 +55,14 @@ public class Project extends MapNodeComposite {
         notifySubscribers("author changed");
     }
 
-    public List<MapNode> getMape() {
-        //notifySubscribers("mape projekta uzete");
-        System.out.println(getChildren()); //probelm u update notify i get mape
-        return getChildren();
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (o != null && o instanceof MapNode){
 
+            MapNode otherObj = (MapNode) o;
+            return this.getName().equals(otherObj.getName());
+        }
+        return false;
+    }
 
 }

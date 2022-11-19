@@ -53,15 +53,13 @@ public class DeleteAction extends AbstractGeRuMapAction {
             m.getMapTree().removeChild(selected);
 
             projectView.getTp().removeAll();
-             projectView.setTabbedPane();
+            projectView.setTabbedPane();
 
-            ((MindMap) selected.getMapNode()).removeChild(mapNode);
 
             desktop.revalidate();
 
         }else if(selected.getMapNode() instanceof Project){
             m.getMapTree().removeChild(selected);
-            ((Project) selected.getMapNode()).removeChild(mapNode);
             desktop.removeAll();
             desktop.revalidate();
             desktop.repaint();
