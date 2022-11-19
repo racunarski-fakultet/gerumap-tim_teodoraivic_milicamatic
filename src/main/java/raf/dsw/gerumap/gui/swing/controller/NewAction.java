@@ -2,7 +2,11 @@ package raf.dsw.gerumap.gui.swing.controller;
 
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
+import raf.dsw.gerumap.gui.swing.view.ProjectView;
+import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
+import raf.dsw.gerumap.repository.implementation.Project;
+import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,8 +26,31 @@ public class NewAction extends AbstractGeRuMapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        MapTreeItem selected =MainFrame.getInstance().getMapTree().getSelectedNode();
+
+
+        MainFrame m = MainFrame.getInstance();
+
+        MapTreeItem selected = m.getMapTree().getSelectedNode();
+
+        MapNode mapNode = selected.getMapNode();
+
+        ProjectView projectView = m.getProjectView();
+
+        JPanel desktop = m.getDesktop();
+
         MainFrame.getInstance().getMapTree().addChild(selected);
+
+
+
+        if(mapNode instanceof MindMap){
+
+            ((MindMap) selected.getMapNode()).addChild(mapNode);
+            projectView.getTp().removeAll();
+            projectView.setTabbedPane();
+
+
+            desktop.revalidate();
+        }
 
     }
 }

@@ -46,5 +46,9 @@ public class TabbedPane extends JTabbedPane{
 
     }
 
+    public void setTabs(){
+
+    }
+
 
 }

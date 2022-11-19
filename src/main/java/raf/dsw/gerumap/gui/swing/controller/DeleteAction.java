@@ -7,6 +7,7 @@ import raf.dsw.gerumap.gui.swing.message.MessageType;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
 import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
@@ -35,19 +36,35 @@ public class DeleteAction extends AbstractGeRuMapAction {
 
         MapTreeItem selected = m.getMapTree().getSelectedNode();
 
+        MapNode mapNode = selected.getMapNode();
+
+        ProjectView projectView = m.getProjectView();
+
+
+
         JPanel desktop = m.getDesktop();
 
         if (selected.isRoot()){
             eventType=CanNotDeleteRoot;
             ApplicationFramework.getMessageGenerator().generateMessage(new Message("Ne moze se izbrisati projectExplorer", MessageType.ERROR, eventType));
 
-        }else {
-
+        }else if(selected.getMapNode() instanceof MindMap) {
+            // brisanje mind mapa
             m.getMapTree().removeChild(selected);
+
+            projectView.getTp().removeAll();
+             projectView.setTabbedPane();
+
+            ((MindMap) selected.getMapNode()).removeChild(mapNode);
+
+            desktop.revalidate();
+
+        }else if(selected.getMapNode() instanceof Project){
+            m.getMapTree().removeChild(selected);
+            ((Project) selected.getMapNode()).removeChild(mapNode);
             desktop.removeAll();
             desktop.revalidate();
             desktop.repaint();
-
         }
 
     }

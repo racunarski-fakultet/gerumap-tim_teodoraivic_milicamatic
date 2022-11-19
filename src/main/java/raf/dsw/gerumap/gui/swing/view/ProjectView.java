@@ -23,10 +23,6 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private List<MapNode> maps;
 
-    // srediti velicinu tabbed panea
-    //dodati da kad se obrise projekat da se obrise i projectview
-
-
 
 
     public ProjectView(Project project) {
@@ -42,7 +38,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     }
 
-    public void setTabbedPane(){   // srediti velicinu tabbedpanea
+    public void setTabbedPane(){
         tp = new TabbedPane(this);
         add(tp, BorderLayout.CENTER);
         tp.setVisible(true);
@@ -62,6 +58,13 @@ public class ProjectView extends JPanel implements ISubscriber {
         }
         if(notification.equals("author changed")){
             autorLbl.setText(project.getAutor());
+        }
+        if(notification.equals("mindmap removed")) {
+            this.setMaps(project.getChildren());
+
+        }
+        if(notification.equals("mindmap added")){ // TODO zahteva dupli klik na project da bi se refrshovao tabbed popraviti
+            this.setMaps(project.getChildren());
         }
 
     }
