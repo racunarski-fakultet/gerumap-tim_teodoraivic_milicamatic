@@ -3,6 +3,7 @@ import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
+import raf.dsw.gerumap.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +25,8 @@ public class ProjectView extends JPanel implements ISubscriber {
     private List<MapNode> maps;
 
     private Toolbar2 toolbar2;
+
+    private StateManager sm;
 
 
 
@@ -73,6 +76,18 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     }
 
+    public void startConceptState(){
+        this.sm.setConceptState();
+    }
+    public void startConnectionState(){
+        this.sm.setConceptState();
+    }
+    public void startDeleteState(){
+        this.sm.setDeleteState();
+    }
+    public void startSelectionState(){
+        this.sm.setConnectionState();
+    }
     public TabbedPane getTp() {
         return tp;
     }

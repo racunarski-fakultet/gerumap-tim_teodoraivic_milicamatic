@@ -9,6 +9,8 @@ public class MapView extends JPanel implements ISubscriber {
 
         private MindMap mindMap;
 
+      //  private List<Painter> painters; pianteri su element views
+
         private ProjectView projectView;
 
         private TabbedPane tabs;
