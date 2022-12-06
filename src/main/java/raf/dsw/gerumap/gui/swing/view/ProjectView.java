@@ -23,6 +23,8 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private List<MapNode> maps;
 
+    private Toolbar2 toolbar2;
+
 
 
     public ProjectView(Project project) {
@@ -35,6 +37,8 @@ public class ProjectView extends JPanel implements ISubscriber {
         add(nameLbl, BorderLayout.NORTH);
         add(autorLbl, BorderLayout.SOUTH);
 
+        toolbar2=new Toolbar2();
+        add(toolbar2,BorderLayout.EAST);
 
     }
 
