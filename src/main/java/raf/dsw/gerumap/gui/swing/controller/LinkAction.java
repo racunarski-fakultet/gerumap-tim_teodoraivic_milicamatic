@@ -11,14 +11,16 @@ public class LinkAction extends AbstractGeRuMapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        putValue(SMALL_ICON, loadIcon("/images/link.png"));
+        putValue(SHORT_DESCRIPTION, "link");
+
         MainFrame m = MainFrame.getInstance();
 
         ProjectView projectView = m.getProjectView();
 
         projectView.startConnectionState();
 
-        putValue(SMALL_ICON, loadIcon("/images/link.png"));
-        putValue(SHORT_DESCRIPTION, "link");
 
     }
 }

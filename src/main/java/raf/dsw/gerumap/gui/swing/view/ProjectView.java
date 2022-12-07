@@ -26,7 +26,8 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private Toolbar2 toolbar2;
 
-    private StateManager sm;
+    private StateManager sm; //pv prenosi korisnicku akciju ka stete-u // pv je mediator
+    //mediator prihvata nas klik i kaze state manager-u sta da radi dalje
 
 
 
@@ -40,6 +41,7 @@ public class ProjectView extends JPanel implements ISubscriber {
         add(nameLbl, BorderLayout.NORTH);
         add(autorLbl, BorderLayout.SOUTH);
 
+        sm=new StateManager();
         toolbar2=new Toolbar2();
         add(toolbar2,BorderLayout.EAST);
 
@@ -76,18 +78,25 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     }
 
+    //aktivacije stanja
+
     public void startConceptState(){
         this.sm.setConceptState();
     }
     public void startConnectionState(){
-        this.sm.setConceptState();
+        this.sm.setConnectionState();
     }
     public void startDeleteState(){
         this.sm.setDeleteState();
     }
     public void startSelectionState(){
-        this.sm.setConnectionState();
+        this.sm.setSelectionState();
     }
+    public void startMoveState(){
+        this.sm.setMoveState();
+    }
+
+
     public TabbedPane getTp() {
         return tp;
     }

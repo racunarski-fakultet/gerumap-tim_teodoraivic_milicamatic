@@ -20,6 +20,7 @@ public class ActionManager {
     private MoveAction moveAction;
     private SelectionAction selectionAction;
     private SettingAction settingAction;
+    private DeleteElementAction deleteElementAction;
 
     public ActionManager(){
         initialiseActions();
@@ -38,6 +39,7 @@ public class ActionManager {
         moveAction=new MoveAction();
         selectionAction=new SelectionAction();
         settingAction=new SettingAction();
+        deleteElementAction=new DeleteElementAction();
     }
 
     public ExitAction getExitAction() {
@@ -126,5 +128,13 @@ public class ActionManager {
 
     public void setSettingAction(SettingAction settingAction) {
         this.settingAction = settingAction;
+    }
+
+    public DeleteElementAction getDeleteElementAction() {
+        return deleteElementAction;
+    }
+
+    public void setDeleteElementAction(DeleteElementAction deleteElementAction) {
+        this.deleteElementAction = deleteElementAction;
     }
 }

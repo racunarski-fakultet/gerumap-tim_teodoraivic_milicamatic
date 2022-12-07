@@ -15,14 +15,16 @@ public class ConceptAction extends AbstractGeRuMapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
 
+
+
+        putValue(SMALL_ICON, loadIcon("/images/concept.png"));
+        putValue(SHORT_DESCRIPTION, "Concept");
+
         MainFrame m = MainFrame.getInstance();
 
         ProjectView projectView = m.getProjectView();
 
         projectView.startConceptState();
-
-        putValue(SMALL_ICON, loadIcon("/images/concept.png"));
-        putValue(SHORT_DESCRIPTION, "Concept");
 
     }
 }

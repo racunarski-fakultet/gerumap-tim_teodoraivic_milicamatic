@@ -15,15 +15,15 @@ public class SelectionAction extends AbstractGeRuMapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        MainFrame m = MainFrame.getInstance();
-
-        ProjectView projectView = m.getProjectView();
-
-        projectView.startConnectionState();
 
         putValue(SMALL_ICON, loadIcon("/images/select.png"));
         putValue(SHORT_DESCRIPTION, "Select");
 
+        MainFrame m = MainFrame.getInstance();
+
+        ProjectView projectView = m.getProjectView();
+
+        projectView.startSelectionState();
 
     }
 }
