@@ -2,10 +2,13 @@ package raf.dsw.gerumap.state.stanja;
 
 import raf.dsw.gerumap.state.State;
 
-public class ConceptState extends State {
+public class ConceptState extends State{
+  @Override
+  public void doStateAction(int x, int y) {
+    //TODO
+    //Stampanje elipse, painter klasa
 
-  public void makeConcept(){
-
+    System.out.println("ELIPSA u koordinatama: X="+x+", Y="+y);
   }
 
 }

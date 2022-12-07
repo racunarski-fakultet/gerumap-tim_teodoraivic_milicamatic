@@ -21,6 +21,7 @@ public class LinkAction extends AbstractGeRuMapAction{
 
         projectView.startConnectionState();
 
+        projectView.getCurrentState();
 
     }
 }

@@ -4,8 +4,8 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 
 public class Connection extends Element{
 
-    private Connection from;
-    private Connection to;
+    private Concept from;
+    private Concept to;
 
 
     public Connection(String name, MapNode parent) {

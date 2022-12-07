@@ -34,9 +34,7 @@ public class StateManager {
         return currentState;
     }
 
-    public void setConceptState(){
-        currentState = conceptState;
-    }
+    public void setConceptState() { currentState = conceptState; }
 
     public void setConnectionState(){
         currentState = connectionState;

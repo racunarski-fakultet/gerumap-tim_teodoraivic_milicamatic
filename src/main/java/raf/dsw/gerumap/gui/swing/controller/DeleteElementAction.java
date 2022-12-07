@@ -26,6 +26,8 @@ public class DeleteElementAction extends AbstractGeRuMapAction{
 
         projectView.startDeleteState(); //zapocni stanje brisanja
 
+        projectView.getCurrentState();
+
     }
 }
 

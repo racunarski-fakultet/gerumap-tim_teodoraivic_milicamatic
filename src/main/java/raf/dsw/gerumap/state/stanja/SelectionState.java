@@ -4,7 +4,4 @@ import raf.dsw.gerumap.state.State;
 
 public class SelectionState extends State {
 
-    public void makeSelection(){
-
-    }
 }

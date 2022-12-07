@@ -26,5 +26,12 @@ public class ConceptAction extends AbstractGeRuMapAction{
 
         projectView.startConceptState();
 
+        projectView.getCurrentState();
+
+
+
+
+
+
     }
 }
