@@ -1,7 +1,9 @@
 package raf.dsw.gerumap.state;
 
-public interface State {
+public abstract class State {
 
-    //sve metode koje koriste stateovi
+    public void doStateAction(int x, int y) {
+
+    }
 
 }

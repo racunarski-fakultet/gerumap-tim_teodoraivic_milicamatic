@@ -1,6 +1,7 @@
 package raf.dsw.gerumap.gui.swing.view;
 
 import raf.dsw.gerumap.core.ISubscriber;
+import raf.dsw.gerumap.gui.swing.controller.PaneMouseListener;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
@@ -8,6 +9,8 @@ import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +23,8 @@ public class TabbedPane extends JTabbedPane{
 
     private ProjectView projectView;
 
-
-
     public TabbedPane(ProjectView projectView) {
-
+        addMouseListener(new PaneMouseListener());
 
         this.projectView = projectView;
 

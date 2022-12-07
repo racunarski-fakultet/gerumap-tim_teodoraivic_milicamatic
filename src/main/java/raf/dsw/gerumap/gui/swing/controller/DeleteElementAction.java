@@ -16,14 +16,17 @@ public class DeleteElementAction extends AbstractGeRuMapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        MainFrame m = MainFrame.getInstance();
 
-        ProjectView projectView = m.getProjectView();
+        putValue(SMALL_ICON, loadIcon("/images/delete1.png"));
+        putValue(SHORT_DESCRIPTION, "Delete");
 
-        projectView.startDeleteState();
+        MainFrame m = MainFrame.getInstance(); //nasa aplikacija
 
-        putValue(SMALL_ICON, loadIcon("/images/concept.png"));
-        putValue(SHORT_DESCRIPTION, "Concept");
+        ProjectView projectView = m.getProjectView(); //nas mediator
+
+        projectView.startDeleteState(); //zapocni stanje brisanja
+
+        projectView.getCurrentState();
 
     }
 }

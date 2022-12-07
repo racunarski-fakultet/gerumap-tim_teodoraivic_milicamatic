@@ -15,6 +15,7 @@ public class Toolbar2 extends JToolBar{
         add(actionManager.getSelectionAction());
         add(actionManager.getMoveAction());
         add(actionManager.getLinkAction());
+        add(actionManager.getDeleteElementAction());
         add(actionManager.getConceptAction());
         add(actionManager.getSettingAction());
 

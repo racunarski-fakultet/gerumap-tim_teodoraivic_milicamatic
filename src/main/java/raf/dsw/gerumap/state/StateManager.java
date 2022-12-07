@@ -1,9 +1,6 @@
 package raf.dsw.gerumap.state;
 
-import raf.dsw.gerumap.state.stanja.ConceptState;
-import raf.dsw.gerumap.state.stanja.ConnectionState;
-import raf.dsw.gerumap.state.stanja.DeleteState;
-import raf.dsw.gerumap.state.stanja.SelectionState;
+import raf.dsw.gerumap.state.stanja.*;
 
 public class StateManager {
 
@@ -14,6 +11,8 @@ public class StateManager {
     private ConnectionState connectionState;
 
     private DeleteState deleteState;
+
+    private MoveState moveState;
 
     private SelectionState selectionState;
 
@@ -27,17 +26,15 @@ public class StateManager {
         connectionState = new ConnectionState();
         deleteState = new DeleteState();
         selectionState = new SelectionState();
+        moveState=new MoveState();
 
         currentState = conceptState;
     }
-
     public State getCurrent(){
         return currentState;
     }
 
-    public void setConceptState(){
-        currentState = conceptState;
-    }
+    public void setConceptState() { currentState = conceptState; }
 
     public void setConnectionState(){
         currentState = connectionState;
@@ -45,5 +42,13 @@ public class StateManager {
 
     public void setDeleteState(){
         currentState = deleteState;
+    }
+
+    public void setMoveState() {
+        currentState = moveState;
+    }
+
+    public void setSelectionState() {
+        currentState = selectionState;
     }
 }
