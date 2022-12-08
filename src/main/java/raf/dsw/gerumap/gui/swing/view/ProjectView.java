@@ -27,6 +27,8 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private Toolbar2 toolbar2;
 
+    private MapView mapView;
+
     public StateManager sm;
     //pv prenosi korisnicku akciju ka stete-u // pv je mediator
     //mediator prihvata nas klik i kaze state manager-u sta da radi dalje
@@ -101,7 +103,9 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.sm.setMoveState();
     }
 
-
+    public void misKliknut(int x, int y, MapView m){
+        this.sm.getCurrent().misKliknut(x,y,m);
+    }
     public TabbedPane getTp() {
         return tp;
     }
@@ -112,5 +116,9 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public void setMaps(List<MapNode> maps) {
         this.maps = maps;
+    }
+
+    public MapView getMapView() {
+        return mapView;
     }
 }

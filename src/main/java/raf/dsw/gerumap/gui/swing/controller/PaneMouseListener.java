@@ -1,6 +1,7 @@
 package raf.dsw.gerumap.gui.swing.controller;
 
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
+import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
 
 import java.awt.event.MouseEvent;
@@ -12,14 +13,19 @@ public class PaneMouseListener implements MouseListener {
 
 
     ProjectView projectView = m.getProjectView();
+
+    MapView mapView = m.getProjectView().getMapView();
     @Override
     public void mouseClicked(MouseEvent e) {
+
+
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        projectView.sm.getCurrent().doStateAction(e.getX(), e.getY());
+
+        projectView.misKliknut(e.getX(), e.getY(), mapView);
     }
 
     @Override
