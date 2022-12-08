@@ -1,14 +1,16 @@
-package raf.dsw.gerumap.gui.swing.view;
+package raf.dsw.gerumap.gui.swing.view.painters;
 
+import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
 
-public class ConceptPainter extends Painter{
+public class ConceptPainter extends Painter {
 
     private Concept concept;
-    private Shape shape;
+
+
 
     public ConceptPainter(Element element) {
         super(element);
@@ -21,6 +23,7 @@ public class ConceptPainter extends Painter{
 
     @Override
     public void draw(Graphics2D g, Element element) {
-        g.draw(shape);
+        // crta se elipsa
+        //g.draw(shape);
     }
 }

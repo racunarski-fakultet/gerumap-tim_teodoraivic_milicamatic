@@ -6,6 +6,7 @@ import javax.swing.text.Position;
 
 public class Concept extends Element{
 
+    private Element e;
     String name;
     private Position position;
     private int size;

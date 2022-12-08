@@ -8,6 +8,7 @@ public abstract class Element extends MapNode {
 
     private Paint colour;
     private Stroke stroke;
+    //treba da ima x,y koord, w i h, i tekst, concept to nasledjuje
 
 
     public Element(String name, MapNode parent) {
