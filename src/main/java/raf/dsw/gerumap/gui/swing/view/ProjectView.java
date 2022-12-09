@@ -76,7 +76,7 @@ public class ProjectView extends JPanel implements ISubscriber {
             this.setMaps(project.getChildren());
 
         }
-        if(notification.equals("mindmap added")){ // TODO zahteva dupli klik na project da bi se refrshovao tabbed popraviti
+        if(notification.equals("mindmap added")){
             this.setMaps(project.getChildren());
         }
 
