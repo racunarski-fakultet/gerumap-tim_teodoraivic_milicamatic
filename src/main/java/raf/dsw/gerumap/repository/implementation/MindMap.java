@@ -36,5 +36,5 @@ public class MindMap extends MapNodeComposite {
         }
     }
 
-
+    //public void addElement()
 }

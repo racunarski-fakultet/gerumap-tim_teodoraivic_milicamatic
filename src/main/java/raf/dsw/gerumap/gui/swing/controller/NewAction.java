@@ -37,16 +37,27 @@ public class NewAction extends AbstractGeRuMapAction{
 
         MainFrame.getInstance().getMapTree().addChild(selected);
 
+        ProjectView projectView = m.getProjectView();
 
 
-        if(mapNode instanceof MindMap){
 
-            ProjectView projectView = m.getProjectView();
+
+
+
+
+        if(mapNode instanceof Project){
+
+
+
 
             if(projectView != null){
+
+                projectView.setMaps(projectView.getProject().getChildren());
                 projectView.getTp().removeAll();
                 projectView.setTabbedPane();
             }
+
+
 
             JPanel desktop = m.getDesktop();
 

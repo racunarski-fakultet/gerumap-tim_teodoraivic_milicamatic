@@ -9,11 +9,11 @@ public class ConceptState extends State{
   Concept c;
 
   @Override
-  public void misKliknut(int x, int y, MapView m) { //mis se vuce
+  public void misKliknut(int x, int y, MapView m) { //kliknut
     //ovo ovde treba da izmeni model tkd metoda za dodavanje Concepta u listu Elemenata
    // onda observer obavestava MapView i on radi update(repaint) i paintcomponent
 
-    m.getMindMap().addChild(c); //mora da se inicijalizuje mindmap
+   // m.getMindMap().addElement(c); //mora da se inicijalizuje mindmap
     // x,y settovati conceptu
     System.out.println("ELIPSA u koordinatama: X="+x+", Y="+y);
 
