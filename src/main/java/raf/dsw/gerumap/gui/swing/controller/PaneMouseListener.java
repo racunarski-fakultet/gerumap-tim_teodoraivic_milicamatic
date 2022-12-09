@@ -14,7 +14,7 @@ public class PaneMouseListener implements MouseListener {
 
     ProjectView projectView = m.getProjectView();
 
-    MapView mapView = m.getProjectView().getMapView();
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -25,7 +25,11 @@ public class PaneMouseListener implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        projectView.misKliknut(e.getX(), e.getY(), mapView);
+        int selectedIndex = projectView.getTp().getSelectedIndex();
+
+        projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getTp().getComponentAt(selectedIndex));
+
+        //kada se desi press uzmi mediatora i aktiviraj analognu metodu za nas trenutni state
     }
 
     @Override

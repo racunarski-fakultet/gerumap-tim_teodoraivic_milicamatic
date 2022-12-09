@@ -36,6 +36,13 @@ public class MyMouseListener implements MouseListener {
             projectView.setMaps(children);
 
             projectView.setTabbedPane();
+
+
+           int index=projectView.getTp().getSelectedIndex();
+
+           projectView.getTp().setComponentAt(index,projectView.getMapViews().get(index));
+
+
         }
     }
 
