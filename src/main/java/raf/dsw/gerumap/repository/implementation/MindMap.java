@@ -3,11 +3,13 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
 
     List<MapNode> children = super.getChildren();
+    List<Element> elements=new ArrayList<>();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -36,5 +38,10 @@ public class MindMap extends MapNodeComposite {
         }
     }
 
-    //public void addElement()
+    public void addElement(Element element){
+        elements.add(element);
+
+        notifySubscribers("dodat element");
+
+    }
 }

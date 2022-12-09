@@ -35,7 +35,8 @@ public class TabbedPane extends JTabbedPane{
         Dimension pref = new Dimension(400,200);
 
         for (MapNode map : projectView.getMaps()){
-                JPanel pan = new JPanel(); //pravi novi panel
+                JPanel pan = new JPanel();//pravi novi panel
+
                 pan.setMinimumSize(min);
                 pan.setMaximumSize(max);
                 pan.setPreferredSize(pref);

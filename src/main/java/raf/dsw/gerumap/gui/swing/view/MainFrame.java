@@ -8,6 +8,7 @@ import raf.dsw.gerumap.gui.swing.jTree.MapTree;
 import raf.dsw.gerumap.gui.swing.jTree.MapTreeImplementation;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
 import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
@@ -32,6 +33,9 @@ public class MainFrame extends JFrame {
     private JPanel desktop;
 
     private ProjectView projectView;
+
+    private MapView mapView;
+
 
     private MainFrame(){
 
@@ -89,7 +93,15 @@ public class MainFrame extends JFrame {
     }
 
     private ProjectView replaceProjectView() {
-       return projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+
+        projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+
+       for (MapNode map :  projectView.getProject().getChildren()){
+           MapView mapView=new MapView(new FlowLayout(), true, (MindMap)map ,projectView);
+           projectView.getMapViews().add(mapView);
+       }
+        return projectView;
+
     }
 
     public ProjectView getProjectView() {
@@ -121,6 +133,7 @@ public class MainFrame extends JFrame {
     public JPanel getDesktop() {
         return desktop;
     }
+
 
 
 }

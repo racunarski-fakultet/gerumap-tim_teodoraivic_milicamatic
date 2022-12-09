@@ -17,37 +17,42 @@ public class MapView extends JPanel implements ISubscriber {
         private TabbedPane tabs;
 
 
-        private List<Painter> painters;
+        private List<Painter> painters; //element view-i, veza ili pojam, pripadaju grafici
 
-        public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap) {
+        public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
                 this.mindMap = mindMap;
+                this.projectView=pv;
 
 
         }
-
 
         @Override
         public void update(Object notification) {
-                // repaint()
-        }
-
-
-        @Override
-        protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-               // g.drawRect(1000,100,30,30);
-              //  g.drawString(" ",100,100);
-              //  g.drawLine(10,10,20,20);
-                for(Painter p : painters){
-                        //p.draw(g);  //ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
+                if (notification.equals("dodat element")) {
+                        repaint();
                 }
-
         }
+
+
+//        @Override
+//        protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//               // g.drawRect(1000,100,30,30);
+//              //  g.drawString(" ",100,100);
+//              //  g.drawLine(10,10,20,20);
+//
+//                for(Painter p : painters){
+//                        //p.draw(g);  //ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
+//                }
+//
+//        }
 
         public MindMap getMindMap() {
                 return mindMap;
         }
+
+
 }
 
 

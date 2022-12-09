@@ -1,6 +1,7 @@
 package raf.dsw.gerumap.state.stanja;
 
 import raf.dsw.gerumap.gui.swing.view.MapView;
+import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.state.State;
 
@@ -13,7 +14,16 @@ public class ConceptState extends State{
     //ovo ovde treba da izmeni model tkd metoda za dodavanje Concepta u listu Elemenata
    // onda observer obavestava MapView i on radi update(repaint) i paintcomponent
 
-   // m.getMindMap().addElement(c); //mora da se inicijalizuje mindmap
+
+    System.out.println(m.toString() + "aaaaaaaa");
+
+    c=new Concept("KONCEPT",m.getMindMap(),x,y);
+
+    c.setX(x);
+    c.setY(y);
+
+    m.getMindMap().addElement(c); //mora da se inicijalizuje mindmap
+
     // x,y settovati conceptu
     System.out.println("ELIPSA u koordinatama: X="+x+", Y="+y);
 

@@ -27,6 +27,8 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private Toolbar2 toolbar2;
 
+    private List<MapView> mapViews=new ArrayList<>();
+
     private MapView mapView;
 
     public StateManager sm;
@@ -103,9 +105,13 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.sm.setMoveState();
     }
 
-    public void misKliknut(int x, int y, MapView m){
-        this.sm.getCurrent().misKliknut(x,y,m);
+
+
+    public void misKliknut(int x, int y, MapView mapView){
+        this.sm.getCurrent().misKliknut(x,y,mapView);
     }
+
+
     public TabbedPane getTp() {
         return tp;
     }
@@ -116,6 +122,10 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public void setMaps(List<MapNode> maps) {
         this.maps = maps;
+    }
+
+    public List<MapView> getMapViews() {
+        return mapViews;
     }
 
     public MapView getMapView() {
