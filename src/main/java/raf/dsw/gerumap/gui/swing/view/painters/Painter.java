@@ -4,25 +4,30 @@ import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
 
-public class Painter {
+public class Painter { //pripada viewu
 
 
     private Element element;
 
-    private Shape S;
+    private Shape S; //elipsa
+    //shape je swingov interface koji pravi oblik
 
 
-
-    public Painter(Element element) {
+    public Painter(Element element,Shape s) {
         this.element = element;
+        this.S=s;
     }
 
-    public void elementAt(){
-       // S.contains(x,y)
+    public void elementAt(float x, float y){
+
+          S.contains(x,y);
+
         //da proveri gde crta
-    }
+        // jedna linija koda
+        //argumenti su x,y
+      }
 
-    public void draw(Graphics2D g, Element element){
+    public void draw(Graphics2D g ){
 
     }
 

@@ -79,6 +79,8 @@ public class MainFrame extends JFrame {
 
         infoDialog = new InfoDialog(this);
 
+
+
         //pravim po jedan panel za radnu povrsinu i za project explore
         desktop=new JPanel();
 
@@ -96,10 +98,6 @@ public class MainFrame extends JFrame {
 
         projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
 
-       for (MapNode map :  projectView.getProject().getChildren()){
-           MapView mapView=new MapView(new FlowLayout(), true, (MindMap)map ,projectView);
-           projectView.getMapViews().add(mapView);
-       }
         return projectView;
 
     }

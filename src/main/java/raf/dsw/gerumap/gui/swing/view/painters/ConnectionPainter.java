@@ -5,24 +5,32 @@ import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 public class ConnectionPainter extends Painter {
 
     private Connection connection;
+    private Shape shape;
 
-    public ConnectionPainter(Element element, Connection connection) {
-        super(element);
+
+    public ConnectionPainter(Element element, Shape s, Connection connection) {
+        super(element, s);
         this.connection = connection;
+
+    }
+
+
+
+    @Override
+    public void elementAt(float x, float y) {
+        super.elementAt(x, y);
     }
 
     @Override
-    public void elementAt() {
-        super.elementAt();
-    }
+    public void draw(Graphics2D g) {
 
-    @Override
-    public void draw(Graphics2D g, Element element) {
-
-        super.draw(g, element);
+        super.draw(g);
     }
 }

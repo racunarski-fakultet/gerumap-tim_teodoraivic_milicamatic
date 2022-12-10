@@ -1,16 +1,11 @@
 package raf.dsw.gerumap.gui.swing.view;
 
-import raf.dsw.gerumap.core.ISubscriber;
-import raf.dsw.gerumap.gui.swing.controller.PaneMouseListener;
-import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
+import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
-import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +18,10 @@ public class TabbedPane extends JTabbedPane{
 
     private ProjectView projectView;
 
+    private MapView mapView;
+
     public TabbedPane(ProjectView projectView) {
-        addMouseListener(new PaneMouseListener());
+        addMouseListener(new MapMouseListener());
 
         this.projectView = projectView;
 
@@ -36,6 +33,14 @@ public class TabbedPane extends JTabbedPane{
 
         for (MapNode map : projectView.getMaps()){
                 JPanel pan = new JPanel();//pravi novi panel
+
+            //pravim mapView za svaki mindMap
+            //to do update kad se dodaju nove mape
+
+             mapView=new MapView(new FlowLayout(), true, (MindMap) map, projectView);
+             mapView.setMindMap((MindMap) map);
+             projectView.getMapViews().add(mapView);
+
 
                 pan.setMinimumSize(min);
                 pan.setMaximumSize(max);

@@ -54,7 +54,9 @@ public class NewAction extends AbstractGeRuMapAction{
 
                 projectView.setMaps(projectView.getProject().getChildren());
                 projectView.getTp().removeAll();
+                projectView.getMapViews().clear();
                 projectView.setTabbedPane();
+                System.out.println(projectView.getMapViews().size()+"mapViews iz newAct");
             }
 
 
