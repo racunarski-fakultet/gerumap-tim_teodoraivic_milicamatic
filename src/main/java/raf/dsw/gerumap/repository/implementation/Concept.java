@@ -4,18 +4,18 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 
 import javax.swing.text.Position;
 
-public class Concept extends Element{
+public class Concept extends Element{ //model
 
     private Element e;
     String name;
-    private Position position;
     private int size;
     float x,y; //koordinate getpoints metoda
     float width=20;
     float height=20;
 
 
-    //pozicija i size
+
+   //koordinate uzimam iz metode
 
 
     public Concept(String name, MapNode parent) {
@@ -58,5 +58,23 @@ public class Concept extends Element{
 
     public void setHeight(float height) {
         this.height = height;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

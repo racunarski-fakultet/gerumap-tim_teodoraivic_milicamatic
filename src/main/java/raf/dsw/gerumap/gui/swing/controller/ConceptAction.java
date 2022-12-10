@@ -1,6 +1,7 @@
 package raf.dsw.gerumap.gui.swing.controller;
 
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
+import raf.dsw.gerumap.gui.swing.view.ConceptDialog;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
 import raf.dsw.gerumap.repository.composite.MapNode;
@@ -27,8 +28,6 @@ public class ConceptAction extends AbstractGeRuMapAction{
         projectView.startConceptState();
 
         projectView.getCurrentState();
-
-
 
 
 

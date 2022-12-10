@@ -1,12 +1,15 @@
 package raf.dsw.gerumap.gui.swing.view;
 import raf.dsw.gerumap.core.ISubscriber;
+import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MapView extends JPanel implements ISubscriber {
 
@@ -17,42 +20,66 @@ public class MapView extends JPanel implements ISubscriber {
         private TabbedPane tabs;
 
 
-        private List<Painter> painters; //element view-i, veza ili pojam, pripadaju grafici
+        private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
 
         public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
                 this.mindMap = mindMap;
                 this.projectView=pv;
+               // addMouseListener(new MapMouseListener());
 
 
         }
 
         @Override
         public void update(Object notification) {
+
+
                 if (notification.equals("dodat element")) {
+
                         repaint();
                 }
+
         }
 
 
-//        @Override
-//        protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//               // g.drawRect(1000,100,30,30);
-//              //  g.drawString(" ",100,100);
-//              //  g.drawLine(10,10,20,20);
-//
-//                for(Painter p : painters){
-//                        //p.draw(g);  //ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
-//                }
-//
-//        }
+        @Override
+        protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for(Painter p : painters){
+
+
+
+                        p.draw((Graphics2D)g);//ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
+                }
+
+        }
 
         public MindMap getMindMap() {
                 return mindMap;
         }
 
 
+        public List<Painter> getPainters() {
+                return painters;
+        }
+
+        public void setMindMap(MindMap mindMap) {
+                this.mindMap = mindMap;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                MapView mapView = (MapView) o;
+                return Objects.equals(mindMap, mapView.mindMap);
+        }
+
+        @Override
+        public int hashCode() {
+                return Objects.hash(mindMap);
+        }
 }
 
 
