@@ -38,7 +38,6 @@ public class MyMouseListener implements MouseListener {
             projectView.setTabbedPane();
 
 
-            projectView.getTp().setComponentAt(0,projectView.getMapViews().get(0));
 
 
         }

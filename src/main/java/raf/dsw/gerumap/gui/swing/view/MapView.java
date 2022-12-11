@@ -24,9 +24,17 @@ public class MapView extends JPanel implements ISubscriber {
 
         public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
+                addMouseListener(new MapMouseListener());
                 this.mindMap = mindMap;
                 this.projectView=pv;
+                this.setBackground(Color.WHITE);
                // addMouseListener(new MapMouseListener());
+                Dimension min  = new Dimension(200,100);
+                Dimension max = new Dimension(Short.MAX_VALUE,Short.MAX_VALUE);
+                Dimension pref = new Dimension(400,200);
+                this.setMinimumSize(min);
+                this.setMaximumSize(max);
+                this.setPreferredSize(pref);
 
 
         }

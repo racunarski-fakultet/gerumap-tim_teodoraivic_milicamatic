@@ -20,14 +20,7 @@ public class MapMouseListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-//        if (e.getClickCount()==1) {
-//            int index = projectView.getTp().getSelectedIndex();
-//
-//            // projectView.getTp().setComponentAt(index,projectView.getMapViews().get(index));
-//
-//            projectView.getTp().setComponentAt(index,projectView.getMapViews().get(index));
-//
-//        }
+
 
 
     }
@@ -35,10 +28,8 @@ public class MapMouseListener implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        int selectedIndex = projectView.getTp().getSelectedIndex();
 
-        projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getMapViews().get(selectedIndex));
-
+        projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getTp().getSelectedComponent());
         //kada se desi press uzmi mediatora i aktiviraj analognu metodu za nas trenutni state
     }
 
