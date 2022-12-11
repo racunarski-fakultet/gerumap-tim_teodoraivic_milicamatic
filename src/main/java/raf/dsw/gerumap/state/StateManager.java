@@ -28,7 +28,7 @@ public class StateManager {
         selectionState = new SelectionState();
         moveState=new MoveState();
 
-        currentState = conceptState;
+        currentState = connectionState;
     }
     public State getCurrent(){
         return currentState;
