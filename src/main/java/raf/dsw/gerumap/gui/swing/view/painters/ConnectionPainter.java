@@ -1,31 +1,30 @@
 package raf.dsw.gerumap.gui.swing.view.painters;
 
-import raf.dsw.gerumap.gui.swing.view.painters.Painter;
+import raf.dsw.gerumap.gui.swing.view.MapView;
+
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+
 
 public class ConnectionPainter extends Painter {
 
     private Connection connection;
-    private Shape shape;
+    //private Shape shape;
+    // ovde se nece crtati nikakav shape vec linija od tacke a do tacke b
+    //tako da je draw metoda razlicito implementirana
 
 
-    public ConnectionPainter(Element element, Shape s, Connection connection) {
-        super(element, s);
+    public ConnectionPainter(Element element, Connection connection, MapView mapView) {
+        super(element, mapView);
         this.connection = connection;
 
     }
 
-
-
     @Override
-    public void elementAt(float x, float y) {
-        super.elementAt(x, y);
+    public boolean elementAt( float x, float y) {
+        return super.elementAt( x, y);
     }
 
     @Override

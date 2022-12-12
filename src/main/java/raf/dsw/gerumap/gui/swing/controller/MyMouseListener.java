@@ -1,13 +1,10 @@
 package raf.dsw.gerumap.gui.swing.controller;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
-import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
-import raf.dsw.gerumap.gui.swing.view.TabbedPane;
+
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.Project;
 
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -36,7 +33,6 @@ public class MyMouseListener implements MouseListener {
             projectView.setMaps(children);
 
             projectView.setTabbedPane();
-
 
 
 

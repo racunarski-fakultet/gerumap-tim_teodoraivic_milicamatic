@@ -2,14 +2,14 @@ package raf.dsw.gerumap.gui.swing.view;
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
-import raf.dsw.gerumap.repository.implementation.Element;
+
 import raf.dsw.gerumap.repository.implementation.MindMap;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 public class MapView extends JPanel implements ISubscriber {
 
@@ -18,6 +18,8 @@ public class MapView extends JPanel implements ISubscriber {
         private ProjectView projectView;
 
         private TabbedPane tabs;
+
+        private List<Painter>cloneList=new ArrayList<>(); //TODO lista treba negde da se clearuje
 
 
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
@@ -36,15 +38,17 @@ public class MapView extends JPanel implements ISubscriber {
                 this.setMaximumSize(max);
                 this.setPreferredSize(pref);
 
+                this.mindMap.addSubs(this);
+
 
         }
 
         @Override
         public void update(Object notification) {
 
+                System.out.println("uso u UPDATE u MV: " + notification);//udje
 
-                if (notification.equals("dodat element")) {
-
+                if (notification.equals("dodatt element")) {
                         repaint();
                 }
 
@@ -53,15 +57,29 @@ public class MapView extends JPanel implements ISubscriber {
 
         @Override
         protected void paintComponent(Graphics g) {
+
+                System.out.println("usao u paintcomponent");
                 super.paintComponent(g);
-                for(Painter p : painters){
+                System.out.println("painters iz pc" + painters);
+                for (Painter p:painters){
+                        cloneList.add(p);
+                }
+                System.out.println("CloneLista: " + cloneList);
 
+                Graphics2D g2=(Graphics2D) g;
 
+                Iterator<Painter> iterator= cloneList.listIterator();
+                while(iterator.hasNext()){
+                        iterator.next().draw(g2);
 
-                        p.draw((Graphics2D)g);//ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
                 }
 
-        }
+                System.out.println("izvrsen ceo paintComponent");
+
+        }  ;//ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
+
+
+
 
         public MindMap getMindMap() {
                 return mindMap;
@@ -76,18 +94,7 @@ public class MapView extends JPanel implements ISubscriber {
                 this.mindMap = mindMap;
         }
 
-        @Override
-        public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
-                MapView mapView = (MapView) o;
-                return Objects.equals(mindMap, mapView.mindMap);
-        }
 
-        @Override
-        public int hashCode() {
-                return Objects.hash(mindMap);
-        }
 }
 
 

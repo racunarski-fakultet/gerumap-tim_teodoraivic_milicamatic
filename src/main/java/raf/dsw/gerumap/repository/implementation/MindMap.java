@@ -1,5 +1,6 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import raf.dsw.gerumap.core.IPublisher;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
@@ -39,10 +40,19 @@ public class MindMap extends MapNodeComposite {
     }
 
     public void addElement(Element element){
-        System.out.println("usao u addElement");
+        System.out.println("usao u addElement"); //udje
         elements.add(element);
+        System.out.println(elements +"elementi lista");
 
-        notifySubscribers("dodat element");
+        notifySubscribers("dodatt element");
 
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<Element> elements) {
+        this.elements = elements;
     }
 }

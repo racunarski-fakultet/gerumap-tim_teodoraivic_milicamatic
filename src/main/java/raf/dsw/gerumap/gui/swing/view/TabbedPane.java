@@ -1,6 +1,5 @@
 package raf.dsw.gerumap.gui.swing.view;
 
-import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 
@@ -42,7 +41,10 @@ public class TabbedPane extends JTabbedPane{
 
              mapView = new MapView(new FlowLayout(), true, (MindMap) map, projectView);
              mapView.setMindMap((MindMap) map);
-             projectView.getMapViews().add(mapView);
+            System.out.println("sadaaa iz tp");
+
+
+            projectView.getMapViews().add(mapView);
 
              pan.setMinimumSize(min);
              pan.setMaximumSize(max);
