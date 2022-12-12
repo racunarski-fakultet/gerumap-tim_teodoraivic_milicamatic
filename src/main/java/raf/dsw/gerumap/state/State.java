@@ -12,6 +12,7 @@ public abstract class State {
 
 
     public void misPritisnut(int x, int y){
+        //koristim ovo dok vucem mis
 
     }
 

@@ -15,12 +15,13 @@ public class ConceptDialog extends JDialog {
 
     private String name;
 
-    public ConceptDialog(JFrame parent) {
+    public ConceptDialog(JFrame parent,Concept concept) {
         super(parent, "Info", false);
         this.setLocationRelativeTo(parent);
         getContentPane().setLayout(new FlowLayout());
         setBounds(0, 0, 300, 100);
         setResizable(false);
+        setModalityType(ModalityType.APPLICATION_MODAL);
 
         saveBtn = new JButton("Save");
         labela= new JLabel("Insert concept text: ");
@@ -34,18 +35,14 @@ public class ConceptDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                     setName(textField.getText());
                    revalidate();
+                   concept.setName(textField.getText());
 
-//                if(concept instanceof Concept){
-//                    concept.setName(textField.getText());
-//                    revalidate();
-//
-//                }
                 dispose();
             }
         });
+
 
 
     }

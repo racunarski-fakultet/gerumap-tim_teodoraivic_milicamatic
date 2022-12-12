@@ -1,5 +1,6 @@
 package raf.dsw.gerumap.gui.swing.view.painters;
 
+import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
@@ -13,24 +14,33 @@ public class Painter { //pripada viewu
     //shape je swingov interface koji pravi oblik
 
 
-    public Painter(Element element,Shape s) {
+    private MapView mapview;
+
+
+    public Painter(Element element,MapView mapView) {
         this.element = element;
-        this.S=s;
+        this.mapview=mapView;
     }
 
-    public void elementAt(float x, float y){
+    public boolean elementAt(float x, float y){
 
-          S.contains(x,y);
+         // return s.contains(x,y);
 
         //da proveri gde crta
         // jedna linija koda
         //argumenti su x,y
+        return true;
       }
 
     public void draw(Graphics2D g ){
 
     }
 
+    public MapView getMapview() {
+        return mapview;
+    }
 
-
+    public void setMapview(MapView mapview) {
+        this.mapview = mapview;
+    }
 }

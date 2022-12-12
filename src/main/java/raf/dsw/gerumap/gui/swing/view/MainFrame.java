@@ -56,7 +56,7 @@ public class MainFrame extends JFrame {
             desktop.removeAll();
             desktop.add(this.replaceProjectView());
             desktop.revalidate();
-            desktop.repaint();
+           // desktop.repaint();
         }
     }
 

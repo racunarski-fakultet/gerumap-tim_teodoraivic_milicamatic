@@ -10,8 +10,8 @@ public class Concept extends Element{ //model
     String name;
     private int size;
     float x,y; //koordinate getpoints metoda
-    float width=20;
-    float height=20;
+    float width=60;
+    float height=35;
 
 
 
@@ -76,5 +76,12 @@ public class Concept extends Element{ //model
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "Concept{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

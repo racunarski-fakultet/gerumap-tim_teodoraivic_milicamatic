@@ -21,8 +21,6 @@ public class MapMouseListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
 
-
-
     }
 
     @Override

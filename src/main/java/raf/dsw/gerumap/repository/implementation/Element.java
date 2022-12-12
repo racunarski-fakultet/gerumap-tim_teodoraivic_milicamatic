@@ -7,7 +7,8 @@ import java.awt.*;
 public abstract class Element extends MapNode { //model
 
     private Paint colour;
-    private int stroke=10; //debljina linije
+    private int stroke=1; //debljina linije
+    //treba da ima i poziciju na kojoj se nalazi- to im je zajednicko takodje
 
     //treba da ima x,y koord, w i h, i tekst, concept to nasledjuje
 
@@ -26,9 +27,5 @@ public abstract class Element extends MapNode { //model
 
     public int getStroke() {
         return stroke;
-    }
-
-    public void setStroke(int stroke) {
-        this.stroke = stroke;
     }
 }

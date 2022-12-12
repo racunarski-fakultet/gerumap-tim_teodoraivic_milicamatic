@@ -57,6 +57,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public void setTabbedPane(){
         tp = new TabbedPane(this);
+
         add(tp, BorderLayout.CENTER);
         tp.setVisible(true);
     }
@@ -70,6 +71,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
+        System.out.println("uso u PV update metodu: " + notification);
         if(notification.equals("name changed")) {
             nameLbl.setText(project.getName());
         }

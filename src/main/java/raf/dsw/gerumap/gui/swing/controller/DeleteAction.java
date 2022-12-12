@@ -62,7 +62,6 @@ public class DeleteAction extends AbstractGeRuMapAction {
             m.getMapTree().removeChild(selected);
             desktop.removeAll();
             desktop.revalidate();
-            desktop.repaint();
         }
 
     }
