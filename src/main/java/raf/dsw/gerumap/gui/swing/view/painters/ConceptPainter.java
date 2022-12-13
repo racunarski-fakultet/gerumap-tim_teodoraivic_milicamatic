@@ -43,7 +43,12 @@ public class ConceptPainter extends Painter {
 
         g.setFont(f);
 
-        g.drawString(concept.getName(),concept.getX()+20,concept.getY()+20);
+        FontMetrics fm = g.getFontMetrics();
+        int width = fm.stringWidth(concept.getName());
+        int offset = (int) ((concept.getWidth() - width ) / 2);
+        g.drawString(concept.getName(), concept.getX() + offset, concept.getY()+ (concept.getWidth()/4)+5);
+
+       // g.drawString(concept.getName(),concept.getX()+20,concept.getY()+20);
 
     }
 

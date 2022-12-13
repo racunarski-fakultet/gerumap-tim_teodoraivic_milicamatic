@@ -23,7 +23,8 @@ public class Concept extends Element{ //model
     }
 
     public Concept(String name, MapNode parent, float x, float y) {
-        super(name, parent);
+        super(name,parent);
+        this.name = name;
         this.x = x;
         this.y = y;
     }

@@ -1,5 +1,6 @@
 package raf.dsw.gerumap.gui.swing.view.painters;
 
+import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.repository.implementation.Element;
 
