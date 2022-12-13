@@ -20,12 +20,15 @@ public class ConceptPainter extends Painter {
 
         concept=(Concept)element;
 
+        System.out.println("Ime koncepta:");
+        System.out.println(concept.getName());
+
         this.shape=new Ellipse2D.Float(concept.getX(),concept.getY(), concept.getWidth(), concept.getHeight());
     }
 
     @Override
     public boolean elementAt( float x, float y) {
-        return super.elementAt( x, y);
+        return shape.contains(x,y);
     }
 
     @Override
@@ -44,7 +47,13 @@ public class ConceptPainter extends Painter {
 
     }
 
+    public Concept getConcept() {
+        return concept;
+    }
 
+    public void setConcept(Concept concept) {
+        this.concept = concept;
+    }
 
     public Shape getShape() {
         return shape;

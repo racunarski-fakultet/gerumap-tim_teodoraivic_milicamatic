@@ -18,6 +18,7 @@ public class MouseMotionListen implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
+
         projectView.misPritisnut(e.getX(),e.getY(),(MapView) projectView.getTp().getSelectedComponent());
         //pravi novu grafiku samo za ovu metodu i kao crta
 

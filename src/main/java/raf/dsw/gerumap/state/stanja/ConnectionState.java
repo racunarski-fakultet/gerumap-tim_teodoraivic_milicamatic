@@ -18,9 +18,18 @@ public class ConnectionState extends State {
 
     @Override
     public void misPritisnut(int x, int y, MapView m) {
-
+        //treba da dobijemo concept od kog krecemo
+        //
         // super.misPritisnut(x, y, m);
+
         connection=new Connection("veza", m.getMindMap());
+        for(Painter p : m.getPainters()){
+            if(p.elementAt(x,y)){
+                ConceptPainter cp = (ConceptPainter) p;
+                connection.setFrom(cp.getConcept());
+                break;
+            }
+        }
         float x1,y1;
         x1=x;
         y1=y;
@@ -40,6 +49,15 @@ public class ConnectionState extends State {
         connection.setY2(y);
 
         Painter painter=new ConnectionPainter(connection,m);
+
+        for(Painter p : m.getPainters()){
+            if(p.elementAt(x,y)){
+                ConceptPainter cp = (ConceptPainter) p;
+                connection.setTo(cp.getConcept());
+                break;
+            }
+        }
+
         m.getPainters().add(painter);
         System.out.println("painters iz mispusten:" +m.getPainters());
         m.getMindMap().addElement(connection);

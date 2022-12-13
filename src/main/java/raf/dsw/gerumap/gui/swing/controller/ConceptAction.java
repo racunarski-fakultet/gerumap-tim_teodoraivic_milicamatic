@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 public class ConceptAction extends AbstractGeRuMapAction{
 
     public ConceptAction() {
+        putValue(SMALL_ICON, loadIcon("/images/concept.png"));
+        putValue(SHORT_DESCRIPTION, "Concept");
     }
 
     @Override
@@ -18,8 +20,7 @@ public class ConceptAction extends AbstractGeRuMapAction{
 
 
 
-        putValue(SMALL_ICON, loadIcon("/images/concept.png"));
-        putValue(SHORT_DESCRIPTION, "Concept");
+
 
         MainFrame m = MainFrame.getInstance();
 
