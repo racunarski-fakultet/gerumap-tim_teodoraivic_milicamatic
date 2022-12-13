@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class MapNode implements IPublisher { //ne moze da ima decu
 
-    private String name;
+    private String name = " ";
 
     private MapNode parent;
 

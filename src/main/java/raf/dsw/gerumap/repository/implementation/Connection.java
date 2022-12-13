@@ -1,5 +1,6 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 public class Connection extends Element{ //model
@@ -13,6 +14,7 @@ public class Connection extends Element{ //model
 
     public Connection(String name, MapNode parent, float x1, float y1, float x2, float y2) {
         super(name, parent);
+
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -35,8 +37,12 @@ public class Connection extends Element{ //model
         return to;
     }
 
-    public void setTo(Concept to) {
-        this.to = to;
+    public void setTo(float x,float y) {
+
+        setX2(x);
+        setY2(y);
+        notifySubscribers("krajnje koord");
+        System.out.println("prosledjena noti za krajnje kord");
     }
 
     public float getX1() {

@@ -21,7 +21,7 @@ public class MapView extends JPanel implements ISubscriber {
 
         private TabbedPane tabs;
 
-        private List<Painter>cloneList=new ArrayList<>(); //TODO lista treba negde da se clearuje
+        private List<Painter>cloneList=new ArrayList<>();
 
 
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
@@ -49,11 +49,15 @@ public class MapView extends JPanel implements ISubscriber {
         @Override
         public void update(Object notification) {
 
-                System.out.println("uso u UPDATE u MV: " + notification);//udje
+
 
                 if (notification.equals("dodatt element")) {
                         repaint();
                 }
+                if (notification.equals("krajnje koord")){
+                        repaint();
+                }
+
 
         }
 
@@ -61,7 +65,7 @@ public class MapView extends JPanel implements ISubscriber {
         @Override
         protected void paintComponent(Graphics g) {
 
-                System.out.println("usao u paintcomponent");
+
                 super.paintComponent(g);
                 System.out.println("painters iz pc" + painters);
                 for (Painter p:painters){
@@ -77,9 +81,9 @@ public class MapView extends JPanel implements ISubscriber {
 
                 }
 
-                System.out.println("izvrsen ceo paintComponent");
 
-        }  ;//ovde treba da prolazi kroz listu svih paintera konkretna implementacija oblika ce biti u painterima
+
+        }
 
 
 
