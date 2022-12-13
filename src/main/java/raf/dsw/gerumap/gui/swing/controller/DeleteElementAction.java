@@ -11,14 +11,15 @@ import static javax.swing.Action.SMALL_ICON;
 public class DeleteElementAction extends AbstractGeRuMapAction{
 
     public DeleteElementAction() {
+        putValue(SMALL_ICON, loadIcon("/images/delete1.png"));
+        putValue(SHORT_DESCRIPTION, "Delete");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
 
-        putValue(SMALL_ICON, loadIcon("/images/delete1.png"));
-        putValue(SHORT_DESCRIPTION, "Delete");
+
 
         MainFrame m = MainFrame.getInstance(); //nasa aplikacija
 

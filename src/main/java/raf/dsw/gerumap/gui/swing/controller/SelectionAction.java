@@ -12,14 +12,15 @@ import java.awt.event.MouseListener;
 public class SelectionAction extends AbstractGeRuMapAction{
 
     public SelectionAction() {
+        putValue(SMALL_ICON, loadIcon("/images/select.png"));
+        putValue(SHORT_DESCRIPTION, "Select");
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
 
-        putValue(SMALL_ICON, loadIcon("/images/select.png"));
-        putValue(SHORT_DESCRIPTION, "Select");
 
 
 

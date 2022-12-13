@@ -8,12 +8,13 @@ import java.awt.event.ActionEvent;
 public class MoveAction extends AbstractGeRuMapAction{
 
     public MoveAction() {
+        putValue(SMALL_ICON, loadIcon("/images/move.png"));
+        putValue(SHORT_DESCRIPTION, "Move");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        putValue(SMALL_ICON, loadIcon("/images/move.png"));
-        putValue(SHORT_DESCRIPTION, "Move");
+
 
         MainFrame m = MainFrame.getInstance();
 
