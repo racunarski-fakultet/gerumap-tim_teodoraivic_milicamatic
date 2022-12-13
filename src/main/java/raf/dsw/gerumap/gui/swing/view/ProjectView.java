@@ -115,6 +115,13 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.sm.getCurrent().misKliknut(x,y,mapView);
     }
 
+    public void misPritisnut(int x, int y, MapView mapView){
+        this.sm.getCurrent().misPritisnut(x,y,mapView);
+    }
+    public void misPusten(int x,int y, MapView mapView){
+        this.sm.getCurrent().misPusten(x,y,mapView);
+    }
+
 
     public TabbedPane getTp() {
         return tp;

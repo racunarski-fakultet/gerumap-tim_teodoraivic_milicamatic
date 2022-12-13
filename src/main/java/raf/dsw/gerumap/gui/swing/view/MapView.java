@@ -1,12 +1,14 @@
 package raf.dsw.gerumap.gui.swing.view;
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
+import raf.dsw.gerumap.gui.swing.controller.MouseMotionListen;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 
 import raf.dsw.gerumap.repository.implementation.MindMap;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +29,7 @@ public class MapView extends JPanel implements ISubscriber {
         public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
                 addMouseListener(new MapMouseListener());
+                addMouseMotionListener(new MouseMotionListen());
                 this.mindMap = mindMap;
                 this.projectView=pv;
                 this.setBackground(Color.WHITE);
