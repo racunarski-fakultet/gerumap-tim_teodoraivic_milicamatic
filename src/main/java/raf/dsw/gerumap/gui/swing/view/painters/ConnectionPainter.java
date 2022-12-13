@@ -6,19 +6,22 @@ import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 
 public class ConnectionPainter extends Painter {
 
     private Connection connection;
-    //private Shape shape;
+    private Shape shape;
+
     // ovde se nece crtati nikakav shape vec linija od tacke a do tacke b
     //tako da je draw metoda razlicito implementirana
 
 
-    public ConnectionPainter(Element element, Connection connection, MapView mapView) {
+    public ConnectionPainter(Element element, MapView mapView) {
         super(element, mapView);
-        this.connection = connection;
+        this.connection = (Connection) element;
+        this.shape=new Line2D.Float(connection.getX1(),connection.getY1(), connection.getX2(),connection.getY2());
 
     }
 
@@ -30,6 +33,10 @@ public class ConnectionPainter extends Painter {
     @Override
     public void draw(Graphics2D g) {
 
-        super.draw(g);
+        g.setPaint(Color.red);
+        BasicStroke stroke=new BasicStroke(connection.getStroke());
+        g.setStroke(stroke);
+        g.draw(shape);
+
     }
 }

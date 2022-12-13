@@ -11,12 +11,12 @@ public abstract class State {
 
 
 
-    public void misPritisnut(int x, int y){
+    public void misPritisnut(int x, int y,MapView m){
         //koristim ovo dok vucem mis
 
     }
 
-    public void misPusten(){
+    public void misPusten(int x,int y,MapView m){
 
     }
 

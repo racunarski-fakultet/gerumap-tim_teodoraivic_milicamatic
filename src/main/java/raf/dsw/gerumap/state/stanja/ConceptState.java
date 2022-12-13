@@ -43,7 +43,14 @@ public class ConceptState extends State{
   }
 
   @Override
-  public void misPritisnut(int x, int y) {
-
+  public void misPritisnut(int x, int y, MapView m) {
+    super.misPritisnut(x, y, m);
   }
+
+  @Override
+  public void misPusten(int x, int y, MapView m) {
+    super.misPusten(x, y, m);
+  }
+
+
 }
