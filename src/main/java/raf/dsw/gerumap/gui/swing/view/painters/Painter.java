@@ -6,13 +6,12 @@ import raf.dsw.gerumap.repository.implementation.Element;
 
 import java.awt.*;
 
-public class Painter { //pripada viewu
+public class Painter {
 
 
     private Element element;
 
-    private Shape S; //elipsa
-    //shape je swingov interface koji pravi oblik
+    private Shape S;
 
 
     private MapView mapview;
@@ -24,12 +23,6 @@ public class Painter { //pripada viewu
     }
 
     public boolean elementAt(float x, float y){
-
-         // return s.contains(x,y);
-
-        //da proveri gde crta
-        // jedna linija koda
-        //argumenti su x,y
         return true;
       }
 

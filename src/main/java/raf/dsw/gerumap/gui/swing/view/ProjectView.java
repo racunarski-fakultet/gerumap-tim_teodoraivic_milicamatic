@@ -93,7 +93,6 @@ public class ProjectView extends JPanel implements ISubscriber {
         return this.sm.getCurrent();
     }
 
-    //aktivacije stanja
 
     public void startConceptState() { this.sm.setConceptState(); }
     public void startConnectionState(){

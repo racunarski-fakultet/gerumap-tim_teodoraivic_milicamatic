@@ -80,6 +80,7 @@ public class MapView extends JPanel implements ISubscriber {
                         iterator.next().draw(g2);
 
                 }
+                cloneList.clear();
 
 
 
