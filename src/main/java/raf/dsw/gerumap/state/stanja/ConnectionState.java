@@ -8,6 +8,8 @@ import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.state.State;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConnectionState extends State {
 
@@ -31,17 +33,18 @@ public class ConnectionState extends State {
         x1=x;
         y1=y;
 
-
-        for(Painter p : m.getPainters()){
-            if(!p.elementAt(x,y)){
+        List copyPainters = new CopyOnWriteArrayList(m.getPainters());
+        Iterator<Painter> iterator = copyPainters.iterator();
+        while(iterator.hasNext()){
+            if(!iterator.next().elementAt(x,y)){
                 //ConceptPainter cp = (ConceptPainter) p;
                 //connection.setFrom(cp.getConcept());
-                break;
+                return;
             }else{
                 connection.setX1(x);
                 connection.setY1(y);
                 painter = new ConnectionPainter(connection,m);
-                painter.setFrom((ConceptPainter) p);
+                painter.setFrom((ConceptPainter) iterator.next());
                 System.out.println("setovane pocetne");
                 m.getPainters().add(painter);
                 System.out.println("Lista paintera" + m.getPainters());
@@ -80,15 +83,17 @@ public class ConnectionState extends State {
 
         //Painter painter=new ConnectionPainter(connection,m);
         //Iter
-        Iterator<Painter> iterator= m.getPainters().listIterator();
+        List copyOfPainter = new CopyOnWriteArrayList(m.getPainters());
+        Iterator<Painter> iterator= copyOfPainter.listIterator();
+
         while(iterator.hasNext()){
 
         if(iterator.next().elementAt(x,y)) {
-            painter = (ConnectionPainter) iterator.next();
+
             painter.getConnection().setTo(x,y);
 
             }else{
-                iterator.remove();
+                m.getPainters().remove(painter);
             }
         }
 
