@@ -11,7 +11,6 @@ import java.awt.geom.Ellipse2D;
 public class ConceptPainter extends Painter {
 
     private Concept concept;
-    //na osnovu ovog modela cu da nacrtam shape u draw metodi
     private Shape shape;
 
 

@@ -42,7 +42,7 @@ public class Connection extends Element{ //model
         setX2(x);
         setY2(y);
         notifySubscribers("krajnje koord");
-        System.out.println("prosledjena noti za krajnje kord");
+       // System.out.println("prosledjena noti za krajnje kord");
     }
 
     public float getX1() {

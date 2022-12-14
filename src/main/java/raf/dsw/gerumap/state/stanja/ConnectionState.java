@@ -7,9 +7,9 @@ import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.state.State;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConnectionState extends State {
 
@@ -17,90 +17,82 @@ public class ConnectionState extends State {
 
     ConnectionPainter painter = null;
 
+    List<Painter> copyPainters = new ArrayList();
+
     @Override
     public void misKliknut(int x, int y, MapView m) {
-        System.out.println("Mis kliknut iz connectionstatea");
-       // super.misKliknut(x, y, m);
-        //da li mv.painters contains x,y
-        //if not return
-        //ako neki od njih containuje
-        //else veza painter = veza painter pocetna koord
-        //mv.addPainter
-        //mispovucen x,y,mv ukoliko je painter null ispadamo
-        //ako nije null
-        connection=new Connection("veza", m.getMindMap());
-        float x1,y1;
-        x1=x;
-        y1=y;
+       // System.out.println("USO U MIS KLIKNUT ");
 
-        List copyPainters = new CopyOnWriteArrayList(m.getPainters());
-        Iterator<Painter> iterator = copyPainters.iterator();
-        while(iterator.hasNext()){
-            if(!iterator.next().elementAt(x,y)){
-                //ConceptPainter cp = (ConceptPainter) p;
-                //connection.setFrom(cp.getConcept());
-                return;
-            }else{
+        connection = new Connection("veza", m.getMindMap());
+        //System.out.println("MISKLIKNUT connection "+connection);
+        float x1, y1;
+        x1 = x;
+        y1 = y;
+
+        for (Painter p : m.getPainters()) {
+            copyPainters.add(p);
+
+        }
+        Iterator<Painter> iterator = copyPainters.listIterator();
+        while (iterator.hasNext()) {
+            if (!iterator.next().elementAt(x, y)) {
+
+                continue;
+            } else {
                 connection.setX1(x);
                 connection.setY1(y);
-                painter = new ConnectionPainter(connection,m);
-                painter.setFrom((ConceptPainter) iterator.next());
-                System.out.println("setovane pocetne");
+                painter = new ConnectionPainter(connection, m);
+                //System.out.println("setovane pocetne"+x + " " + y);
                 m.getPainters().add(painter);
-                System.out.println("Lista paintera" + m.getPainters());
-                System.out.println(x + " " + y);
+                //System.out.println("Lista paintera MIS KLIKNUT" + m.getPainters());
+                break;
             }
         }
+        //System.out.println("Dobio pocetne kord iz miskliknut "+connection.getX1());
     }
 
     @Override
     public void misPritisnut(int x, int y, MapView m) {
-        //treba da dobijemo concept od kog krecemo
-        //
-        // super.misPritisnut(x, y, m);
-       // ConnectionPainter painter = null;
+        //System.out.println("USO U MIS PRITISNUT");
+
+        if (painter == null) {
+            //System.out.println("Uso u mispritisnut IF");
+            return;
+        } else {
+            connection.addSubs(painter);
+            painter.getConnection().setTo(x, y);
+            //System.out.println("USO U MISPRITISNUT ELSE");
+           // System.out.println("setovane krajnje iz MISPOVUCEN "+connection.getX2());
 
 
-        //u ovoj metodi samo dodeljujem pocetne koordinate
-
-            if(painter == null){
-                return;
-            }else{
-                connection.addSubs(painter);
-               // painter.setTo((ConceptPainter) p);
-                System.out.println("setovane krajnje");
-                painter.getConnection().setTo(x,y);
-
-            }
+        }
 
     }
 
     @Override
     public void misPusten(int x, int y, MapView m) {
-        //super.misPusten(x, y, m);
+        boolean potreban=false;
+
+        //System.out.println("USO U MIS PUSTEN "+ painter.getConnection());
+
+         for(Painter p: copyPainters){
+             if (p.elementAt(x,y)){
+                 potreban=true;
+                 break;
+             }
+         }
+
+         if (potreban){
+             painter.getConnection().setTo(x,y);
+             m.getMindMap().addElement(connection);
 
 
-
-        //Painter painter=new ConnectionPainter(connection,m);
-        //Iter
-        List copyOfPainter = new CopyOnWriteArrayList(m.getPainters());
-        Iterator<Painter> iterator= copyOfPainter.listIterator();
-
-        while(iterator.hasNext()){
-
-        if(iterator.next().elementAt(x,y)) {
-
-            painter.getConnection().setTo(x,y);
-
-            }else{
-                m.getPainters().remove(painter);
-            }
-        }
-
-
-        painter = null;
-        System.out.println("painters iz mispusten:" +m.getPainters());
-        m.getMindMap().addElement(connection);
+         }else{
+             m.getPainters().remove(painter);
+         }
+       // System.out.println("painters iz mispusten:" +m.getPainters());
+             painter = null;
+             connection=null;
 
     }
 }
