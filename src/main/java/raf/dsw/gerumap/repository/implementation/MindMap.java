@@ -12,6 +12,10 @@ public class MindMap extends MapNodeComposite {
     List<MapNode> children = super.getChildren();
     List<Element> elements=new ArrayList<>();
 
+    List<Element> selectedElements = new ArrayList<>();
+
+    Element selectedElement;
+
     public MindMap(String name, MapNode parent) {
         super(name, parent);
     }
@@ -46,6 +50,22 @@ public class MindMap extends MapNodeComposite {
 
         notifySubscribers("dodatt element");
 
+    }
+    public void addSelectedElements(Element element){
+
+       selectedElements.add(element);
+
+        notifySubscribers("dodat selected element");
+
+    }
+
+    public Element getSelectedElement() {
+        notifySubscribers("dodat selected element");
+        return selectedElement;
+    }
+
+    public void setSelectedElement(Element selectedElement) {
+        this.selectedElement = selectedElement;
     }
 
     public List<Element> getElements() {

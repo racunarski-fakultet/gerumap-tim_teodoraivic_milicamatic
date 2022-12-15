@@ -14,7 +14,9 @@ public abstract class Element extends MapNode { //model
 
 
     public Element(String name, MapNode parent) {
+
         super(name, parent);
+
     }
 
     public Paint getColour() {

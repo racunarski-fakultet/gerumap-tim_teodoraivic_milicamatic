@@ -13,6 +13,8 @@ public class Painter {
 
     private Shape S;
 
+    Color color;
+
 
     private MapView mapview;
 
@@ -20,6 +22,7 @@ public class Painter {
     public Painter(Element element,MapView mapView) {
         this.element = element;
         this.mapview=mapView;
+        this.color = Color.black;
     }
 
     public boolean elementAt(float x, float y){

@@ -3,16 +3,20 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
+import java.awt.*;
+
 public class Connection extends Element{ //model
 
     private Concept from;
     private Concept to;
 
+    private Paint color;
+
     float x1,y1,x2,y2;
     //x1 i x2 cu da uzmem iz mouse pressed pocetne a x2 i y2 iz mouse released
 
 
-    public Connection(String name, MapNode parent, float x1, float y1, float x2, float y2) {
+    public Connection(String name, MapNode parent,float x1, float y1, float x2, float y2) {
         super(name, parent);
 
         this.x1 = x1;
@@ -22,7 +26,7 @@ public class Connection extends Element{ //model
     }
 
     public Connection(String name, MapNode parent) {
-        super(name, parent);
+       super(name, parent);
     }
 
     public Concept getFrom() {
