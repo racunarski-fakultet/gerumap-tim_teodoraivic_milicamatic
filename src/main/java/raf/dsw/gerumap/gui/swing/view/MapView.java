@@ -57,6 +57,9 @@ public class MapView extends JPanel implements ISubscriber {
                 if (notification.equals("krajnje koord")){
                         repaint();
                 }
+                if(notification.equals("dodat selected element")){
+                        repaint();
+                }
 
 
         }

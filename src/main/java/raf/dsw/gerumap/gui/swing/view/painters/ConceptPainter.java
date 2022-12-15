@@ -13,6 +13,8 @@ public class ConceptPainter extends Painter {
     private Concept concept;
     private Shape shape;
 
+    private Color color;
+
 
     public ConceptPainter(Element element,MapView mapView) {
         super(element,mapView);
@@ -23,6 +25,7 @@ public class ConceptPainter extends Painter {
         System.out.println(concept.getName());
 
         this.shape=new Ellipse2D.Float(concept.getX(),concept.getY(), concept.getWidth(), concept.getHeight());
+        this.color = Color.black;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class ConceptPainter extends Painter {
     @Override
     public void draw(Graphics2D g) {
 
-        g.setPaint(Color.black);
+        g.setPaint(color);
         BasicStroke stroke=new BasicStroke(concept.getStroke());
         g.setStroke(stroke);
         g.draw(shape);
@@ -65,5 +68,13 @@ public class ConceptPainter extends Painter {
 
     public void setShape(Shape shape) {
         this.shape = shape;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
