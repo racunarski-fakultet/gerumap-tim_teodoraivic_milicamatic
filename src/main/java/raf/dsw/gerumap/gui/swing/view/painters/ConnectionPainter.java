@@ -34,7 +34,6 @@ public class ConnectionPainter extends Painter implements ISubscriber {
         this.connection = (Connection) element;
        // this.connection.addSubs(this);
         this.shape=new Line2D.Float(connection.getX1(),connection.getY1(), connection.getX2(),connection.getY2());
-        this.color = Color.black;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class ConnectionPainter extends Painter implements ISubscriber {
     @Override
     public void draw(Graphics2D g) {
         System.out.println("usao u draw connectiona");
-      g.setPaint(color);
+      g.setPaint(connection.getCurrentColor());
 
       BasicStroke stroke=new BasicStroke(connection.getStroke());
 
