@@ -1,7 +1,6 @@
 package raf.dsw.gerumap.gui.swing.view.painters;
 
 import raf.dsw.gerumap.gui.swing.view.MapView;
-import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.repository.implementation.Element;
 
@@ -36,7 +35,8 @@ public class ConceptPainter extends Painter {
     @Override
     public void draw(Graphics2D g) {
 
-        g.setPaint(color);
+        g.setPaint(concept.getCurrentColor());
+        System.out.println("IZ DRAW "+ concept.getCurrentColor());
         BasicStroke stroke=new BasicStroke(concept.getStroke());
         g.setStroke(stroke);
         g.draw(shape);

@@ -40,4 +40,12 @@ public class Painter {
     public void setMapview(MapView mapview) {
         this.mapview = mapview;
     }
+
+    public Element getElement() {
+        return element;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
+    }
 }

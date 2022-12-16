@@ -8,7 +8,6 @@ import raf.dsw.gerumap.repository.implementation.MindMap;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +21,8 @@ public class MapView extends JPanel implements ISubscriber {
         private TabbedPane tabs;
 
         private List<Painter>cloneList=new ArrayList<>();
+
+
 
 
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
@@ -44,6 +45,7 @@ public class MapView extends JPanel implements ISubscriber {
                 this.mindMap.addSubs(this);
 
 
+
         }
 
         @Override
@@ -52,6 +54,7 @@ public class MapView extends JPanel implements ISubscriber {
 
 
                 if (notification.equals("dodatt element")) {
+                       mindMap.getElements().get(mindMap.getElements().size()-1).addSubs(this);
                         repaint();
                 }
                 if (notification.equals("krajnje koord")){
@@ -60,6 +63,15 @@ public class MapView extends JPanel implements ISubscriber {
                 if(notification.equals("dodat selected element")){
                         repaint();
                 }
+                if (notification.equals("dodat selected")){
+
+                        repaint();
+                }
+                if (notification.equals("color changed")){
+                        System.out.println("POZVAN OBSERVER");
+                        repaint();
+                }
+
 
 
         }
