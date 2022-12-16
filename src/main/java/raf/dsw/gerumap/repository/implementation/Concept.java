@@ -3,6 +3,7 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import javax.swing.text.Position;
+import java.util.Objects;
 
 public class Concept extends Element{ //model
 
@@ -85,4 +86,22 @@ public class Concept extends Element{ //model
                 "name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Concept concept = (Concept) o;
+
+        if (Float.compare(concept.x, x) != 0) return false;
+        if (Float.compare(concept.y, y) != 0) return false;
+        if (Float.compare(concept.width, width) != 0) return false;
+        if (Float.compare(concept.height, height) != 0) return false;
+        if (!Objects.equals(e, concept.e)) return false;
+        return Objects.equals(name, concept.name);
+    }
+
+
 }

@@ -1,14 +1,13 @@
 package raf.dsw.gerumap.repository.implementation;
 
-import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import java.awt.*;
 
 public class Connection extends Element{ //model
 
-    private Concept from;
-    private Concept to;
+    private Concept fromConcept;
+    private Concept toConcept;
 
     private Paint color;
 
@@ -29,19 +28,23 @@ public class Connection extends Element{ //model
        super(name, parent);
     }
 
-    public Concept getFrom() {
-        return from;
+    public Concept getFromConcept() {
+        return fromConcept;
     }
 
-    public void setFrom(Concept from) {
-        this.from = from;
+    public void setFromConcept(Concept fromConcept) {
+        this.fromConcept = fromConcept;
     }
 
-    public Concept getTo() {
-        return to;
+    public Concept getToConcept() {
+        return toConcept;
     }
 
-    public void setTo(float x,float y) {
+    public void setToConcept(Concept toConcept) {
+        this.toConcept = toConcept;
+    }
+
+    public void setTo(float x, float y) {
 
         setX2(x);
         setY2(y);
@@ -79,5 +82,19 @@ public class Connection extends Element{ //model
 
     public void setY2(float y2) {
         this.y2 = y2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Connection that = (Connection) o;
+
+        if (Float.compare(that.x1, x1) != 0) return false;
+        if (Float.compare(that.y1, y1) != 0) return false;
+        if (Float.compare(that.x2, x2) != 0) return false;
+        return Float.compare(that.y2, y2) == 0;
     }
 }

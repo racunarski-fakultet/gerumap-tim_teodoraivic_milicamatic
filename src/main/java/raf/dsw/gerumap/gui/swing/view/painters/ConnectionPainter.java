@@ -51,7 +51,7 @@ public class ConnectionPainter extends Painter implements ISubscriber {
 
     @Override
     public void draw(Graphics2D g) {
-        System.out.println("usao u draw connectiona");
+
       g.setPaint(connection.getCurrentColor());
 
       BasicStroke stroke=new BasicStroke(connection.getStroke());
