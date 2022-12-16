@@ -12,6 +12,8 @@ public abstract class Element extends MapNode {
     private List<Paint>colorLista;
     private int stroke=1;
 
+    private Element selectedElement = null;
+
 
 
     public Element(String name, MapNode parent) {
@@ -47,6 +49,13 @@ public abstract class Element extends MapNode {
         notifySubscribers("color changed");
     }
 
+    public Element getSelectedElement() {
+        return selectedElement;
+    }
+
+    public void setSelectedElement(Element selectedElement) {
+        this.selectedElement = selectedElement;
+    }
 
     public Paint getColour() {
         return colour;
@@ -58,5 +67,10 @@ public abstract class Element extends MapNode {
 
     public int getStroke() {
         return stroke;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
     }
 }

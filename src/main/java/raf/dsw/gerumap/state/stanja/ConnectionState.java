@@ -1,9 +1,9 @@
 package raf.dsw.gerumap.state.stanja;
 
 import raf.dsw.gerumap.gui.swing.view.MapView;
-import raf.dsw.gerumap.gui.swing.view.painters.ConceptPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
+import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.state.State;
 
@@ -41,6 +41,8 @@ public class ConnectionState extends State {
             } else {
                 connection.setX1(x);
                 connection.setY1(y);
+                connection.setFromConcept((Concept) iterator.next().getElement());
+                //System.out.println("setovan Concept From" + connection.getFromConcept());
                 painter = new ConnectionPainter(connection, m);
                 //System.out.println("setovane pocetne"+x + " " + y);
                 m.getPainters().add(painter);
@@ -78,6 +80,9 @@ public class ConnectionState extends State {
          for(Painter p: copyPainters){
              if (p.elementAt(x,y)){
                  potreban=true;
+                 Concept toConcept = (Concept) p.getElement();
+                 connection.setToConcept(toConcept);
+                 System.out.println("SETOVAN TOCONCEPT" + connection.getToConcept());
                  break;
              }
          }

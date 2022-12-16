@@ -71,6 +71,9 @@ public class MapView extends JPanel implements ISubscriber {
                         System.out.println("POZVAN OBSERVER");
                         repaint();
                 }
+                if(notification.equals("obrisan element")){
+                        repaint();
+                }
 
 
 

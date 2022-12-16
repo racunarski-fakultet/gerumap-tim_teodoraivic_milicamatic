@@ -36,7 +36,7 @@ public class ConceptPainter extends Painter {
     public void draw(Graphics2D g) {
 
         g.setPaint(concept.getCurrentColor());
-        System.out.println("IZ DRAW "+ concept.getCurrentColor());
+
         BasicStroke stroke=new BasicStroke(concept.getStroke());
         g.setStroke(stroke);
         g.draw(shape);

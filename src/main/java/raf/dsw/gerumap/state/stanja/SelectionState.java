@@ -6,32 +6,43 @@ import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.state.State;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SelectionState extends State {
 
-    //selElements
 
-    Element selElement=null;
+//    remove
+//    Element selElement=null;
+    List<Element> selectedElements;
 
     @Override
     public void misKliknut(int x, int y, MapView m) {
 
-            if (selElement!=null){
-                selElement.restorePreviousColor();
-                selElement=null;
+        selectedElements = m.getMindMap().getSelectedElements();
+
+
+            if(!selectedElements.isEmpty()){
+                for(Element e : selectedElements){
+                    e.restorePreviousColor();
+                }
+                selectedElements.clear();
             }
 
-            for (Painter p : m.getPainters()) {
 
+            for (Painter p : m.getPainters()) {
                 if (p.elementAt(x, y)) {
-                    selElement=p.getElement();
-                    selElement.setColor(Color.BLUE);
-                    System.out.println(selElement.getCurrentColor());
-                    break;
+
+                        p.getElement().setColor(Color.BLUE);
+                        selectedElements.add(p.getElement());
+                         break;
 
                 }
             }
 
+
     }
+
+
 }
