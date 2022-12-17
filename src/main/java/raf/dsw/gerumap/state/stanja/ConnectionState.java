@@ -23,7 +23,7 @@ public class ConnectionState extends State {
     public void misKliknut(int x, int y, MapView m) {
        // System.out.println("USO U MIS KLIKNUT ");
 
-        connection = new Connection("veza", m.getMindMap());
+        connection = new Connection("veza", m.getMindMap(), m.getMindMap().getDrawColor(),m.getMindMap().getStroke());
         //System.out.println("MISKLIKNUT connection "+connection);
         float x1, y1;
         x1 = x;

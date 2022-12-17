@@ -5,12 +5,13 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Element extends MapNode {
 
     private Paint colour;
     private List<Paint>colorLista;
-    private int stroke=1;
+    private int stroke;
 
     private Element selectedElement = null;
 
@@ -25,11 +26,12 @@ public abstract class Element extends MapNode {
 
     }
 
-    public Element(String name, MapNode parent,Paint color) {
+    public Element(String name, MapNode parent,Paint color,int stroke) {
 
         super(name, parent);
         this.colorLista=new ArrayList<>();
         this.colorLista.add(color);
+        this.stroke = stroke;
 
     }
 
@@ -69,8 +71,20 @@ public abstract class Element extends MapNode {
         return stroke;
     }
 
+    public void setStroke(int stroke) {
+        this.stroke = stroke;
+    }
+
     @Override
     public boolean equals(Object o) {
         return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = colour != null ? colour.hashCode() : 0;
+        result = 31 * result + (colorLista != null ? colorLista.hashCode() : 0);
+        result = 31 * result + stroke;
+        return result;
     }
 }

@@ -22,7 +22,8 @@ public class ConceptState extends State{
   @Override
   public void misKliknut(int x, int y, MapView m) { //kliknut
 
-    c=new Concept("koncept", m.getMindMap(),x,y);
+    c=new Concept("koncept", m.getMindMap(),m.getMindMap().getDrawColor(),m.getMindMap().getStroke(),x,y);
+
 
     Painter painter = new ConceptPainter(c, m);
 

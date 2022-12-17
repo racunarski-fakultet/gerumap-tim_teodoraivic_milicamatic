@@ -8,6 +8,7 @@ import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.state.State;
 
+import javax.lang.model.util.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,75 +30,130 @@ public class DeleteState extends State {
     List<Connection> connectionsFromConcept = new ArrayList<>();
     List<ConnectionPainter> connectionPainterstoRemove = new ArrayList<>();
 
+    List<Element> selectedElements;
+
     @Override
     public void misKliknut(int x, int y, MapView m) {
         //prodjemo kroz listu paintera
         //ako smo uboli neki ukloni ga iz liste elementa (removeElements metoda + notify za repaint)
         //i ukloni ga iz liste paintera
 
-        for (Painter p : m.getPainters()) {
-            if (p.elementAt(x, y)) {
-                elementFound = true;
-                painterToRemove = p;
-                elementToRemove = p.getElement();
-                break;
+        selectedElements = m.getMindMap().getSelectedElements();
+
+        if (selectedElements.isEmpty()) {
+
+            for (Painter p : m.getPainters()) {
+                if (p.elementAt(x, y)) {
+                    elementFound = true;
+                    painterToRemove = p;
+                    elementToRemove = p.getElement();
+                    break;
+                }
             }
-        }
 
+            for (Painter p : m.getPainters()) {
 
-        for (Painter p : m.getPainters()) {
+                if (p.getElement() instanceof Connection) {
+                    toConcept = ((Connection) p.getElement()).getToConcept();
+                    fromConcept = ((Connection) p.getElement()).getFromConcept();
+                }
+                if (p.getElement() instanceof Connection && elementToRemove instanceof Concept) {
+                    //da li je to i from tom connectionu isti kao nas element found
+                    System.out.println(fromConcept);
+                    System.out.println(toConcept);
+                    System.out.println(elementToRemove);
 
-            if(p.getElement() instanceof Connection) {
-                toConcept = ((Connection) p.getElement()).getToConcept();
-                fromConcept = ((Connection) p.getElement()).getFromConcept();
+                    if (toConcept.equals(elementToRemove)) {
+                        //ako je to concept connectiona jednak element to remove brise se i element to remove
+                        connectionsFromConcept.add((Connection) p.getElement());
+                        connectionPainterstoRemove.add((ConnectionPainter) p);
+                    } else if (fromConcept.equals(elementToRemove)) {
+                        connectionsFromConcept.add((Connection) p.getElement());
+                        connectionPainterstoRemove.add((ConnectionPainter) p);
+                    }
+
+                }
             }
-            if (p.getElement() instanceof Connection && elementToRemove instanceof Concept) {
-                //da li je to i from tom connectionu isti kao nas element found
-                System.out.println(fromConcept);
-                System.out.println(toConcept);
-                System.out.println(elementToRemove);
 
-                if (toConcept.equals(elementToRemove)) {
-                    //ako je to concept connectiona jednak element to remove brise se i element to remove
-                    connectionsFromConcept.add((Connection) p.getElement());
-                    connectionPainterstoRemove.add((ConnectionPainter) p);
-                } else if (fromConcept.equals(elementToRemove)){
-                    connectionsFromConcept.add((Connection) p.getElement());
-                    connectionPainterstoRemove.add((ConnectionPainter) p);
+
+            if (elementFound) {
+
+                m.getPainters().remove(painterToRemove);
+                m.getMindMap().removeElement(elementToRemove);
+
+                if (!connectionsFromConcept.isEmpty()) {
+                    for (Connection c : connectionsFromConcept) {
+                        m.getMindMap().removeElement(c);
+                    }
+                    connectionsFromConcept.clear();
+                }
+                if (!connectionPainterstoRemove.isEmpty()) {
+                    for (ConnectionPainter cp : connectionPainterstoRemove) {
+                        m.getPainters().remove(cp);
+                    }
+                    connectionPainterstoRemove.clear();
                 }
 
+
+                elementToRemove = null;
+                elementFound = false;
+
+
             }
-        }
+        } else {
 
+            for (Painter p : m.getSelectedPainters()) {
 
-        if (elementFound) {
+                if(p.getElement() instanceof Concept) {
+                    painterToRemove = p;
+                    elementToRemove = p.getElement();
+                }
 
-            m.getPainters().remove(painterToRemove);
-            m.getMindMap().removeElement(elementToRemove);
+                for (Painter pp : m.getPainters()) {
+                    if (pp.getElement() instanceof Connection) {
+                        toConcept = ((Connection) pp.getElement()).getToConcept();
+                        fromConcept = ((Connection) pp.getElement()).getFromConcept();
 
-            if(!connectionsFromConcept.isEmpty()){
-            for(Connection c : connectionsFromConcept){
-                m.getMindMap().removeElement(c);
+                        if (toConcept.equals(elementToRemove)) {
+                            //ako je to concept connectiona jednak element to remove brise se i element to remove
+                            connectionsFromConcept.add((Connection) pp.getElement());
+                            connectionPainterstoRemove.add((ConnectionPainter) pp);
+                        } else if (fromConcept.equals(elementToRemove)) {
+                            connectionsFromConcept.add((Connection) pp.getElement());
+                            connectionPainterstoRemove.add((ConnectionPainter) pp);
+                        }
+                    }
+                }
             }
-            connectionsFromConcept.clear();
+
+
+            if (!connectionsFromConcept.isEmpty()) {
+                for (Connection c : connectionsFromConcept) {
+                    m.getMindMap().removeElement(c);
+                }
+                connectionsFromConcept.clear();
             }
-            if(!connectionPainterstoRemove.isEmpty()){
-                for(ConnectionPainter cp: connectionPainterstoRemove){
+            if (!connectionPainterstoRemove.isEmpty()) {
+                for (ConnectionPainter cp : connectionPainterstoRemove) {
                     m.getPainters().remove(cp);
                 }
                 connectionPainterstoRemove.clear();
             }
 
 
-            elementToRemove = null;
-            elementFound = false;
+            for (Painter p : m.getSelectedPainters()) {
+                m.getPainters().remove(p);
+                m.getMindMap().removeElement(p.getElement());
+            }
 
+            m.getSelectedPainters().clear();
+            m.getMindMap().getSelectedElements().clear();
 
 
         }
 
+
+
+
     }
-
-
-
 }

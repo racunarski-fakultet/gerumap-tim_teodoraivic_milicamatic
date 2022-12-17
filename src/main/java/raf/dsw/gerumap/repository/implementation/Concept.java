@@ -3,6 +3,7 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import javax.swing.text.Position;
+import java.awt.*;
 import java.util.Objects;
 
 public class Concept extends Element{ //model
@@ -25,6 +26,12 @@ public class Concept extends Element{ //model
 
     public Concept(String name, MapNode parent, float x, float y) {
         super(name,parent);
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+    public Concept(String name, MapNode parent, Paint color,int stroke, float x, float y) {
+        super(name,parent,color,stroke);
         this.name = name;
         this.x = x;
         this.y = y;

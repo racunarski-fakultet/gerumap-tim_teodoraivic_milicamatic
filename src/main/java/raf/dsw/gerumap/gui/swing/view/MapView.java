@@ -30,6 +30,8 @@ public class MapView extends JPanel implements ISubscriber {
 
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
 
+        private List<Painter> selectedPainters = new ArrayList<>();
+
         public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
                 addMouseListener(new MapMouseListener());
@@ -152,6 +154,14 @@ public class MapView extends JPanel implements ISubscriber {
                         this.rectangleSelection.addSubs(this);
                 }
 
+        }
+
+        public List<Painter> getSelectedPainters() {
+                return selectedPainters;
+        }
+
+        public void setSelectedPainters(List<Painter> selectedPainters) {
+                this.selectedPainters = selectedPainters;
         }
 }
 

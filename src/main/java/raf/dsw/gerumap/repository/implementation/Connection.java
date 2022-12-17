@@ -3,6 +3,7 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Connection extends Element{ //model
 
@@ -22,6 +23,14 @@ public class Connection extends Element{ //model
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+    }
+    public Connection(String name, MapNode parent,Paint color,int stroke) {
+
+        super(name,parent,color,stroke);
+
+
+
+
     }
 
     public Connection(String name, MapNode parent) {
