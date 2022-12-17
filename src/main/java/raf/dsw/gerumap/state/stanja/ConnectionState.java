@@ -29,28 +29,41 @@ public class ConnectionState extends State {
         x1 = x;
         y1 = y;
 
+        if(!copyPainters.isEmpty()){
+            copyPainters.clear();
+        }
+
         for (Painter p : m.getPainters()) {
             copyPainters.add(p);
 
         }
+        System.out.println("Copy PAinters" + copyPainters);
         Iterator<Painter> iterator = copyPainters.listIterator();
         while (iterator.hasNext()) {
-            if (!iterator.next().elementAt(x, y)) {
+            Painter iteratorPainter = iterator.next();
+            if (!iteratorPainter.elementAt(x, y)) {
 
                 continue;
             } else {
+
+                Concept conceptFrom = (Concept) iteratorPainter.getElement();
+                System.out.println("ConceptFrom" + conceptFrom);
                 connection.setX1(x);
                 connection.setY1(y);
-                connection.setFromConcept((Concept) iterator.next().getElement());
-                //System.out.println("setovan Concept From" + connection.getFromConcept());
+
+
                 painter = new ConnectionPainter(connection, m);
-                //System.out.println("setovane pocetne"+x + " " + y);
+
+                connection.setFromConcept(conceptFrom);
+
+                System.out.println("setovan Concept From" + connection.getFromConcept());
+
                 m.getPainters().add(painter);
-                //System.out.println("Lista paintera MIS KLIKNUT" + m.getPainters());
+
                 break;
             }
         }
-        //System.out.println("Dobio pocetne kord iz miskliknut "+connection.getX1());
+
     }
 
     @Override
@@ -95,7 +108,7 @@ public class ConnectionState extends State {
          }else{
              m.getPainters().remove(painter);
          }
-       // System.out.println("painters iz mispusten:" +m.getPainters());
+
              painter = null;
              connection=null;
 

@@ -53,8 +53,10 @@ public class DeleteState extends State {
             }
             if (p.getElement() instanceof Connection && elementToRemove instanceof Concept) {
                 //da li je to i from tom connectionu isti kao nas element found
-                System.out.println("Test equalsa" + toConcept.equals(elementToRemove));
-                //mora da se popravi equals
+                System.out.println(fromConcept);
+                System.out.println(toConcept);
+                System.out.println(elementToRemove);
+
                 if (toConcept.equals(elementToRemove)) {
                     //ako je to concept connectiona jednak element to remove brise se i element to remove
                     connectionsFromConcept.add((Connection) p.getElement());

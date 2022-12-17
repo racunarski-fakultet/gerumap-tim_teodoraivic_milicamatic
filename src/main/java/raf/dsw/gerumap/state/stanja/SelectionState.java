@@ -6,15 +6,13 @@ import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.state.State;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class SelectionState extends State {
 
 
-//    remove
-//    Element selElement=null;
+
     List<Element> selectedElements;
 
     @Override
@@ -44,5 +42,8 @@ public class SelectionState extends State {
 
     }
 
+    @Override
+    public void misPritisnut(int x, int y, MapView m) {
 
+    }
 }
