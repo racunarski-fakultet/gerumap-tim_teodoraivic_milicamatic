@@ -96,12 +96,13 @@ public class Concept extends Element{ //model
         Concept concept = (Concept) o;
 
         if (Float.compare(concept.x, x) != 0) return false;
-        if (Float.compare(concept.y, y) != 0) return false;
-        if (Float.compare(concept.width, width) != 0) return false;
-        if (Float.compare(concept.height, height) != 0) return false;
-        if (!Objects.equals(e, concept.e)) return false;
-        return Objects.equals(name, concept.name);
+        return Float.compare(concept.y, y) == 0;
     }
 
-
+    @Override
+    public int hashCode() {
+        int result = (x != +0.0f ? Float.floatToIntBits(x) : 0);
+        result = 31 * result + (y != +0.0f ? Float.floatToIntBits(y) : 0);
+        return result;
+    }
 }
