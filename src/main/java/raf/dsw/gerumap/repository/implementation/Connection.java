@@ -33,6 +33,7 @@ public class Connection extends Element{ //model
 
     }
 
+
     public Connection(String name, MapNode parent) {
        super(name, parent);
     }
@@ -55,11 +56,17 @@ public class Connection extends Element{ //model
 
     public void setTo(float x, float y) {
 
-        setX2(x);
-        setY2(y);
+            x2=x;
+            y2=y;
+        //setX2(x);
+        //setY2(y);
         notifySubscribers("krajnje koord");
        // System.out.println("prosledjena noti za krajnje kord");
     }
+    public void trigger(){
+        notifySubscribers("krajnja");
+    }
+
 
     public float getX1() {
         return x1;

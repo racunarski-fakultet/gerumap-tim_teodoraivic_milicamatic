@@ -58,7 +58,7 @@ public class ConnectionState extends State {
 
                 System.out.println("setovan Concept From" + connection.getFromConcept());
 
-                m.getPainters().add(painter);
+               // m.getPainters().add(painter);
 
                 break;
             }
@@ -73,15 +73,38 @@ public class ConnectionState extends State {
         if (painter == null) {
             //System.out.println("Uso u mispritisnut IF");
             return;
-        } else {
-            connection.addSubs(painter);
-            painter.getConnection().setTo(x, y);
-            //System.out.println("USO U MISPRITISNUT ELSE");
-           // System.out.println("setovane krajnje iz MISPOVUCEN "+connection.getX2());
+       } else {
 
+            connection.setTo(x,y);
+            m.setConnection(connection);
+            painter.changeCoordinates(x,y);
+            m.setConnectionPainter(painter);
+            connection.trigger();
+
+
+//             connection=new Connection("veza1", m.getMindMap(), m.getMindMap().getDrawColor(),m.getMindMap().getStroke());
+//           // connection.setTo(x,y);
+//            m.setConnection(connection);
+//
+//
+//            painter=new ConnectionPainter(connection,m);
+//            m.setConnectionPainter(painter);
+//
+//            //connectionPainter.getConnection().setTo(x, y);
+//
+//            m.getConnection().setTo(x,y);
+//            System.out.println("dragged SETOVANJE KRAJNJE "+connection.getX2());
+//
+//
+//
+//            // connection.addSubs(painter);
+//            //System.out.println("USO U MISPRITISNUT ELSE");
+//           // System.out.println("setovane krajnje iz MISPOVUCEN "+connection.getX2());
+//
+//
+//        }
 
         }
-
     }
 
     @Override
@@ -101,8 +124,17 @@ public class ConnectionState extends State {
          }
 
          if (potreban){
-             painter.getConnection().setTo(x,y);
+
+             connection.setTo(x,y);
+             painter.changeCoordinates(x,y);
+           // ConnectionPainter connectionPainter=new ConnectionPainter(connection,m);
+            // painter=new ConnectionPainter(connection,m);
+            // painter.setConnection(connection);
+
+             System.out.println("MISPUSTEN SETOVANJE KRAJNJE "+connection.getX2());
+             System.out.println(connection);
              m.getMindMap().addElement(connection);
+             m.getPainters().add(painter);
 
 
          }else{
@@ -111,6 +143,7 @@ public class ConnectionState extends State {
 
              painter = null;
              connection=null;
-
+        System.out.println("krajnja lista" + m.getPainters() + "krajnja lista");
     }
+
 }

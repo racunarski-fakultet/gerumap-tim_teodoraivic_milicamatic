@@ -2,9 +2,11 @@ package raf.dsw.gerumap.gui.swing.view;
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.gui.swing.controller.MouseMotionListen;
+import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 
 import raf.dsw.gerumap.gui.swing.view.painters.SelectionPainter;
+import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.RectangleSelection;
 
@@ -31,6 +33,11 @@ public class MapView extends JPanel implements ISubscriber {
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
 
         private List<Painter> selectedPainters = new ArrayList<>();
+
+        private ConnectionPainter connectionPainter;
+
+        private Connection connection;
+
 
         public MapView(LayoutManager layout, boolean isDoubleBuffered, MindMap mindMap,ProjectView pv) {
                 super(layout, isDoubleBuffered);
@@ -84,6 +91,10 @@ public class MapView extends JPanel implements ISubscriber {
                         System.out.println("iz updatea rectagnel selection");
                         repaint();
                 }
+                if (notification.equals("krajnja")){
+                        System.out.println("triggered");
+                        repaint();
+                }
 
 
 
@@ -107,6 +118,11 @@ public class MapView extends JPanel implements ISubscriber {
                         selectionPainter.draw(g2);
                 }
                 selectionPainter=null;
+
+                if (connectionPainter!=null){
+                        connectionPainter.draw(g2);
+                }
+                connectionPainter=null;
 
                 Iterator<Painter> iterator= cloneList.listIterator();
                 while(iterator.hasNext()){
@@ -163,6 +179,27 @@ public class MapView extends JPanel implements ISubscriber {
         public void setSelectedPainters(List<Painter> selectedPainters) {
                 this.selectedPainters = selectedPainters;
         }
+
+        public ConnectionPainter getConnectionPainter() {
+                return connectionPainter;
+        }
+
+        public void setConnectionPainter(ConnectionPainter connectionPainter){
+                this.connection=connection;
+
+        }
+
+        public Connection getConnection() {
+                return connection;
+        }
+
+        public void setConnection(Connection connection) {
+                this.connection = connection;
+                if (connection!=null){
+                        this.connection.addSubs(this);
+                }
+        }
+
 }
 
 
