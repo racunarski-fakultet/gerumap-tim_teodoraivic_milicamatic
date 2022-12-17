@@ -62,6 +62,11 @@ public class ConnectionPainter extends Painter implements ISubscriber {
 
     }
 
+    public boolean containsShape(Rectangle rectangle){
+
+        return shape.intersects(rectangle);
+    }
+
     public ConceptPainter getFrom() {
         return from;
     }

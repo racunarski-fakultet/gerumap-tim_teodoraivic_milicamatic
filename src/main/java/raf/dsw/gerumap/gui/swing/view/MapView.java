@@ -4,7 +4,9 @@ import raf.dsw.gerumap.gui.swing.controller.MapMouseListener;
 import raf.dsw.gerumap.gui.swing.controller.MouseMotionListen;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 
+import raf.dsw.gerumap.gui.swing.view.painters.SelectionPainter;
 import raf.dsw.gerumap.repository.implementation.MindMap;
+import raf.dsw.gerumap.repository.implementation.RectangleSelection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,8 +24,9 @@ public class MapView extends JPanel implements ISubscriber {
 
         private List<Painter>cloneList=new ArrayList<>();
 
+        private SelectionPainter selectionPainter=null;
 
-
+        private RectangleSelection rectangleSelection;
 
         private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
 
@@ -73,6 +76,11 @@ public class MapView extends JPanel implements ISubscriber {
                 }
                 if(notification.equals("obrisan element")){
                         repaint();
+
+                }
+                if (notification.equals("RectangleSelection")){
+                        System.out.println("iz updatea rectagnel selection");
+                        repaint();
                 }
 
 
@@ -92,6 +100,11 @@ public class MapView extends JPanel implements ISubscriber {
                 System.out.println("CloneLista: " + cloneList);
 
                 Graphics2D g2=(Graphics2D) g;
+
+                if (selectionPainter!=null){
+                        selectionPainter.draw(g2);
+                }
+                selectionPainter=null;
 
                 Iterator<Painter> iterator= cloneList.listIterator();
                 while(iterator.hasNext()){
@@ -120,7 +133,26 @@ public class MapView extends JPanel implements ISubscriber {
                 this.mindMap = mindMap;
         }
 
+        public SelectionPainter getSelectionPainter() {
+                return selectionPainter;
+        }
 
+        public void setSelectionPainter(SelectionPainter selectionPainter) {
+                this.selectionPainter = selectionPainter;
+        }
+
+        public RectangleSelection getRectangleSelection() {
+                return rectangleSelection;
+        }
+
+        public void setRectangleSelection(RectangleSelection rectangleSelection) {
+                this.rectangleSelection = rectangleSelection;
+                System.out.println("USO U SET");
+                if (rectangleSelection!=null) {
+                        this.rectangleSelection.addSubs(this);
+                }
+
+        }
 }
 
 

@@ -53,6 +53,11 @@ public class ConceptPainter extends Painter {
        // g.drawString(concept.getName(),concept.getX()+20,concept.getY()+20);
 
     }
+    public boolean containsShape(Rectangle rectangle){
+
+        return shape.intersects(rectangle);
+
+    }
 
     public Concept getConcept() {
         return concept;

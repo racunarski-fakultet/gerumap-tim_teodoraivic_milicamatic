@@ -24,12 +24,21 @@ public class Painter {
         this.mapview=mapView;
         this.color = Color.black;
     }
+    public Painter(MapView mapView){
+        this.mapview=mapView;
+    }
 
     public boolean elementAt(float x, float y){
         return true;
       }
 
     public void draw(Graphics2D g ){
+
+    }
+
+    public boolean containsShape(Rectangle rectangle){
+
+        return S.intersects(rectangle);
 
     }
 
