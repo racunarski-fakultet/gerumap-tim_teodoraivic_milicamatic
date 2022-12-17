@@ -36,6 +36,11 @@ public class ConnectionPainter extends Painter implements ISubscriber {
         this.shape=new Line2D.Float(connection.getX1(),connection.getY1(), connection.getX2(),connection.getY2());
     }
 
+    public void changeCoordinates(float x,float y){
+        this.shape=new Line2D.Float(connection.getX1(),connection.getY1(), x,y);
+
+    }
+
     @Override
     public boolean elementAt( float x, float y) {
         float boxX = x - HIT_BOX_SIZE / 2;
@@ -108,4 +113,5 @@ public class ConnectionPainter extends Painter implements ISubscriber {
 
         setShape(new Line2D.Float(connection.getX1(),connection.getY1(), connection.getX2(),connection.getY2()));
     }
+
 }
