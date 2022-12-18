@@ -1,0 +1,1 @@
+[CanNotDeleteRoot][2022-11-19T23:46:04.336445][Ne moze se izbrisati projectExplorer]; 
