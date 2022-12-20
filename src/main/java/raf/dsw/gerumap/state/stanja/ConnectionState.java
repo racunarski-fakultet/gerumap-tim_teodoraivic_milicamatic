@@ -21,13 +21,8 @@ public class ConnectionState extends State {
 
     @Override
     public void misKliknut(int x, int y, MapView m) {
-       // System.out.println("USO U MIS KLIKNUT ");
 
         connection = new Connection("veza", m.getMindMap(), m.getMindMap().getDrawColor(),m.getMindMap().getStroke());
-        //System.out.println("MISKLIKNUT connection "+connection);
-        float x1, y1;
-        x1 = x;
-        y1 = y;
 
         if(!copyPainters.isEmpty()){
             copyPainters.clear();
@@ -37,7 +32,6 @@ public class ConnectionState extends State {
             copyPainters.add(p);
 
         }
-        System.out.println("Copy PAinters" + copyPainters);
         Iterator<Painter> iterator = copyPainters.listIterator();
         while (iterator.hasNext()) {
             Painter iteratorPainter = iterator.next();
@@ -47,18 +41,13 @@ public class ConnectionState extends State {
             } else {
 
                 Concept conceptFrom = (Concept) iteratorPainter.getElement();
-                System.out.println("ConceptFrom" + conceptFrom);
                 connection.setX1(x);
                 connection.setY1(y);
 
 
                 painter = new ConnectionPainter(connection, m);
-
                 connection.setFromConcept(conceptFrom);
 
-                System.out.println("setovan Concept From" + connection.getFromConcept());
-
-               // m.getPainters().add(painter);
 
                 break;
             }
@@ -68,10 +57,8 @@ public class ConnectionState extends State {
 
     @Override
     public void misPritisnut(int x, int y, MapView m) {
-        //System.out.println("USO U MIS PRITISNUT");
 
         if (painter == null) {
-            //System.out.println("Uso u mispritisnut IF");
             return;
        } else {
 
@@ -80,29 +67,8 @@ public class ConnectionState extends State {
             painter.changeCoordinates(x,y);
             m.setConnectionPainter(painter);
             connection.trigger();
+            m.getPainters().add(painter);
 
-
-//             connection=new Connection("veza1", m.getMindMap(), m.getMindMap().getDrawColor(),m.getMindMap().getStroke());
-//           // connection.setTo(x,y);
-//            m.setConnection(connection);
-//
-//
-//            painter=new ConnectionPainter(connection,m);
-//            m.setConnectionPainter(painter);
-//
-//            //connectionPainter.getConnection().setTo(x, y);
-//
-//            m.getConnection().setTo(x,y);
-//            System.out.println("dragged SETOVANJE KRAJNJE "+connection.getX2());
-//
-//
-//
-//            // connection.addSubs(painter);
-//            //System.out.println("USO U MISPRITISNUT ELSE");
-//           // System.out.println("setovane krajnje iz MISPOVUCEN "+connection.getX2());
-//
-//
-//        }
 
         }
     }
@@ -111,14 +77,21 @@ public class ConnectionState extends State {
     public void misPusten(int x, int y, MapView m) {
         boolean potreban=false;
 
-        //System.out.println("USO U MIS PUSTEN "+ painter.getConnection());
+        Iterator<Painter>iteratorr=m.getPainters().iterator();
+        while(iteratorr.hasNext()){
+            Painter p=iteratorr.next();
+            if (p.equals(painter)){
+                iteratorr.remove();
+            }
+
+        }
+
 
          for(Painter p: copyPainters){
              if (p.elementAt(x,y)){
                  potreban=true;
                  Concept toConcept = (Concept) p.getElement();
                  connection.setToConcept(toConcept);
-                 System.out.println("SETOVAN TOCONCEPT" + connection.getToConcept());
                  break;
              }
          }
@@ -127,12 +100,7 @@ public class ConnectionState extends State {
 
              connection.setTo(x,y);
              painter.changeCoordinates(x,y);
-           // ConnectionPainter connectionPainter=new ConnectionPainter(connection,m);
-            // painter=new ConnectionPainter(connection,m);
-            // painter.setConnection(connection);
 
-             System.out.println("MISPUSTEN SETOVANJE KRAJNJE "+connection.getX2());
-             System.out.println(connection);
              m.getMindMap().addElement(connection);
              m.getPainters().add(painter);
 
@@ -143,7 +111,6 @@ public class ConnectionState extends State {
 
              painter = null;
              connection=null;
-        System.out.println("krajnja lista" + m.getPainters() + "krajnja lista");
     }
 
 }

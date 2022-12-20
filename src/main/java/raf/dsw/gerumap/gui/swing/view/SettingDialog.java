@@ -59,7 +59,6 @@ public class SettingDialog extends JDialog{
                 if(strokeTextField.getText().equals("")){
                     dispose();
                 }
-
                 if(!mapView.getMindMap().getSelectedElements().isEmpty()){
                     mapView.getMindMap().setSelectedStroke(Integer.valueOf(strokeTextField.getText()));
 

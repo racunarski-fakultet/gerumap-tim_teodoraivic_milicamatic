@@ -32,7 +32,6 @@ public class ConnectionPainter extends Painter implements ISubscriber {
         super(element, mapView);
 
         this.connection = (Connection) element;
-       // this.connection.addSubs(this);
         this.shape=new Line2D.Float(connection.getX1(),connection.getY1(), connection.getX2(),connection.getY2());
     }
 
@@ -50,7 +49,6 @@ public class ConnectionPainter extends Painter implements ISubscriber {
         float height = HIT_BOX_SIZE;
 
         return shape.intersects(boxX, boxY, width, height);
-       //return shape.contains(x,y);
     }
 
 
