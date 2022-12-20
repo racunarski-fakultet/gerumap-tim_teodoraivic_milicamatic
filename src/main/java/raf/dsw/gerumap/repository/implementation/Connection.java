@@ -61,10 +61,15 @@ public class Connection extends Element{ //model
         //setX2(x);
         //setY2(y);
         notifySubscribers("krajnje koord");
-       // System.out.println("prosledjena noti za krajnje kord");
     }
     public void trigger(){
         notifySubscribers("krajnja");
+    }
+    public void setFrom(float x,float y){
+        x1=x;
+        y1=y;
+        notifySubscribers("pocetne koord");
+
     }
 
 

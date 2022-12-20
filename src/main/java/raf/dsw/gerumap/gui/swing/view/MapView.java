@@ -95,6 +95,10 @@ public class MapView extends JPanel implements ISubscriber {
                         System.out.println("triggered");
                         repaint();
                 }
+                if (notification.equals("pocetne koord")){
+                        repaint();
+                }
+
 
 
 
