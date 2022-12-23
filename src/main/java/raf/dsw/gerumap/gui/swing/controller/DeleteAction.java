@@ -52,8 +52,10 @@ public class DeleteAction extends AbstractGeRuMapAction {
             // brisanje mind mapa
             m.getMapTree().removeChild(selected);
 
-            projectView.getTp().removeAll();
-            projectView.setTabbedPane();
+            if (projectView!=null) {
+                projectView.getTp().removeAll();
+                projectView.setTabbedPane();
+            }
 
 
             desktop.revalidate();

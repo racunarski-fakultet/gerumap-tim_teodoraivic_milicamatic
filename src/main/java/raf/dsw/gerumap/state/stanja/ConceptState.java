@@ -1,10 +1,13 @@
 package raf.dsw.gerumap.state.stanja;
 
+import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.gui.swing.view.ConceptDialog;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.painters.ConceptPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
+import raf.dsw.gerumap.repository.command.AbstractCommand;
+import raf.dsw.gerumap.repository.command.commands.ConceptCommand;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.state.State;
 
@@ -45,8 +48,8 @@ public class ConceptState extends State{
       ConceptDialog conceptDialog=new ConceptDialog(MainFrame.getInstance(),c);
       conceptDialog.setVisible(true);
 
-      m.getMindMap().addElement(c);
-      m.getPainters().add(painter);
+      AbstractCommand command=new ConceptCommand(c,painter,m,x,y);
+      AppCore.getInstance().getGui().getCommandManager().addCommand(command);
     }
     isTaken=false;
 

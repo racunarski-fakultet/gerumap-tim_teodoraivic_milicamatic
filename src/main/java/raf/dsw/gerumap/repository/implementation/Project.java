@@ -29,7 +29,6 @@ public class Project extends MapNodeComposite {
             MindMap mindMap=(MindMap) child;
             //TODO fix & override contains
            // if (!this.getChildren().contains(mindMap)){
-                System.out.println("here");
                 this.getChildren().add(mindMap);
                 notifySubscribers("mindMap ADDED");
              }
