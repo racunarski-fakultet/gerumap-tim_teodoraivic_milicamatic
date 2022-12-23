@@ -19,4 +19,6 @@ public interface MapTree {
 
     void rename(MapTreeItem node, String newName);
 
+    MapTreeView getTreeView();
+
 }

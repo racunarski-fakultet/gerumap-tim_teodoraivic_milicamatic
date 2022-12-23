@@ -7,11 +7,13 @@ import raf.dsw.gerumap.gui.swing.message.Message;
 import raf.dsw.gerumap.gui.swing.message.MessageGenImpl;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.gui.swing.view.OptionPane;
+import raf.dsw.gerumap.repository.command.CommandManager;
 
 public class SwingGui implements GUI, ISubscriber, LoggerInterface {
 
 
     public MainFrame mainFrame;
+    private CommandManager commandManager;
 
     public SwingGui(MessageGenImpl messageGen){
         messageGen.addSubs(this);
@@ -23,8 +25,28 @@ public class SwingGui implements GUI, ISubscriber, LoggerInterface {
     public void start() {
         mainFrame=MainFrame.getInstance();
         mainFrame.setVisible(true);
+        commandManager=new CommandManager();
     }
 
+    @Override
+    public void disableUndoAction() {
+
+    }
+
+    @Override
+    public void disableRedoAction() {
+
+    }
+
+    @Override
+    public void enableUndoAction() {
+
+    }
+
+    @Override
+    public void enableRedoAction() {
+
+    }
 
 
     @Override
@@ -38,6 +60,11 @@ public class SwingGui implements GUI, ISubscriber, LoggerInterface {
     public void update(Object notification) {
         log((Message) notification);
     }
+
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
+
 
 
 }

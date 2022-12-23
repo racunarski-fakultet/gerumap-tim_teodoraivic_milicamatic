@@ -1,8 +1,11 @@
 package raf.dsw.gerumap.state.stanja;
 
+import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
+import raf.dsw.gerumap.repository.command.AbstractCommand;
+import raf.dsw.gerumap.repository.command.commands.ConnectionCommand;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.state.State;
@@ -101,8 +104,11 @@ public class ConnectionState extends State {
              connection.setTo(x,y);
              painter.changeCoordinates(x,y);
 
-             m.getMindMap().addElement(connection);
-             m.getPainters().add(painter);
+//             m.getMindMap().addElement(connection);
+//             m.getPainters().add(painter);
+
+             AbstractCommand command=new ConnectionCommand(connection,painter,m,x,y);
+             AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 
 
          }else{

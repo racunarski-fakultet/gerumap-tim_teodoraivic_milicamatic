@@ -22,6 +22,9 @@ public class ActionManager {
     private SettingAction settingAction;
     private DeleteElementAction deleteElementAction;
 
+    private UndoAction undoAction;
+    private RedoAction redoAction;
+
     public ActionManager(){
         initialiseActions();
     }
@@ -40,6 +43,9 @@ public class ActionManager {
         selectionAction=new SelectionAction();
         settingAction=new SettingAction();
         deleteElementAction=new DeleteElementAction();
+
+        undoAction=new UndoAction();
+        redoAction=new RedoAction();
     }
 
     public ExitAction getExitAction() {
@@ -136,5 +142,21 @@ public class ActionManager {
 
     public void setDeleteElementAction(DeleteElementAction deleteElementAction) {
         this.deleteElementAction = deleteElementAction;
+    }
+
+    public UndoAction getUndoAction() {
+        return undoAction;
+    }
+
+    public void setUndoAction(UndoAction undoAction) {
+        this.undoAction = undoAction;
+    }
+
+    public RedoAction getRedoAction() {
+        return redoAction;
+    }
+
+    public void setRedoAction(RedoAction redoAction) {
+        this.redoAction = redoAction;
     }
 }

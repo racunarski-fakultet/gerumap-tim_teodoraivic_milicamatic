@@ -20,7 +20,6 @@ public class TabbedPane extends JTabbedPane{
 
 
     public TabbedPane(ProjectView projectView) {
-        //addMouseListener(new MapMouseListener());
 
         this.projectView = projectView;
 
@@ -41,7 +40,6 @@ public class TabbedPane extends JTabbedPane{
 
              mapView = new MapView(new FlowLayout(), true, (MindMap) map, projectView);
              mapView.setMindMap((MindMap) map);
-            System.out.println("sadaaa iz tp");
 
 
             projectView.getMapViews().add(mapView);
@@ -53,7 +51,6 @@ public class TabbedPane extends JTabbedPane{
             this.addTab(map.getName(), pan);
             this.setComponentAt(this.getTabCount()-1,mapView);
 
-            //System.out.println(this.getTabCount() + "broj tabova");
             }
 
 

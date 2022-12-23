@@ -1,8 +1,12 @@
 package raf.dsw.gerumap.state.stanja;
 
+import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
 import raf.dsw.gerumap.gui.swing.view.painters.Painter;
+import raf.dsw.gerumap.repository.command.AbstractCommand;
+import raf.dsw.gerumap.repository.command.commands.DeleteCommand;
+import raf.dsw.gerumap.repository.command.commands.DeleteElementCommand;
 import raf.dsw.gerumap.repository.implementation.Concept;
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
@@ -78,26 +82,14 @@ public class DeleteState extends State {
 
             if (elementFound) {
 
-                m.getPainters().remove(painterToRemove);
-                m.getMindMap().removeElement(elementToRemove);
+                AbstractCommand command=new DeleteElementCommand(elementToRemove,painterToRemove,connectionsFromConcept,connectionPainterstoRemove,m);
+                AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 
-                if (!connectionsFromConcept.isEmpty()) {
-                    for (Connection c : connectionsFromConcept) {
-                        m.getMindMap().removeElement(c);
-                    }
-                    connectionsFromConcept.clear();
-                }
-                if (!connectionPainterstoRemove.isEmpty()) {
-                    for (ConnectionPainter cp : connectionPainterstoRemove) {
-                        m.getPainters().remove(cp);
-                    }
-                    connectionPainterstoRemove.clear();
-                }
-
+                connectionsFromConcept.clear();
+                connectionPainterstoRemove.clear();
 
                 elementToRemove = null;
                 elementFound = false;
-
 
             }
         } else {
@@ -125,29 +117,22 @@ public class DeleteState extends State {
                     }
                 }
             }
+            AbstractCommand command=new DeleteElementCommand(m,m.getSelectedPainters(),m.getMindMap().getSelectedElements(),connectionsFromConcept,connectionPainterstoRemove);
+            System.out.println("napravljen novi commanddd");
+            AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 
 
-            if (!connectionsFromConcept.isEmpty()) {
-                for (Connection c : connectionsFromConcept) {
-                    m.getMindMap().removeElement(c);
+
+
+            connectionsFromConcept.clear();
+            connectionPainterstoRemove.clear();
+
+
+                for(Element e : m.getMindMap().getSelectedElements()){
+                    e.restorePreviousColor();
                 }
-                connectionsFromConcept.clear();
-            }
-            if (!connectionPainterstoRemove.isEmpty()) {
-                for (ConnectionPainter cp : connectionPainterstoRemove) {
-                    m.getPainters().remove(cp);
-                }
-                connectionPainterstoRemove.clear();
-            }
-
-
-            for (Painter p : m.getSelectedPainters()) {
-                m.getPainters().remove(p);
-                m.getMindMap().removeElement(p.getElement());
-            }
-
-            m.getSelectedPainters().clear();
-            m.getMindMap().getSelectedElements().clear();
+                m.getMindMap().getSelectedElements().clear();
+                m.getSelectedPainters().clear();
 
 
         }
