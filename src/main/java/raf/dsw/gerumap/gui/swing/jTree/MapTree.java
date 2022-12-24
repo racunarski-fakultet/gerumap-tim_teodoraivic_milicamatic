@@ -2,6 +2,7 @@ package raf.dsw.gerumap.gui.swing.jTree;
 
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
+import raf.dsw.gerumap.repository.implementation.Project;
 import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -20,5 +21,7 @@ public interface MapTree {
     void rename(MapTreeItem node, String newName);
 
     MapTreeView getTreeView();
+
+    void loadProject(Project node);
 
 }

@@ -10,7 +10,7 @@ public abstract class MapNode implements IPublisher { //ne moze da ima decu
 
     private String name = " ";
 
-    private MapNode parent;
+    private transient MapNode parent; //transient kada ne treba serijalizer da ga pamti
 
     private List<ISubscriber> subscribers;
 

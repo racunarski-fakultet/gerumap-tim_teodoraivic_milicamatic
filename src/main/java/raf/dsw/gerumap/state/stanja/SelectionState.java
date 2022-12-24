@@ -35,6 +35,7 @@ public class SelectionState extends State {
             if(!m.getMindMap().getSelectedElements().isEmpty()){
                 for(Element e : m.getMindMap().getSelectedElements()){
                     e.restorePreviousColor();
+
                 }
                 m.getMindMap().getSelectedElements().clear();
                 m.getSelectedPainters().clear();
@@ -110,7 +111,9 @@ public class SelectionState extends State {
     public void misPusten(int x, int y, MapView m) {
       // RectangleSelection rectangleSelection=new RectangleSelection(x,y);
         System.out.println("RectangleSelection" + m.getRectangleSelection());
-        m.getRectangleSelection().setCoordinates(x,y);
+        if(m.getRectangleSelection() != null){
+            m.getRectangleSelection().setCoordinates(x,y);
+        }
         m.setSelectionPainter(null);
         //m.setRectangleSelection(null);
 

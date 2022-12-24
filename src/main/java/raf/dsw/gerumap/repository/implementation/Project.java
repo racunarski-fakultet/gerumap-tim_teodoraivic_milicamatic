@@ -9,6 +9,9 @@ import java.util.Objects;
 
 public class Project extends MapNodeComposite {
 
+    protected String filePath;
+    protected  boolean changed = true; //svuda gde je promena na nivou projekta
+
     private String autor;
 
     private MindMap mindMap;
@@ -66,4 +69,19 @@ public class Project extends MapNodeComposite {
         return false;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
+    }
 }

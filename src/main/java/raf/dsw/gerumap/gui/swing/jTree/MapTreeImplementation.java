@@ -3,6 +3,7 @@ package raf.dsw.gerumap.gui.swing.jTree;
 import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.core.ApplicationFramework;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
+import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeModel;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.repository.MapRepositoryImpl;
@@ -28,7 +29,7 @@ public class MapTreeImplementation implements MapTree {
 
     private MapTreeView treeView;
 
-    private DefaultTreeModel treeModel;
+    private MapTreeModel treeModel;
 
     //private CommandManager commandManager;
 
@@ -38,7 +39,7 @@ public class MapTreeImplementation implements MapTree {
       //  commandManager = new CommandManager();
 
 
-        treeModel = new DefaultTreeModel(root);
+        treeModel = new MapTreeModel(root);
         treeView = new MapTreeView(treeModel);
         return treeView;
 
@@ -105,6 +106,19 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public MapTreeView getTreeView() {
         return treeView;
+    }
+
+    @Override
+    public void loadProject(Project node) {
+        MapTreeItem loadedProject = new MapTreeItem(node);
+
+        treeModel.getRoot().add(loadedProject);
+        MapNodeComposite mapNode = (MapNodeComposite) treeModel.getRoot().getMapNode();
+        mapNode.addChild(node);
+
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+
     }
 
 

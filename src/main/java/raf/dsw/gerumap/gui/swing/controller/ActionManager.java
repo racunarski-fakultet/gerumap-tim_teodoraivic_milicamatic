@@ -25,6 +25,10 @@ public class ActionManager {
     private UndoAction undoAction;
     private RedoAction redoAction;
 
+    private OpenAction openAction;
+
+    private SaveAction saveAction;
+
     public ActionManager(){
         initialiseActions();
     }
@@ -46,6 +50,8 @@ public class ActionManager {
 
         undoAction=new UndoAction();
         redoAction=new RedoAction();
+        openAction = new OpenAction();
+        saveAction = new SaveAction();
     }
 
     public ExitAction getExitAction() {
@@ -158,5 +164,21 @@ public class ActionManager {
 
     public void setRedoAction(RedoAction redoAction) {
         this.redoAction = redoAction;
+    }
+
+    public OpenAction getOpenAction() {
+        return openAction;
+    }
+
+    public void setOpenAction(OpenAction openAction) {
+        this.openAction = openAction;
+    }
+
+    public SaveAction getSaveAction() {
+        return saveAction;
+    }
+
+    public void setSaveAction(SaveAction saveAction) {
+        this.saveAction = saveAction;
     }
 }

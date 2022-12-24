@@ -6,14 +6,17 @@ public class ApplicationFramework {
     protected static MapRepository mapRepository;
     protected static MessageGenerator messageGenerator;
 
+    protected Serializer serializer;
+
     public void run(){
         this.gui.start();
     }
 
-    public void initialise(GUI gui, MapRepository mapRepository, MessageGenerator messageGenerator){
+    public void initialise(GUI gui, MapRepository mapRepository, MessageGenerator messageGenerator, Serializer serializer){
         this.gui=gui;
         this.mapRepository=mapRepository;
         this.messageGenerator = messageGenerator;
+        this.serializer = serializer;
     }
 
     public GUI getGui() {
@@ -30,5 +33,13 @@ public class ApplicationFramework {
 
     public static MessageGenerator getMessageGenerator() {
         return messageGenerator;
+    }
+
+    public Serializer getSerializer() {
+        return serializer;
+    }
+
+    public void setSerializer(Serializer serializer) {
+        this.serializer = serializer;
     }
 }

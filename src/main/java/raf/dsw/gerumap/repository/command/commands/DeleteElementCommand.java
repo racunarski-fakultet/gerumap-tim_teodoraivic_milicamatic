@@ -46,7 +46,7 @@ public class DeleteElementCommand extends AbstractCommand {
     @Override
     public void doCommand() {
 
-        if (paintersToRemove.isEmpty()){
+        if (paintersToRemove == null || paintersToRemove.isEmpty()){
             System.out.println("usao u if do");
 
 
