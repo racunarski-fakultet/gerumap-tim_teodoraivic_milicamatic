@@ -3,6 +3,7 @@ package raf.dsw.gerumap.repository.command.commands;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.repository.command.AbstractCommand;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
+import raf.dsw.gerumap.repository.implementation.Project;
 
 public class DeleteCommand extends AbstractCommand {
 

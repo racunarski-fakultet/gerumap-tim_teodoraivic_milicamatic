@@ -1,14 +1,11 @@
 package raf.dsw.gerumap.gui.swing.jTree;
 
 import raf.dsw.gerumap.AppCore;
-import raf.dsw.gerumap.core.ApplicationFramework;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeModel;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
-import raf.dsw.gerumap.gui.swing.view.MainFrame;
-import raf.dsw.gerumap.repository.MapRepositoryImpl;
+
 import raf.dsw.gerumap.repository.command.AbstractCommand;
-import raf.dsw.gerumap.repository.command.CommandManager;
 import raf.dsw.gerumap.repository.command.commands.AddCommand;
 import raf.dsw.gerumap.repository.command.commands.DeleteCommand;
 import raf.dsw.gerumap.repository.composite.MapNode;
@@ -22,7 +19,6 @@ import raf.dsw.gerumap.repository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 import java.util.Random;
 
 public class MapTreeImplementation implements MapTree {

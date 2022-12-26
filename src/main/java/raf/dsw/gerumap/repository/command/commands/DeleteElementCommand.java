@@ -6,6 +6,7 @@ import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.command.AbstractCommand;
 import raf.dsw.gerumap.repository.implementation.Connection;
 import raf.dsw.gerumap.repository.implementation.Element;
+import raf.dsw.gerumap.repository.implementation.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,10 @@ public class DeleteElementCommand extends AbstractCommand {
 
     List<Painter>copyPainters=new ArrayList<>();
 
-    List<Connection> connectionsFromConcept = new ArrayList<>();
-    List<ConnectionPainter> connectionPainterstoRemove = new ArrayList<>();
+    List<Connection> connectionsFromConcept;
+    List<ConnectionPainter> connectionPainterstoRemove;
+
+    Project p;
 
     public DeleteElementCommand(Element elementToRemove, Painter painterToRemove, List<Connection> connectionsFromConcept, List<ConnectionPainter> connectionPainterstoRemove,MapView m) {
         this.elementToRemove = elementToRemove;
@@ -29,6 +32,7 @@ public class DeleteElementCommand extends AbstractCommand {
         this.connectionsFromConcept = connectionsFromConcept;
         this.connectionPainterstoRemove = connectionPainterstoRemove;
         this.m=m;
+        p=m.getMindMap().getP();
     }
 
     public DeleteElementCommand(MapView m, List<Painter> paintersToRemove, List<Element> elementsToRemove, List<Connection> connectionsFromConcept, List<ConnectionPainter> connectionPainterstoRemove) {
@@ -41,6 +45,7 @@ public class DeleteElementCommand extends AbstractCommand {
         this.connectionsFromConcept = connectionsFromConcept;
         this.connectionPainterstoRemove = connectionPainterstoRemove;
         copyPainters=paintersToRemove;
+        p=m.getMindMap().getP();
     }
 
     @Override
@@ -85,6 +90,7 @@ public class DeleteElementCommand extends AbstractCommand {
             }
 
         }
+        p.setChanged(true);
 
     }
 
@@ -132,6 +138,7 @@ public class DeleteElementCommand extends AbstractCommand {
 
 
         }
+        p.setChanged(true);
 
     }
 }

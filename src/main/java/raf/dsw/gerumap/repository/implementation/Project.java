@@ -3,9 +3,7 @@ package raf.dsw.gerumap.repository.implementation;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Project extends MapNodeComposite {
 
@@ -33,6 +31,7 @@ public class Project extends MapNodeComposite {
             //TODO fix & override contains
            // if (!this.getChildren().contains(mindMap)){
                 this.getChildren().add(mindMap);
+                changed=true;
                 notifySubscribers("mindMap ADDED");
              }
       // }
@@ -45,6 +44,7 @@ public class Project extends MapNodeComposite {
             boolean contains= getChildren().contains(mindMap);
             if (contains){
                 this.getChildren().remove(mindMap);
+                changed=true;
             }
         }
     }
@@ -56,6 +56,7 @@ public class Project extends MapNodeComposite {
 
     public void setAutor(String autor) {
         this.autor = autor;
+        changed=true;
         notifySubscribers("author changed");
     }
 

@@ -11,15 +11,18 @@ public class MindMap extends MapNodeComposite {
 
     List<MapNode> children = super.getChildren();
     List<Element> elements=new ArrayList<>();
+    Project p = (Project) this.getParent();
 
     Paint drawColor = Color.BLACK;
     List<Element> selectedElements = new ArrayList<>();
+    List<Integer>strokeList=new ArrayList<>();
 
     int stroke = 1;
 
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
+        strokeList.add(stroke);
     }
 
     @Override
@@ -48,6 +51,7 @@ public class MindMap extends MapNodeComposite {
     public void addElement(Element element){
         System.out.println("usao u addElement"); //udje
         elements.add(element);
+        p.setChanged(true);
         System.out.println(elements +"elementi lista");
 
         notifySubscribers("dodatt element");
@@ -56,6 +60,7 @@ public class MindMap extends MapNodeComposite {
 
     public void removeElement(Element element){
         elements.remove(element);
+        p.setChanged(true);
         notifySubscribers("obrisan element");
     }
     public void addToSelectedElements(Element element){
@@ -68,33 +73,48 @@ public class MindMap extends MapNodeComposite {
     }
 
     public void initialStroke(int stroke){
+
         this.stroke = stroke;
+        strokeList.add(stroke);
     }
 
     public void setNewStroke(int stroke){
+
+        strokeList.add(stroke);
         for(Element e: elements){
+            p.setChanged(true);
             e.setStroke(stroke);
+            //e.setStroke(strokeList.get(strokeList.size()-1));
         }
     }
     public void setSelectedStroke(int stroke){
+
+        strokeList.add(stroke);
         for(Element e: selectedElements){
             e.setStroke(stroke);
         }
         selectedElements.clear();
     }
 
+    public void restorePreviousStroke(int stroke){
+        strokeList.remove(strokeList.size()-1);
+    }
+
     public void setDrawColor(Paint drawColor) {
         this.drawColor = drawColor;
+        p.setChanged(true);
     }
 
     public void recolorSelection(Paint color){
         for(Element e: selectedElements){
+            p.setChanged(true);
             e.setColor(color);
         }
        // selectedElements.clear();
     }
     public void recolorElement(Paint color){
         for(Element e: elements){
+            p.setChanged(true);
             e.setColor(color);
         }
     }
@@ -126,5 +146,13 @@ public class MindMap extends MapNodeComposite {
     @Override
     public boolean equals(Object o) {
         return super.equals(o);
+    }
+
+    public Project getP() {
+        return p;
+    }
+
+    public void setP(Project p) {
+        this.p = p;
     }
 }

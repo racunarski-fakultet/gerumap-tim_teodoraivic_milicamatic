@@ -17,7 +17,7 @@ public class GSonSerializer implements Serializer {
     @Override
     public Project loadProject(File file) {
         try (FileReader fileReader = new FileReader(file)) {
-            return gson.fromJson(fileReader, Project.class);
+            return gson.fromJson(fileReader,Project.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

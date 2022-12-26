@@ -9,6 +9,7 @@ import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.command.AbstractCommand;
 import raf.dsw.gerumap.repository.command.commands.ConceptCommand;
 import raf.dsw.gerumap.repository.implementation.Concept;
+import raf.dsw.gerumap.repository.implementation.Project;
 import raf.dsw.gerumap.state.State;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class ConceptState extends State{
 
   @Override
   public void misKliknut(int x, int y, MapView m) { //kliknut
+
+    Project project=m.getMindMap().getP();
 
     c=new Concept("koncept", m.getMindMap(),m.getMindMap().getDrawColor(),m.getMindMap().getStroke(),x,y);
 

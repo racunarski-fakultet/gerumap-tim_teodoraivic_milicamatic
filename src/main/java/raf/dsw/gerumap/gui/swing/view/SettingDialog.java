@@ -1,5 +1,8 @@
 package raf.dsw.gerumap.gui.swing.view;
 
+import raf.dsw.gerumap.AppCore;
+import raf.dsw.gerumap.repository.command.AbstractCommand;
+import raf.dsw.gerumap.repository.command.commands.SettingCommand;
 import raf.dsw.gerumap.repository.implementation.Concept;
 
 import javax.swing.*;
@@ -52,24 +55,32 @@ public class SettingDialog extends JDialog{
 
         });
 
+
+
         saveBtn.setAction(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (!strokeTextField.getText().equals("")) {
+
+                    AbstractCommand command = new SettingCommand(mapView, Integer.valueOf(strokeTextField.getText()), colorChooser.getColor());
+                    AppCore.getInstance().getGui().getCommandManager().addCommand(command);
+                }
 
                 if(strokeTextField.getText().equals("")){
                     mapView.getMindMap().getSelectedElements().clear();
                     dispose();
                 }
-                else if(!mapView.getMindMap().getSelectedElements().isEmpty()){
-                    mapView.getMindMap().setSelectedStroke(Integer.valueOf(strokeTextField.getText()));
-
-                }
-                else if(mapView.getMindMap().getElements().isEmpty()){
-                    mapView.getMindMap().initialStroke(Integer.valueOf(strokeTextField.getText()));
-                }
-                else{
-                    mapView.getMindMap().setNewStroke(Integer.valueOf(strokeTextField.getText()));
-                }
+//                else if(!mapView.getMindMap().getSelectedElements().isEmpty()){
+//                    mapView.getMindMap().setSelectedStroke(Integer.valueOf(strokeTextField.getText()));
+//
+//                }
+//                else if(mapView.getMindMap().getElements().isEmpty()){
+//                    mapView.getMindMap().initialStroke(Integer.valueOf(strokeTextField.getText()));
+//                }
+//                else{
+//                    mapView.getMindMap().setNewStroke(Integer.valueOf(strokeTextField.getText()));
+//                }
 
                 dispose();
             }
