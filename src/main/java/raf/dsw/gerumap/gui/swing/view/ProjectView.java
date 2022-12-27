@@ -71,7 +71,6 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        System.out.println("uso u PV update metodu: " + notification);
         if(notification.equals("name changed")) {
             nameLbl.setText(project.getName());
         }
@@ -89,7 +88,6 @@ public class ProjectView extends JPanel implements ISubscriber {
     }
 
     public State getCurrentState(){
-        System.out.println("STANJE: " + this.sm.getCurrent().toString());
         return this.sm.getCurrent();
     }
 

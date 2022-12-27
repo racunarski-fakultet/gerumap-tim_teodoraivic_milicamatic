@@ -49,6 +49,7 @@ public class ConceptState extends State{
     }
     if (!isTaken){
       ConceptDialog conceptDialog=new ConceptDialog(MainFrame.getInstance(),c);
+      conceptDialog.setLocationRelativeTo(MainFrame.getInstance());
       conceptDialog.setVisible(true);
 
       AbstractCommand command=new ConceptCommand(c,painter,m,x,y);

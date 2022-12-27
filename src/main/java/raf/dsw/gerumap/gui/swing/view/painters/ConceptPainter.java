@@ -20,8 +20,6 @@ public class ConceptPainter extends Painter {
 
         concept=(Concept)element;
 
-        System.out.println("Ime koncepta:");
-        System.out.println(concept.getName());
 
         this.shape=new Ellipse2D.Float(concept.getX(),concept.getY(), concept.getWidth(), concept.getHeight());
         this.color = Color.black;

@@ -16,7 +16,6 @@ public class InfoDialog extends JDialog {
         super(parent, "Info", false);
 
         setSize(400,300);
-        this.setLocationRelativeTo(parent);
         ime = new JLabel("Teodora");
         prezime = new JLabel("Ivic");
         index = new JLabel("RN 58/2021");

@@ -18,6 +18,7 @@ public class InfoAction extends AbstractGeRuMapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        MainFrame.getInstance().getInfoDialog().setLocationRelativeTo(MainFrame.getInstance());
         MainFrame.getInstance().getInfoDialog().setVisible(true);
     }
 }

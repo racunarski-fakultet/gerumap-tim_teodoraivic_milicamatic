@@ -40,6 +40,7 @@ public class ConceptDialog extends JDialog {
                    concept.setName(textField.getText());
 
                 dispose();
+
             }
         });
 

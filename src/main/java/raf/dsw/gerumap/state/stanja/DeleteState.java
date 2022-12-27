@@ -118,7 +118,6 @@ public class DeleteState extends State {
                 }
             }
             AbstractCommand command=new DeleteElementCommand(m,m.getSelectedPainters(),m.getMindMap().getSelectedElements(),connectionsFromConcept,connectionPainterstoRemove);
-            System.out.println("napravljen novi commanddd");
             AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 
 

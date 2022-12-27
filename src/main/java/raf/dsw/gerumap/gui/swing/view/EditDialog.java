@@ -22,7 +22,6 @@ public class EditDialog extends JDialog {
 
     public EditDialog(Frame owner, String title, MapTreeItem mapTreeItem) {
         super(owner, title);
-        this.setLocationRelativeTo(null);
         getContentPane().setLayout(new FlowLayout());
         setBounds(0, 0, 300, 100);
         setResizable(false);
@@ -45,7 +44,7 @@ public class EditDialog extends JDialog {
                     ApplicationFramework.getMessageGenerator().generateMessage(new Message("Polje za izmenu je prazno", MessageType.WARNING,eventType));
                 }else {
                     MainFrame.getInstance().getMapTree().rename(mapTreeItem, textField.getText());
-                    dispose(); //zatvaranje na save
+                    dispose();
                 }
 
             }

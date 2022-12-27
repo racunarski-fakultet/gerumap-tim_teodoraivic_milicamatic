@@ -91,7 +91,6 @@ public class SelectionState extends State {
                // System.out.println("iz contains shape: "+p.containsShape(rectangle)+ rectangle);
                // List<Element> listaSelektovanih = m.getMindMap().getSelectedElements();
                if(!m.getMindMap().getSelectedElements().contains(p.getElement())) {
-                    System.out.println("USO U IF CONTAINSA");
                     m.getMindMap().addToSelectedElements(p.getElement());
                     m.getSelectedPainters().add(p);
                }

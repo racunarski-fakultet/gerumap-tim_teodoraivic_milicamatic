@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class RedoAction extends AbstractGeRuMapAction{
 
     public RedoAction() {
-        //putValue(SMALL_ICON, loadIcon("/images/autor.png"));
+        putValue(SMALL_ICON, loadIcon("/images/redo.png"));
         putValue(NAME, "Redo");
         putValue(SHORT_DESCRIPTION, "Redo");
     }

@@ -110,11 +110,9 @@ public class MapView extends JPanel implements ISubscriber {
 
 
                 super.paintComponent(g);
-                System.out.println("painters iz pc" + painters);
                 for (Painter p:painters){
                         cloneList.add(p);
                 }
-                System.out.println("CloneLista: " + cloneList);
 
                 Graphics2D g2=(Graphics2D) g;
 

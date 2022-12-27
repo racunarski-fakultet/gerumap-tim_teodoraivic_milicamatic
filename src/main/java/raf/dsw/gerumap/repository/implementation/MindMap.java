@@ -49,10 +49,8 @@ public class MindMap extends MapNodeComposite {
     }
 
     public void addElement(Element element){
-        System.out.println("usao u addElement"); //udje
         elements.add(element);
         p.setChanged(true);
-        System.out.println(elements +"elementi lista");
 
         notifySubscribers("dodatt element");
 

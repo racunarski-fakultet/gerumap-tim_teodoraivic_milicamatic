@@ -11,7 +11,6 @@ import java.io.File;
 public class SaveAction extends AbstractGeRuMapAction{
 
     public SaveAction() {
-        //putValue(SMALL_ICON, loadIcon("/images/autor.png"));
         putValue(NAME, "Save");
         putValue(SHORT_DESCRIPTION, "Save");
     }
