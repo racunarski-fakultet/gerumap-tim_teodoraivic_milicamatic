@@ -8,13 +8,14 @@ import java.util.List;
 public class Project extends MapNodeComposite {
 
     protected String filePath;
-    protected  boolean changed = true; //svuda gde je promena na nivou projekta
+    protected transient boolean changed = true; //svuda gde je promena na nivou projekta
 
     private String autor;
 
-    private MindMap mindMap;
+    private transient MindMap mindMap;
 
-    private List<MapNode> children;
+    private transient List<MapNode> children;
+
 
     public Project(String name, MapNode parent) {
 

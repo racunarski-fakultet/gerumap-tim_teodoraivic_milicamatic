@@ -10,10 +10,10 @@ import java.util.Objects;
 public abstract class Element extends MapNode {
 
     private Paint colour;
-    private List<Paint>colorLista;
+    transient private List<Paint>colorLista;
     private int stroke;
 
-    private Element selectedElement = null;
+     private transient Element selectedElement = null;
 
 
 

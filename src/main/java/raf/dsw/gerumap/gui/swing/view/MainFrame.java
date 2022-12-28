@@ -13,6 +13,8 @@ import raf.dsw.gerumap.repository.implementation.Project;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame extends JFrame {
 
@@ -36,6 +38,8 @@ public class MainFrame extends JFrame {
 
     private MapView mapView;
 
+    List<ProjectView>projectViewList;
+
 
     private MainFrame(){
 
@@ -47,6 +51,7 @@ public class MainFrame extends JFrame {
         projectExplorer=mapTree.generateTree(ApplicationFramework.getMapRepository().getProjectExplorer());
         projectExplorer.addMouseListener(new MyMouseListener());
         initialiseGUI(projectExplorer);
+        projectViewList=new ArrayList<>();
     }
 
     public void showCurrentProjectView() {
@@ -95,8 +100,27 @@ public class MainFrame extends JFrame {
     }
 
     private ProjectView replaceProjectView() {
+        boolean doesNotExist = false;
 
-        projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+        if (!projectViewList.isEmpty()) {
+            for (ProjectView pv : projectViewList) {
+                if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
+                    return pv;
+                } else {
+                    doesNotExist = true;
+                }
+
+            }
+
+        if (doesNotExist) {
+            projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+            projectViewList.add(projectView);
+        }
+    }
+        else {
+            projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+            projectViewList.add(projectView);
+        }
 
         return projectView;
 

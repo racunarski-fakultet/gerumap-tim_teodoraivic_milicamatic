@@ -8,11 +8,11 @@ import java.util.List;
 
 public abstract class MapNode implements IPublisher { //ne moze da ima decu
 
-    private String name = " ";
+    private String name;
 
     private transient MapNode parent; //transient kada ne treba serijalizer da ga pamti
 
-    private List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
     public MapNode(String name, MapNode parent) {
         this.name = name;

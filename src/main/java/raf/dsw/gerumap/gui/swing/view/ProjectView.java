@@ -64,6 +64,8 @@ public class ProjectView extends JPanel implements ISubscriber {
 
 
 
+
+
     public Project getProject() {
         return project;
     }

@@ -10,7 +10,7 @@ public class Connection extends Element{ //model
     private Concept fromConcept;
     private Concept toConcept;
 
-    private Paint color;
+    transient private Paint color;
 
     float x1,y1,x2,y2;
     //x1 i x2 cu da uzmem iz mouse pressed pocetne a x2 i y2 iz mouse released

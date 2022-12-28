@@ -9,8 +9,8 @@ import java.util.Objects;
 public class Concept extends Element{ //model
 
     private Element e;
-    String name;
-    private int size;
+    //String name;
+    transient private int size;
     float x,y; //koordinate getpoints metoda
     float width=60;
     float height=35;
@@ -26,13 +26,13 @@ public class Concept extends Element{ //model
 
     public Concept(String name, MapNode parent, float x, float y) {
         super(name,parent);
-        this.name = name;
+       // this.name = name;
         this.x = x;
         this.y = y;
     }
     public Concept(String name, MapNode parent, Paint color,int stroke, float x, float y) {
         super(name,parent,color,stroke);
-        this.name = name;
+       // this.name = name;
         this.x = x;
         this.y = y;
     }
@@ -69,15 +69,15 @@ public class Concept extends Element{ //model
         this.height = height;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
+//    @Override
+//    public String getName() {
+//        return name;
+//    }
+//
+//    @Override
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public int getSize() {
         return size;
@@ -90,7 +90,7 @@ public class Concept extends Element{ //model
     @Override
     public String toString() {
         return "Concept{" +
-                "name='" + name + '\'' +
+                "name='" + super.getName() + '\'' +
                 '}';
     }
 

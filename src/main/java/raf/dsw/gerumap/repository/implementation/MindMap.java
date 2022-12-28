@@ -4,18 +4,19 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 import java.awt.*;
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
 
-    List<MapNode> children = super.getChildren();
-    List<Element> elements=new ArrayList<>();
-    Project p = (Project) this.getParent();
+    transient List<MapNode> children = super.getChildren();
+    List<Element> elements;
+    transient Project p = (Project) this.getParent();
 
-    Paint drawColor = Color.BLACK;
-    List<Element> selectedElements = new ArrayList<>();
-    List<Integer>strokeList=new ArrayList<>();
+    transient Paint drawColor = Color.BLACK;
+    transient List<Element> selectedElements = new ArrayList<>();
+    transient List<Integer>strokeList=new ArrayList<>();
 
     int stroke = 1;
 
@@ -23,6 +24,7 @@ public class MindMap extends MapNodeComposite {
     public MindMap(String name, MapNode parent) {
         super(name, parent);
         strokeList.add(stroke);
+        elements=new ArrayList<>();
     }
 
     @Override
