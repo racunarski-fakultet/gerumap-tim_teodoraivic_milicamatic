@@ -49,6 +49,9 @@ public class MindMap extends MapNodeComposite {
             }
         }
     }
+    public void repaintMapview(){
+        notifySubscribers("repaint");
+    }
 
     public void addElement(Element element){
         elements.add(element);

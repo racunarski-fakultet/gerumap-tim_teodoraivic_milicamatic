@@ -100,30 +100,30 @@ public class MainFrame extends JFrame {
     }
 
     private ProjectView replaceProjectView() {
-        boolean doesNotExist = false;
+        //boolean doesNotExist = false;
 
-        if (!projectViewList.isEmpty()) {
-            for (ProjectView pv : projectViewList) {
-                if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
-                    return pv;
-                } else {
-                    doesNotExist = true;
-                }
-
-            }
-
-        if (doesNotExist) {
+//        if (!projectViewList.isEmpty()) {
+//            for (ProjectView pv : projectViewList) {
+//                if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
+//                    return pv;
+//                } else {
+//                    doesNotExist = true;
+//                }
+//
+//            }
+//
+//        if (doesNotExist) {
             projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
-            projectViewList.add(projectView);
-        }
-    }
-        else {
-            projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
-            projectViewList.add(projectView);
-        }
-
+//            projectViewList.add(projectView);
+//        }
+//    }
+//        else {
+//            projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
+//            projectViewList.add(projectView);
+//        }
+//
         return projectView;
-
+//
     }
 
     public ProjectView getProjectView() {

@@ -55,6 +55,7 @@ public class MapView extends JPanel implements ISubscriber {
                 this.setPreferredSize(pref);
 
                 this.mindMap.addSubs(this);
+                projectView.getProject().addSubs(this);
 
 
 
@@ -96,6 +97,12 @@ public class MapView extends JPanel implements ISubscriber {
                         repaint();
                 }
                 if (notification.equals("pocetne koord")){
+                        repaint();
+                }
+                if(notification.equals("mindMap ADDED")){
+                        repaint();
+                }
+                if (notification.equals("repaint")){
                         repaint();
                 }
 

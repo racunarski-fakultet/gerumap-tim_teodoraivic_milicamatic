@@ -2,6 +2,7 @@ package raf.dsw.gerumap.gui.swing.controller;
 
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
+import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.gui.swing.view.ProjectView;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.implementation.MindMap;
@@ -54,8 +55,24 @@ public class NewAction extends AbstractGeRuMapAction{
 
                 projectView.setMaps(projectView.getProject().getChildren());
                 projectView.getTp().removeAll();
+                projectView.remove(projectView.getTp());
                 projectView.getMapViews().clear();
                 projectView.setTabbedPane();
+                projectView.repaint();
+
+
+                for (MapView mapView: projectView.getMapViews()){
+                    mapView.repaint();
+                }
+                for (MapNode mp :  projectView.getProject().getChildren()){
+                    MindMap mm=(MindMap) mp;
+                    mm.repaintMapview();
+                }
+
+                MindMap mp=(MindMap)projectView.getProject().getChildren().get(0);
+                System.out.println("IZ NEW ACTION "+ mp.getElements());
+                System.out.println("new act "+projectView.getProject().getChildren());
+                System.out.println(projectView.getMapViews().size());
             }
 
 
@@ -63,6 +80,7 @@ public class NewAction extends AbstractGeRuMapAction{
             JPanel desktop = m.getDesktop();
 
             desktop.revalidate();
+            desktop.repaint();
         }
 
     }
