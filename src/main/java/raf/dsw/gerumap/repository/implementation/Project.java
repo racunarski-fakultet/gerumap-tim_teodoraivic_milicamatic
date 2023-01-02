@@ -1,19 +1,26 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 import java.util.List;
 
+@JsonRootName("Project")
 public class Project extends MapNodeComposite {
 
     protected String filePath;
+    @JsonIgnore
     protected transient boolean changed = true; //svuda gde je promena na nivou projekta
 
-    private String autor;
+     String autor;
 
+    @JsonIgnore
     private transient MindMap mindMap;
-
+    @JsonIgnore
     private transient List<MapNode> children;
 
 
@@ -21,6 +28,9 @@ public class Project extends MapNodeComposite {
 
         super(name, parent);
 
+
+    }
+    public Project(){
 
     }
 
@@ -51,10 +61,12 @@ public class Project extends MapNodeComposite {
     }
 
 
+    @JsonGetter
     public String getAutor() {
         return autor;
     }
 
+    @JsonSetter
     public void setAutor(String autor) {
         this.autor = autor;
         changed=true;
@@ -71,10 +83,12 @@ public class Project extends MapNodeComposite {
         return false;
     }
 
+    @JsonGetter
     public String getFilePath() {
         return filePath;
     }
 
+   @JsonSetter
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
@@ -86,4 +100,6 @@ public class Project extends MapNodeComposite {
     public void setChanged(boolean changed) {
         this.changed = changed;
     }
+
+
 }

@@ -1,5 +1,9 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import java.awt.*;
@@ -9,10 +13,14 @@ import java.util.Objects;
 
 public abstract class Element extends MapNode {
 
-    private Paint colour;
-    transient private List<Paint>colorLista;
-    private int stroke;
+    @JsonIgnore
+    private int colour;
+    @JsonIgnore
+    transient private List<Integer>colorLista;
 
+
+    private int stroke;
+    @JsonIgnore
      private transient Element selectedElement = null;
 
 
@@ -21,12 +29,12 @@ public abstract class Element extends MapNode {
 
         super(name, parent);
         this.colorLista=new ArrayList<>();
-        colorLista.add(Color.BLACK);
+        colorLista.add(0x000000);
 
 
     }
 
-    public Element(String name, MapNode parent,Paint color,int stroke) {
+    public Element(String name, MapNode parent,Integer color,int stroke) {
 
         super(name, parent);
         this.colorLista=new ArrayList<>();
@@ -35,7 +43,8 @@ public abstract class Element extends MapNode {
 
     }
 
-    public Paint getCurrentColor(){
+    @JsonGetter
+    public Integer getCurrentColor(){
         return colorLista.get(colorLista.size()-1);
     }
 
@@ -45,10 +54,14 @@ public abstract class Element extends MapNode {
         notifySubscribers("color changed");
 
     }
-    public void setColor(Paint color){
+
+    @JsonSetter
+    public void setColor(Integer color){
+
         colorLista.add(color);
         System.out.println("Lista colora "+ colorLista);
         notifySubscribers("color changed");
+
     }
 
     public Element getSelectedElement() {
@@ -59,18 +72,20 @@ public abstract class Element extends MapNode {
         this.selectedElement = selectedElement;
     }
 
-    public Paint getColour() {
+    public Integer getColour() {
         return colour;
     }
 
-    public void setColour(Paint colour) {
+    public void setColour(Integer colour) {
         this.colour = colour;
     }
 
+    @JsonGetter
     public int getStroke() {
         return stroke;
     }
 
+    @JsonSetter
     public void setStroke(int stroke) {
         this.stroke = stroke;
     }
@@ -80,11 +95,5 @@ public abstract class Element extends MapNode {
         return super.equals(o);
     }
 
-    @Override
-    public int hashCode() {
-        int result = colour != null ? colour.hashCode() : 0;
-        result = 31 * result + (colorLista != null ? colorLista.hashCode() : 0);
-        result = 31 * result + stroke;
-        return result;
-    }
+
 }

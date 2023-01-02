@@ -45,12 +45,12 @@ public class SettingDialog extends JDialog{
 
         colorChooser.getSelectionModel().addChangeListener(e -> {
             if(!mapView.getMindMap().getSelectedElements().isEmpty()){ // menjanje boje selektovanih
-                mapView.getMindMap().recolorSelection(colorChooser.getColor());
+                mapView.getMindMap().recolorSelection(colorChooser.getColor().getRGB());
             }
             else if(mapView.getMindMap().getElements().isEmpty()){
-                mapView.getMindMap().setDrawColor(colorChooser.getColor()); //pre crtanja biranje kojom bojom ce se crtati
+                mapView.getMindMap().setDrawColor(colorChooser.getColor().getRGB()); //pre crtanja biranje kojom bojom ce se crtati
             }else{
-                mapView.getMindMap().recolorElement(colorChooser.getColor()); //ako imamo elemente i nista nije selektovano menjanj sve
+                mapView.getMindMap().recolorElement(colorChooser.getColor().getRGB()); //ako imamo elemente i nista nije selektovano menjanj sve
             }
 
         });

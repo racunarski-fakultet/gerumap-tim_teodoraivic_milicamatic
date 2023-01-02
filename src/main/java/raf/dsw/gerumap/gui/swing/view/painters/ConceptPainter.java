@@ -32,8 +32,8 @@ public class ConceptPainter extends Painter {
 
     @Override
     public void draw(Graphics2D g) {
-
-        g.setPaint(concept.getCurrentColor());
+        Color color = new Color(concept.getCurrentColor());
+        g.setPaint(color);
 
         BasicStroke stroke=new BasicStroke(concept.getStroke());
         g.setStroke(stroke);

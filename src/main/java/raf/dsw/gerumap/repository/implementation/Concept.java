@@ -1,5 +1,8 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import javax.swing.text.Position;
@@ -8,16 +11,21 @@ import java.util.Objects;
 
 public class Concept extends Element{ //model
 
+    @JsonIgnore
     private Element e;
     //String name;
+    @JsonIgnore
     transient private int size;
     float x,y; //koordinate getpoints metoda
     float width=60;
     float height=35;
 
+    private String type = "concept";
 
 
-   //koordinate uzimam iz metode
+
+
+    //koordinate uzimam iz metode
 
 
     public Concept(String name, MapNode parent) {
@@ -30,41 +38,45 @@ public class Concept extends Element{ //model
         this.x = x;
         this.y = y;
     }
-    public Concept(String name, MapNode parent, Paint color,int stroke, float x, float y) {
+    public Concept(String name, MapNode parent, Integer color,int stroke, float x, float y) {
         super(name,parent,color,stroke);
        // this.name = name;
         this.x = x;
         this.y = y;
     }
 
+    @JsonGetter
     public float getX() {
         return x;
     }
-
+    @JsonSetter
     public void setX(float x) {
         this.x = x;
     }
-
+    @JsonGetter
     public float getY() {
         return y;
     }
 
+    @JsonSetter
     public void setY(float y) {
         this.y = y;
     }
 
+    @JsonGetter
     public float getWidth() {
         return width;
     }
-
+    @JsonSetter
     public void setWidth(float width) {
         this.width = width;
     }
-
+    @JsonGetter
     public float getHeight() {
         return height;
     }
 
+    @JsonSetter
     public void setHeight(float height) {
         this.height = height;
     }
@@ -85,6 +97,10 @@ public class Concept extends Element{ //model
 
     public void setSize(int size) {
         this.size = size;
+    }
+    @JsonGetter
+    public String getType() {
+        return type;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
@@ -9,13 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
-
+    @JsonIgnore
     transient List<MapNode> children = super.getChildren();
     List<Element> elements;
+    @JsonIgnore
     transient Project p = (Project) this.getParent();
 
-    transient Paint drawColor = Color.BLACK;
+    Integer drawColor = 0x000000;
+
+    @JsonIgnore
+    Color color = new Color(drawColor);
+    @JsonIgnore
     transient List<Element> selectedElements = new ArrayList<>();
+    @JsonIgnore
     transient List<Integer>strokeList=new ArrayList<>();
 
     int stroke = 1;
@@ -67,11 +76,11 @@ public class MindMap extends MapNodeComposite {
         notifySubscribers("obrisan element");
     }
     public void addToSelectedElements(Element element){
-        element.setColor(Color.BLUE);
+        element.setColor(0x0000FF);
         selectedElements.add(element);
     }
 
-    public Paint getDrawColor() {
+    public Integer getDrawColor() {
         return drawColor;
     }
 
@@ -103,19 +112,19 @@ public class MindMap extends MapNodeComposite {
         strokeList.remove(strokeList.size()-1);
     }
 
-    public void setDrawColor(Paint drawColor) {
+    public void setDrawColor(Integer drawColor) {
         this.drawColor = drawColor;
         p.setChanged(true);
     }
 
-    public void recolorSelection(Paint color){
+    public void recolorSelection(Integer color){
         for(Element e: selectedElements){
             p.setChanged(true);
             e.setColor(color);
         }
        // selectedElements.clear();
     }
-    public void recolorElement(Paint color){
+    public void recolorElement(Integer color){
         for(Element e: elements){
             p.setChanged(true);
             e.setColor(color);
@@ -130,18 +139,20 @@ public class MindMap extends MapNodeComposite {
         this.selectedElements = selectedElements;
     }
 
+    @JsonGetter
     public List<Element> getElements() {
         return elements;
     }
 
+    @JsonSetter
     public void setElements(List<Element> elements) {
         this.elements = elements;
     }
-
+    @JsonGetter
     public int getStroke() {
         return stroke;
     }
-
+    @JsonSetter
     public void setStroke(int stroke) {
         this.stroke = stroke;
     }

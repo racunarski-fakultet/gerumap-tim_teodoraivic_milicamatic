@@ -1,11 +1,18 @@
 package raf.dsw.gerumap.repository.composite;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MapNodeComposite extends MapNode { // moze da ima decu
 
     List <MapNode> children;
+
+    public MapNodeComposite(){
+
+    }
 
     public MapNodeComposite(String name, MapNode parent) {
         super(name, parent);
@@ -19,12 +26,14 @@ public abstract class MapNodeComposite extends MapNode { // moze da ima decu
     }
 
 
+    @JsonGetter
     public List<MapNode> getChildren() {
         notifySubscribers("children added");
 
         return children;
     }
 
+    @JsonSetter
     public void setChildren(List<MapNode> children) {
         this.children = children;
     }

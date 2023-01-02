@@ -1,5 +1,8 @@
 package raf.dsw.gerumap.repository.implementation;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import java.awt.*;
@@ -10,7 +13,10 @@ public class Connection extends Element{ //model
     private Concept fromConcept;
     private Concept toConcept;
 
+    @JsonIgnore
     transient private Paint color;
+
+    private String type = "connection";
 
     float x1,y1,x2,y2;
     //x1 i x2 cu da uzmem iz mouse pressed pocetne a x2 i y2 iz mouse released
@@ -24,7 +30,7 @@ public class Connection extends Element{ //model
         this.x2 = x2;
         this.y2 = y2;
     }
-    public Connection(String name, MapNode parent,Paint color,int stroke) {
+    public Connection(String name, MapNode parent,Integer color,int stroke) {
 
         super(name,parent,color,stroke);
 
@@ -38,18 +44,21 @@ public class Connection extends Element{ //model
        super(name, parent);
     }
 
+    @JsonGetter
     public Concept getFromConcept() {
         return fromConcept;
     }
-
+    @JsonSetter
     public void setFromConcept(Concept fromConcept) {
         this.fromConcept = fromConcept;
     }
 
+    @JsonGetter
     public Concept getToConcept() {
         return toConcept;
     }
 
+    @JsonSetter
     public void setToConcept(Concept toConcept) {
         this.toConcept = toConcept;
     }
@@ -73,36 +82,48 @@ public class Connection extends Element{ //model
     }
 
 
+    @JsonGetter
     public float getX1() {
         return x1;
     }
-
+    @JsonSetter
     public void setX1(float x1) {
         this.x1 = x1;
     }
-
+    @JsonGetter
     public float getY1() {
         return y1;
     }
-
+    @JsonSetter
     public void setY1(float y1) {
         this.y1 = y1;
     }
 
+    @JsonGetter
     public float getX2() {
         return x2;
     }
-
+    @JsonSetter
     public void setX2(float x2) {
         this.x2 = x2;
     }
-
+    @JsonGetter
     public float getY2() {
         return y2;
     }
-
+    @JsonSetter
     public void setY2(float y2) {
         this.y2 = y2;
+    }
+
+
+    @JsonGetter
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
