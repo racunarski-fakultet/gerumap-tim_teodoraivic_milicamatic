@@ -5,7 +5,7 @@ import raf.dsw.gerumap.gui.swing.logger.ConsoleLogger;
 import raf.dsw.gerumap.gui.swing.logger.FileLogger;
 import raf.dsw.gerumap.gui.swing.message.MessageGenImpl;
 import raf.dsw.gerumap.repository.MapRepositoryImpl;
-import raf.dsw.gerumap.serializer.GSonSerializer;
+import raf.dsw.gerumap.serializer.JacksonSerializer;
 
 public class AppCore extends ApplicationFramework {
 
@@ -33,7 +33,7 @@ public class AppCore extends ApplicationFramework {
         MapRepository mapRepository=new MapRepositoryImpl();
         ConsoleLogger consoleLogger = new ConsoleLogger((MessageGenImpl) messageGenerator);
         FileLogger fileLogger=new FileLogger((MessageGenImpl) messageGenerator);
-        Serializer serializer = new GSonSerializer();
+        Serializer serializer = new JacksonSerializer();
         appCore.initialise(gui,mapRepository, messageGenerator,serializer);
         appCore.run();
     }
