@@ -153,6 +153,7 @@ public class MainFrame extends JFrame {
     private ProjectView replaceProjectView() {
 
 
+
         if (!projectViewList.isEmpty()) {
             for (ProjectView pv : projectViewList) {
                 if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
@@ -164,11 +165,12 @@ public class MainFrame extends JFrame {
         }
         System.out.println("nije uso u if replace projecta");
 
+
             projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
             //projectViewList.add(projectView);
 
 
-//
+
         return projectView;
 //
     }
