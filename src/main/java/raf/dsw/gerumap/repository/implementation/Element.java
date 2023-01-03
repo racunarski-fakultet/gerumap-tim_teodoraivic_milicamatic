@@ -1,9 +1,6 @@
 package raf.dsw.gerumap.repository.implementation;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 import java.awt.*;
@@ -23,7 +20,11 @@ public abstract class Element extends MapNode {
     @JsonIgnore
      private transient Element selectedElement = null;
 
+    @JsonProperty
+    private String type = "element";
 
+    public Element() {
+    }
 
     public Element(String name, MapNode parent) {
 

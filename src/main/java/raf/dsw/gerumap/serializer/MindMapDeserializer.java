@@ -21,7 +21,7 @@ public class MindMapDeserializer extends JsonDeserializer<MindMap>{
             obj.setName(node.get("name").asText());
             obj.setDrawColor(node.get("drawColor").asInt());
             obj.setStroke(node.get("stroke").asInt());
-            obj.setElements((List<Element>) node.get("elements").elements());
+            //obj.setElements((List<Element>) node.get("elements").elements());
             return obj;
 
     }

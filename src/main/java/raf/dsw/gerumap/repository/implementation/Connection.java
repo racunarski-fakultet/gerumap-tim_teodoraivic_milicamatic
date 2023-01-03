@@ -2,6 +2,7 @@ package raf.dsw.gerumap.repository.implementation;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
@@ -16,13 +17,17 @@ public class Connection extends Element{ //model
     @JsonIgnore
     transient private Paint color;
 
+    @JsonProperty
     private String type = "connection";
 
     float x1,y1,x2,y2;
     //x1 i x2 cu da uzmem iz mouse pressed pocetne a x2 i y2 iz mouse released
 
 
-    public Connection(String name, MapNode parent,float x1, float y1, float x2, float y2) {
+    public Connection() {
+    }
+
+    public Connection(String name, MapNode parent, float x1, float y1, float x2, float y2) {
         super(name, parent);
 
         this.x1 = x1;
