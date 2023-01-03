@@ -18,21 +18,26 @@ public class MyMouseListener implements MouseListener {
 
             MainFrame m = MainFrame.getInstance();
 
-            MainFrame.getInstance().showCurrentProjectView();
+            MainFrame.getInstance().showCurrentProjectView(); //iz mainframe inicijalizuje novi
 
-            ProjectView projectView = m.getProjectView();
+            //ProjectView projectView = m.getProjectView();
 
-            Project project = projectView.getProject();
+            //Project project = projectView.getProject(); //uzima project iz project viewa
 
-            System.out.println(project);
+            //System.out.println(project);
 
-            List<MapNode> children = project.getChildren();
+            //List<MapNode> children = project.getChildren(); //uzima decu iz projecta
 
-            System.out.println(children);
+            //System.out.println(children);
 
-            projectView.setMaps(children);
+            //projectView.setMaps(children); //setuje mape koje koristi tabbed pane za nove mape
 
-            projectView.setTabbedPane();
+            //projectView.setTabbedPane(); //pravi novi tabbedpane, koji pravi nove mapviewove
+
+//
+
+
+
 
 
 

@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProjectView extends JPanel implements ISubscriber {
 
@@ -56,10 +57,14 @@ public class ProjectView extends JPanel implements ISubscriber {
     }
 
     public void setTabbedPane(){
+        if(tp != null) {
+            this.remove(tp);
+        }
         tp = new TabbedPane(this);
 
         add(tp, BorderLayout.CENTER);
         tp.setVisible(true);
+
     }
 
 
@@ -140,5 +145,26 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public MapView getMapView() {
         return mapView;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProjectView that = (ProjectView) o;
+
+        return Objects.equals(project, that.project);
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectView{" +
+                "project=" + project +
+                ", nameLbl=" + nameLbl +
+                ", tp=" + tp +
+                ", maps=" + maps +
+                ", mapViews=" + mapViews +
+                '}';
     }
 }
