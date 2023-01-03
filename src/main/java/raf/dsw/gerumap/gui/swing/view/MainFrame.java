@@ -58,11 +58,62 @@ public class MainFrame extends JFrame {
         MapNode currentMapNode = this.getMapTree().getSelectedNode().getMapNode();
 
         if(currentMapNode instanceof Project) {
-            desktop.removeAll();
-            desktop.add(this.replaceProjectView());
-            desktop.revalidate();
-            desktop.repaint();
+            Project pr = (Project)currentMapNode;
+            ProjectView pv = this.replaceProjectView();
+//            pv.setMaps(pr.getChildren());
+//            pv.setTabbedPane();
+//            desktop.removeAll();
+//            desktop.add(pv);
+//            desktop.revalidate();
+//            desktop.repaint();
+            if(!this.getProjectViewList().contains(pv)) {
+                System.out.println("contains je false");
+                pv.setMaps(pr.getChildren());
+                pv.setTabbedPane();
+                desktop.removeAll();
+                desktop.add(pv);
+                desktop.revalidate();
+                desktop.repaint();
+                this.getProjectViewList().add(pv);
+                projectView = pv;
+
+            }else{
+                desktop.removeAll();
+                desktop.add(pv);
+                desktop.revalidate();
+                desktop.repaint();
+                System.out.println("contains je true");
+                projectView = pv;
+            }
         }
+
+    }
+    public void addNewMindMap(){
+        MapNode currentMapNode = this.getMapTree().getSelectedNode().getMapNode();
+        //MapTreeItem = this.getMapTree().getSelectedNode();
+
+        if(currentMapNode instanceof Project){
+            if(projectView != null){
+                Project p = (Project) currentMapNode;
+
+                MindMap m = (MindMap) p.getChildren().get(p.getChildren().size()-1);
+
+                projectView.getTp().addATab(m);
+                projectView.setMaps(p.getChildren());
+
+                desktop.revalidate();
+                desktop.repaint();
+
+            }
+
+
+
+        }
+
+
+        // treba mi da se na tabbedpane doda novi tab
+        //
+
     }
 
     private void initialiseGUI(MapTreeView projectExplorer){
@@ -100,27 +151,23 @@ public class MainFrame extends JFrame {
     }
 
     private ProjectView replaceProjectView() {
-        //boolean doesNotExist = false;
 
-//        if (!projectViewList.isEmpty()) {
-//            for (ProjectView pv : projectViewList) {
-//                if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
-//                    return pv;
-//                } else {
-//                    doesNotExist = true;
-//                }
-//
-//            }
-//
-//        if (doesNotExist) {
+
+        if (!projectViewList.isEmpty()) {
+            for (ProjectView pv : projectViewList) {
+                if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
+                    System.out.println("Uso u if replace project viewa");
+                    projectView = pv;
+                    return projectView;
+                }
+            }
+        }
+        System.out.println("nije uso u if replace projecta");
+
             projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
-//            projectViewList.add(projectView);
-//        }
-//    }
-//        else {
-//            projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
-//            projectViewList.add(projectView);
-//        }
+            //projectViewList.add(projectView);
+
+
 //
         return projectView;
 //
@@ -156,6 +203,11 @@ public class MainFrame extends JFrame {
         return desktop;
     }
 
+    public List<ProjectView> getProjectViewList() {
+        return projectViewList;
+    }
 
-
+    public void setProjectViewList(List<ProjectView> projectViewList) {
+        this.projectViewList = projectViewList;
+    }
 }

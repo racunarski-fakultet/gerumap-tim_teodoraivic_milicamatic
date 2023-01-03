@@ -36,6 +36,8 @@ public class NewAction extends AbstractGeRuMapAction{
 
         MapNode mapNode = selected.getMapNode();
 
+        MainFrame.getInstance().showCurrentProjectView();
+
         MainFrame.getInstance().getMapTree().addChild(selected);
 
         ProjectView projectView = m.getProjectView();
@@ -53,34 +55,36 @@ public class NewAction extends AbstractGeRuMapAction{
 
             if(projectView != null){
 
-                projectView.setMaps(projectView.getProject().getChildren());
-                projectView.getTp().removeAll();
-                projectView.remove(projectView.getTp());
-                projectView.getMapViews().clear();
-                projectView.setTabbedPane();
-                projectView.repaint();
+                MainFrame.getInstance().addNewMindMap();
 
-
-                for (MapView mapView: projectView.getMapViews()){
-                    mapView.repaint();
-                }
-                for (MapNode mp :  projectView.getProject().getChildren()){
-                    MindMap mm=(MindMap) mp;
-                    mm.repaintMapview();
-                }
-
-                MindMap mp=(MindMap)projectView.getProject().getChildren().get(0);
-                System.out.println("IZ NEW ACTION "+ mp.getElements());
-                System.out.println("new act "+projectView.getProject().getChildren());
-                System.out.println(projectView.getMapViews().size());
+//                projectView.setMaps(projectView.getProject().getChildren());
+//                //projectView.getTp().removeAll();
+//                //projectView.remove(projectView.getTp());
+//                projectView.getMapViews().clear();
+//                projectView.setTabbedPane();
+//                projectView.repaint();
+//
+//
+//                for (MapView mapView: projectView.getMapViews()){
+//                    mapView.repaint();
+//                }
+//                for (MapNode mp :  projectView.getProject().getChildren()){
+//                    MindMap mm=(MindMap) mp;
+//                    mm.repaintMapview();
+//                }
+//
+//                MindMap mp=(MindMap)projectView.getProject().getChildren().get(0);
+//                System.out.println("IZ NEW ACTION "+ mp.getElements());
+//                System.out.println("new act "+projectView.getProject().getChildren());
+//                System.out.println(projectView.getMapViews().size());
             }
 
 
 
-            JPanel desktop = m.getDesktop();
-
-            desktop.revalidate();
-            desktop.repaint();
+//            JPanel desktop = m.getDesktop();
+//
+//            desktop.revalidate();
+//            desktop.repaint();
         }
 
     }

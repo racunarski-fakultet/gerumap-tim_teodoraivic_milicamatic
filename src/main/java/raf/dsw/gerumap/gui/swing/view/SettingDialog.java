@@ -22,7 +22,7 @@ public class SettingDialog extends JDialog{
 
     public SettingDialog(JFrame parent, MapView mapView) {
         super(parent, "Setting", false);
-        this.setLocationRelativeTo(mapView);
+        this.setLocationRelativeTo(parent);
         getContentPane().setLayout(new FlowLayout());
         setBounds(0, 0, 400, 400);
         setResizable(false);
