@@ -20,8 +20,9 @@ public class ElementDeserializer extends JsonDeserializer<Element> {
         String type = node.get("type").asText();
         if (type.equals("concept")) {
             return jsonParser.getCodec().treeToValue(node, Concept.class);
-        } else {
+        } else if(type.equals("connection")) {
             return jsonParser.getCodec().treeToValue(node, Connection.class);
         }
+        return null;
         }
 }

@@ -100,7 +100,7 @@ public class MainFrame extends JFrame {
     }
 
     private ProjectView replaceProjectView() {
-        //boolean doesNotExist = false;
+      //  boolean doesNotExist = false;
 
 //        if (!projectViewList.isEmpty()) {
 //            for (ProjectView pv : projectViewList) {

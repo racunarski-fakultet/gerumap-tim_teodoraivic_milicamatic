@@ -2,12 +2,11 @@ package raf.dsw.gerumap.repository.implementation;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
-import javax.swing.text.Position;
-import java.awt.*;
-import java.util.Objects;
+
 
 public class Concept extends Element{ //model
 
@@ -20,13 +19,15 @@ public class Concept extends Element{ //model
     float width=60;
     float height=35;
 
+    @JsonProperty
     private String type = "concept";
-
-
 
 
     //koordinate uzimam iz metode
 
+
+    public Concept() {
+    }
 
     public Concept(String name, MapNode parent) {
         super(name, parent);

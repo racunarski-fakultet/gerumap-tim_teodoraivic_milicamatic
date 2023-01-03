@@ -2,6 +2,7 @@ package raf.dsw.gerumap.repository.implementation;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
@@ -29,6 +30,8 @@ public class MindMap extends MapNodeComposite {
 
     int stroke = 1;
 
+    public MindMap() {
+    }
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -168,5 +171,17 @@ public class MindMap extends MapNodeComposite {
 
     public void setP(Project p) {
         this.p = p;
+    }
+
+    @JsonIgnore
+    @Override
+    public List<MapNode> getChildren() {
+        return children;
+    }
+
+    @JsonIgnore
+    @Override
+    public void setChildren(List<MapNode> children) {
+        this.children = children;
     }
 }
