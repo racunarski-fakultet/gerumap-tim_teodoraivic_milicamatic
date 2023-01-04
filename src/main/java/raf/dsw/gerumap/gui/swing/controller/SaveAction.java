@@ -28,7 +28,10 @@ public class SaveAction extends AbstractGeRuMapAction{
         Project project = (Project) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
         File projectFile = null;
 
-        if(!project.isChanged()){
+        //System.out.println("Changed je" + project.isChanged());
+        System.out.println("Changed je" + project.getParent().isChanged());
+
+        if(!project.getParent().isChanged()){
             return;
         }
 
@@ -43,13 +46,14 @@ public class SaveAction extends AbstractGeRuMapAction{
 
         try {
             AppCore.getInstance().getSerializer().saveProject(project);
+            project.getParent().setChanged(false);
         } catch (JsonProcessingException ex) {
             throw new RuntimeException(ex);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
 
-        project.setChanged(false);
+
 
     }
 }

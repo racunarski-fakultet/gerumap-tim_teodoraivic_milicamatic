@@ -16,12 +16,11 @@ public class MindMapDeserializer extends JsonDeserializer<MindMap>{
     @Override
         public MindMap deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-            // Read the JSON data and create a MyObject instance
+
             MindMap obj = new MindMap("MindMap", MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
-            obj.setName(node.get("name").asText());
+
             obj.setDrawColor(node.get("drawColor").asInt());
-            obj.setStroke(node.get("stroke").asInt());
-            //obj.setElements((List<Element>) node.get("elements").elements());
+
             return obj;
 
     }

@@ -3,11 +3,8 @@ package raf.dsw.gerumap.gui.swing.view;
 import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.repository.command.AbstractCommand;
 import raf.dsw.gerumap.repository.command.commands.SettingCommand;
-import raf.dsw.gerumap.repository.implementation.Concept;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -45,11 +42,14 @@ public class SettingDialog extends JDialog{
 
         colorChooser.getSelectionModel().addChangeListener(e -> {
             if(!mapView.getMindMap().getSelectedElements().isEmpty()){ // menjanje boje selektovanih
+
                 mapView.getMindMap().recolorSelection(colorChooser.getColor().getRGB());
             }
             else if(mapView.getMindMap().getElements().isEmpty()){
+
                 mapView.getMindMap().setDrawColor(colorChooser.getColor().getRGB()); //pre crtanja biranje kojom bojom ce se crtati
             }else{
+
                 mapView.getMindMap().recolorElement(colorChooser.getColor().getRGB()); //ako imamo elemente i nista nije selektovano menjanj sve
             }
 

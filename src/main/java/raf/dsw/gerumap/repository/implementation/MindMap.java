@@ -10,14 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MindMap extends MapNodeComposite {
-    @JsonIgnore
-     List<MapNode> children = super.getChildren();
 
     @JsonProperty
     List<Element> elements;
-
-    //@JsonIgnore
-     Project p = (Project) this.getParent();
 
     Integer drawColor = 0x000000;
 
@@ -81,7 +76,8 @@ public class MindMap extends MapNodeComposite {
     @JsonIgnore
     public void addElement(Element element){
         elements.add(element);
-       // p.setChanged(true);
+        if(this.getParent() != null)
+        {this.getParent().setChanged(true);}
 
         notifySubscribers("dodatt element");
 
@@ -89,7 +85,7 @@ public class MindMap extends MapNodeComposite {
     @JsonIgnore
     public void removeElement(Element element){
         elements.remove(element);
-      //  p.setChanged(true);
+        this.getParent().setChanged(true);
         notifySubscribers("obrisan element");
     }
     public void addToSelectedElements(Element element){
@@ -112,7 +108,8 @@ public class MindMap extends MapNodeComposite {
 
         strokeList.add(stroke);
         for(Element e: elements){
-            p.setChanged(true);
+            this.getParent().setChanged(true);
+
             e.setStroke(stroke);
             //e.setStroke(strokeList.get(strokeList.size()-1));
         }
@@ -122,6 +119,8 @@ public class MindMap extends MapNodeComposite {
         strokeList.add(stroke);
         for(Element e: selectedElements){
             e.setStroke(stroke);
+            this.getParent().setChanged(true);
+
         }
         selectedElements.clear();
     }
@@ -132,21 +131,28 @@ public class MindMap extends MapNodeComposite {
 
     @JsonIgnore
     public void setDrawColor(Integer drawColor) {
+
+
         this.drawColor = drawColor;
-        p.setChanged(true);
+        this.getParent().setChanged(true);
+
     }
     @JsonIgnore
     public void recolorSelection(Integer color){
+
+        System.out.println("Lista selektovanih elem" + selectedElements);
         for(Element e: selectedElements){
-            p.setChanged(true);
-            e.setColor(color);
+
+            this.getParent().setChanged(true);
+
+            e.setColour(color);
         }
        // selectedElements.clear();
     }
     @JsonIgnore
     public void recolorElement(Integer color){
         for(Element e: elements){
-            p.setChanged(true);
+            //this.getParent().setChanged(true);
             e.setColor(color);
         }
     }
@@ -182,23 +188,6 @@ public class MindMap extends MapNodeComposite {
         return super.equals(o);
     }
 
-    public Project getP() {
-        return p;
-    }
 
-    public void setP(Project p) {
-        this.p = p;
-    }
 
-    @JsonIgnore
-    @Override
-    public List<MapNode> getChildren() {
-        return children;
-    }
-
-    @JsonIgnore
-    @Override
-    public void setChildren(List<MapNode> children) {
-        this.children = children;
-    }
 }

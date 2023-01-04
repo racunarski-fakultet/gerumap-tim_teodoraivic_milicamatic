@@ -103,6 +103,10 @@ public class MapTreeImplementation implements MapTree {
         treeModel.getRoot().add(loadedProject);
         MapNodeComposite mapNode = (MapNodeComposite) treeModel.getRoot().getMapNode();
         mapNode.addChild(node);
+        for(MapNode mape: node.getChildren()){
+            MapTreeItem map = new MapTreeItem(mape);
+            loadedProject.add(map);
+        }
 
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);

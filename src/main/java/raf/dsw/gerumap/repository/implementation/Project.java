@@ -5,13 +5,11 @@ import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Project extends MapNodeComposite {
 
     protected String filePath;
-
-    @JsonIgnore
-     transient boolean changed = true; //svuda gde je promena na nivou projekta
 
      String autor;
 
@@ -42,7 +40,7 @@ public class Project extends MapNodeComposite {
             //TODO fix & override contains
            // if (!this.getChildren().contains(mindMap)){
                 this.getChildren().add(mindMap);
-                changed=true;
+                this.getParent().setChanged(true);
                 notifySubscribers("mindMap ADDED");
              }
       // }
@@ -55,7 +53,7 @@ public class Project extends MapNodeComposite {
             boolean contains= getChildren().contains(mindMap);
             if (contains){
                 this.getChildren().remove(mindMap);
-                changed=true;
+                this.getParent().setChanged(true);
             }
         }
     }
@@ -69,7 +67,7 @@ public class Project extends MapNodeComposite {
     //@JsonSetter
     public void setAutor(String autor) {
         this.autor = autor;
-        changed=true;
+        //this.getParent().setChanged(true);
         notifySubscribers("author changed");
     }
 
@@ -78,9 +76,16 @@ public class Project extends MapNodeComposite {
         if (o != null && o instanceof MapNode){
 
             MapNode otherObj = (MapNode) o;
-            return this.getName().equals(otherObj.getName());
+            return this.getName().equals(otherObj.getName()) && this.getParent().equals(otherObj.getParent());
         }
         return false;
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        return children != null ? children.hashCode() : 0;
     }
 
     @JsonGetter
@@ -93,15 +98,7 @@ public class Project extends MapNodeComposite {
         this.filePath = filePath;
     }
 
-    @JsonIgnore
-    public boolean isChanged() {
-        return changed;
-    }
 
-    @JsonIgnore
-    public void setChanged(boolean changed) {
-        this.changed = changed;
-    }
 
 
 }

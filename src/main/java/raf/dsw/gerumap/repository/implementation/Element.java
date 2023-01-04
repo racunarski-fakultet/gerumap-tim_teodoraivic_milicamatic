@@ -22,7 +22,8 @@ public abstract class Element extends MapNode {
 
 
     private int colour=0x000000;
-    @JsonIgnore
+
+    //@JsonProperty
     transient private List<Integer>colorLista;
 
 
@@ -52,7 +53,9 @@ public abstract class Element extends MapNode {
         super(name, parent);
         this.colorLista=new ArrayList<>();
         this.colorLista.add(color);
+        this.colour = color;
         this.stroke = stroke;
+
 
     }
 
@@ -66,16 +69,22 @@ public abstract class Element extends MapNode {
 
     public void restorePreviousColor(){
         //pretposlednji postaje poslednji
-         colorLista.remove(colorLista.size()-1);
+        if(colorLista.size() > 0) {
+            colorLista.remove(colorLista.size() - 1);
+        }
+         colour = colorLista.get(colorLista.size()-1);
+        this.getParent().setChanged(true);
+
         notifySubscribers("color changed");
 
     }
 
     //@JsonSetter
     public void setColor(Integer color){
-
+        colour = color;
         colorLista.add(color);
-        System.out.println("Lista colora "+ colorLista);
+        //this.getParent().getParent().setChanged(true);
+
         notifySubscribers("color changed");
 
     }
@@ -106,6 +115,14 @@ public abstract class Element extends MapNode {
     ////@JsonSetter
     public void setStroke(int stroke) {
         this.stroke = stroke;
+    }
+
+    public List<Integer> getColorLista() {
+        return colorLista;
+    }
+
+    public void setColorLista(List<Integer> colorLista) {
+        this.colorLista = colorLista;
     }
 
     @Override

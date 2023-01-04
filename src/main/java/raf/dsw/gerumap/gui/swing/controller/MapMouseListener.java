@@ -22,7 +22,7 @@ public class MapMouseListener implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("iz mouse press "+projectView);
+
 
         projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getTp().getSelectedComponent());
 

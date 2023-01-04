@@ -22,7 +22,6 @@ public class MapView extends JPanel implements ISubscriber {
 
         private ProjectView projectView;
 
-        private TabbedPane tabs;
 
         private List<Painter>cloneList=new ArrayList<>();
 
@@ -30,7 +29,7 @@ public class MapView extends JPanel implements ISubscriber {
 
         private RectangleSelection rectangleSelection;
 
-        private List<Painter> painters=new ArrayList<>(); //element view-i, veza ili pojam, pripadaju grafici
+        private List<Painter> painters=new ArrayList<>();
 
         private List<Painter> selectedPainters = new ArrayList<>();
 
@@ -46,7 +45,7 @@ public class MapView extends JPanel implements ISubscriber {
                 this.mindMap = mindMap;
                 this.projectView=pv;
                 this.setBackground(Color.WHITE);
-               // addMouseListener(new MapMouseListener());
+
                 Dimension min  = new Dimension(200,100);
                 Dimension max = new Dimension(Short.MAX_VALUE,Short.MAX_VALUE);
                 Dimension pref = new Dimension(400,200);
@@ -81,7 +80,7 @@ public class MapView extends JPanel implements ISubscriber {
                         repaint();
                 }
                 if (notification.equals("color changed")){
-                        System.out.println("POZVAN OBSERVER");
+
                         repaint();
                 }
                 if(notification.equals("obrisan element")){
@@ -89,11 +88,11 @@ public class MapView extends JPanel implements ISubscriber {
 
                 }
                 if (notification.equals("RectangleSelection")){
-                        System.out.println("iz updatea rectagnel selection");
+
                         repaint();
                 }
                 if (notification.equals("krajnja")){
-                        System.out.println("triggered");
+
                         repaint();
                 }
                 if (notification.equals("pocetne koord")){
@@ -174,7 +173,6 @@ public class MapView extends JPanel implements ISubscriber {
 
         public void setRectangleSelection(RectangleSelection rectangleSelection) {
                 this.rectangleSelection = rectangleSelection;
-                System.out.println("USO U SET");
                 if (rectangleSelection!=null) {
                         this.rectangleSelection.addSubs(this);
                 }

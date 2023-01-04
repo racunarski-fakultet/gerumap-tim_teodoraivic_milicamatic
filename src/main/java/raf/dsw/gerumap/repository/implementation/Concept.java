@@ -53,6 +53,7 @@ public class Concept extends Element{
        // this.name = name;
         this.x = x;
         this.y = y;
+        super.getColorLista().add(color);
     }
 
     @JsonGetter

@@ -15,14 +15,15 @@ public class ConnectionDeserializer extends JsonDeserializer<Connection> {
     @Override
     public Connection deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        // Read the JSON data and create a MyObject instance
+
         Connection obj = new Connection("Conection", MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
         obj.setName(node.get("name").asText());
         obj.setY2(node.get("y2").asInt());
         obj.setY1(node.get("y1").asInt());
         obj.setX1(node.get("x1").asInt());
         obj.setX2(node.get("x2").asInt());
-        //obj.setFromConcept(node.get("fromConcept").);
+        obj.setColor(node.get("colour").asInt());
+
 
         return obj;
 

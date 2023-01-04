@@ -32,6 +32,8 @@ public class SettingCommand extends AbstractCommand {
             mapView.getMindMap().setNewStroke(strokeSize);
         }
 
+
+
     }
 
     @Override

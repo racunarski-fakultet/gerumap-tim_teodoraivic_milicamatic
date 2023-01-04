@@ -32,7 +32,8 @@ public class ConceptPainter extends Painter {
 
     @Override
     public void draw(Graphics2D g) {
-        Color color = new Color(concept.getCurrentColor());
+        Color color = new Color(concept.getColour());
+
         g.setPaint(color);
 
         BasicStroke stroke=new BasicStroke(concept.getStroke());
@@ -48,7 +49,7 @@ public class ConceptPainter extends Painter {
         int offset = (int) ((concept.getWidth() - width ) / 2);
         g.drawString(concept.getName(), concept.getX() + offset, concept.getY()+ (concept.getWidth()/4)+5);
 
-       // g.drawString(concept.getName(),concept.getX()+20,concept.getY()+20);
+
 
     }
     public boolean containsShape(Rectangle rectangle){

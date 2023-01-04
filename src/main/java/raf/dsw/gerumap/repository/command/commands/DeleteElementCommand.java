@@ -24,7 +24,7 @@ public class DeleteElementCommand extends AbstractCommand {
     List<Connection> connectionsFromConcept;
     List<ConnectionPainter> connectionPainterstoRemove;
 
-    Project p;
+
 
     public DeleteElementCommand(Element elementToRemove, Painter painterToRemove, List<Connection> connectionsFromConcept, List<ConnectionPainter> connectionPainterstoRemove,MapView m) {
         this.elementToRemove = elementToRemove;
@@ -32,27 +32,26 @@ public class DeleteElementCommand extends AbstractCommand {
         this.connectionsFromConcept = connectionsFromConcept;
         this.connectionPainterstoRemove = connectionPainterstoRemove;
         this.m=m;
-        p=m.getMindMap().getP();
+
     }
 
     public DeleteElementCommand(MapView m, List<Painter> paintersToRemove, List<Element> elementsToRemove, List<Connection> connectionsFromConcept, List<ConnectionPainter> connectionPainterstoRemove) {
         this.m = m;
         this.paintersToRemove =new ArrayList<>(paintersToRemove);
-        System.out.println("iz konstruktora painters t r: "+paintersToRemove);
         this.elementsToRemove =new ArrayList<>(elementsToRemove);
-        System.out.println("iz konstruktora elements t r: "+elementsToRemove);
+
 
         this.connectionsFromConcept = connectionsFromConcept;
         this.connectionPainterstoRemove = connectionPainterstoRemove;
         copyPainters=paintersToRemove;
-        p=m.getMindMap().getP();
+        m.getMindMap().getParent().setChanged(true);
     }
 
     @Override
     public void doCommand() {
 
         if (paintersToRemove == null || paintersToRemove.isEmpty()){
-            System.out.println("usao u if do");
+
 
 
 
@@ -70,7 +69,7 @@ public class DeleteElementCommand extends AbstractCommand {
                 }
             }
         }else {
-            System.out.println("usao u else do");
+
 
 
             for (Painter p : paintersToRemove) {
@@ -90,7 +89,7 @@ public class DeleteElementCommand extends AbstractCommand {
             }
 
         }
-        p.setChanged(true);
+        m.getMindMap().getParent().setChanged(true);
 
     }
 
@@ -98,7 +97,7 @@ public class DeleteElementCommand extends AbstractCommand {
     public void undoCommand() {
 
         if (paintersToRemove==null || paintersToRemove.isEmpty() ){
-            System.out.println("usao u if undo");
+
 
 
             m.getPainters().add(painterToRemove);
@@ -115,7 +114,7 @@ public class DeleteElementCommand extends AbstractCommand {
                 }
             }
         }else{
-            System.out.println("usao u else undo");
+
 
             for (Painter p : paintersToRemove) {
                 m.getPainters().add(p);
@@ -138,7 +137,7 @@ public class DeleteElementCommand extends AbstractCommand {
 
 
         }
-        p.setChanged(true);
+        m.getMindMap().getParent().setChanged(true);
 
     }
 }

@@ -42,7 +42,6 @@ public class RectangleSelection implements IPublisher {
         this.x=x;
         this.y=y;
         notifySubscribers("RectangleSelection");
-        System.out.println("usao u notifymetodu");
 
 
     }
