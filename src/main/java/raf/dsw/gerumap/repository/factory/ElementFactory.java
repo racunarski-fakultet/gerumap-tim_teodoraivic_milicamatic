@@ -14,7 +14,7 @@ public class ElementFactory extends Factory implements NodeFactory {
 
     @Override
     public MapNode createNode(String naziv, MapNode parent) {
-       // MapNode element=new Element(naziv,parent);
+
         return element;
     }
 }

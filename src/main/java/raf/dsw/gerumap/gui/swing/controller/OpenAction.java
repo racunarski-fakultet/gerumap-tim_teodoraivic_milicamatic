@@ -5,6 +5,7 @@ import raf.dsw.gerumap.AppCore;
 import raf.dsw.gerumap.gui.swing.jTree.model.MapTreeItem;
 import raf.dsw.gerumap.gui.swing.view.MainFrame;
 import raf.dsw.gerumap.repository.implementation.Concept;
+import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 
@@ -31,12 +32,7 @@ public class OpenAction extends AbstractGeRuMapAction{
                 Project p = AppCore.getInstance().getSerializer().loadProject(file);
                 MainFrame.getInstance().getMapTree().loadProject(p);
                 MainFrame.getInstance().loadProjectView(p);
-                //MainFrame.getInstance().showCurrentProjectView();
-                System.out.println("pokazi projectview "+ MainFrame.getInstance().getProjectView());
                 MainFrame.getInstance().paintNewElements();
-                MindMap mindMap= (MindMap) p.getChildren().get(0);
-                Concept c= (Concept) mindMap.getElements().get(0);
-                System.out.println("iz load-a elementi "+ mindMap.getElements());
 
             }
             catch (Exception ex) {

@@ -12,7 +12,7 @@ public class ConnectionCommand extends AbstractCommand {
     Painter painter;
     MapView mapView;
     float x,y;
-    Project p;
+
 
     public ConnectionCommand(Connection connection, Painter painter, MapView mapView, float x, float y) {
         this.connection = connection;
@@ -20,14 +20,14 @@ public class ConnectionCommand extends AbstractCommand {
         this.mapView = mapView;
         this.x = x;
         this.y = y;
-        p=mapView.getMindMap().getP();
+
     }
 
     @Override
     public void doCommand() {
         mapView.getPainters().add(painter);
         mapView.getMindMap().addElement(connection);
-        //p.setChanged(true);
+        connection.getParent().setChanged(true);
 
 
     }
@@ -36,7 +36,7 @@ public class ConnectionCommand extends AbstractCommand {
     public void undoCommand() {
         mapView.getPainters().remove(painter);
         mapView.getMindMap().removeElement(connection);
-        p.setChanged(true);
+        connection.getParent().setChanged(true);
 
 
     }

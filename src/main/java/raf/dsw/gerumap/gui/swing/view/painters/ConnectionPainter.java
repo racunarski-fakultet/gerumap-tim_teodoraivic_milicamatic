@@ -23,8 +23,6 @@ public class ConnectionPainter extends Painter implements ISubscriber {
     private Color color;
     private ConceptPainter to;
 
-    // ovde se nece crtati nikakav shape vec linija od tacke a do tacke b
-    //tako da je draw metoda razlicito implementirana
 
 
     public ConnectionPainter(Element element, MapView mapView) {
@@ -55,7 +53,7 @@ public class ConnectionPainter extends Painter implements ISubscriber {
     @Override
     public void draw(Graphics2D g) {
 
-        Color color = new Color(connection.getCurrentColor());
+        Color color = new Color(connection.getColour());
         g.setPaint(color);
 
       BasicStroke stroke=new BasicStroke(connection.getStroke());

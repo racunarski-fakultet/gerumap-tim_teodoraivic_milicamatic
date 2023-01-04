@@ -32,17 +32,14 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private MapView mapView;
 
-    private MindMap mindMap;
-
     public StateManager sm;
-    //pv prenosi korisnicku akciju ka stete-u // pv je mediator
-    //mediator prihvata nas klik i kaze state manager-u sta da radi dalje
+
 
 
 
     public ProjectView(Project project) {
         this.project = project;
-        this.project.addSubs(this);                //projectView je sub za project(MapNode)
+        this.project.addSubs(this);
         nameLbl = new JLabel(project.getName());
         autorLbl = new JLabel(project.getAutor());
 
@@ -88,7 +85,7 @@ public class ProjectView extends JPanel implements ISubscriber {
             this.setMaps(project.getChildren());
 
         }
-        if(notification.equals("mindmap added")){ //Za elemente
+        if(notification.equals("mindmap added")){
             this.setMaps(project.getChildren());
         }
 

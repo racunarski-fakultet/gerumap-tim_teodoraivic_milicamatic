@@ -36,6 +36,7 @@ public class Connection extends Element{ //model
     public Connection(String name, MapNode parent,Integer color,int stroke) {
 
         super(name,parent,color,stroke);
+        super.getColorLista().add(color);
 
 
 

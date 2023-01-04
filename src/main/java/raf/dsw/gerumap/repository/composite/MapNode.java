@@ -24,6 +24,10 @@ public abstract class MapNode implements IPublisher {
     private String name;
 
     @JsonIgnore
+    transient boolean changed = true;
+
+
+    @JsonIgnore
     private transient MapNode parent;
     @JsonIgnore
     private transient List<ISubscriber> subscribers = new ArrayList<>();
@@ -83,5 +87,14 @@ public abstract class MapNode implements IPublisher {
     @Override
     public void removeSubs(ISubscriber sub) {
         subscribers.remove(sub);
+    }
+
+    @JsonIgnore
+    public boolean isChanged() {
+        return changed;
+    }
+@JsonIgnore
+    public void setChanged(boolean changed) {
+        this.changed = changed;
     }
 }

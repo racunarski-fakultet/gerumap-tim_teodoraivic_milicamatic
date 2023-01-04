@@ -25,7 +25,6 @@ public class SelectionPainter extends Painter{
 
     @Override
     public void draw(Graphics2D g) {
-        System.out.println("usao u draw selPainter");
 
         BasicStroke basicStroke=new BasicStroke(1);
         g.setStroke(basicStroke);

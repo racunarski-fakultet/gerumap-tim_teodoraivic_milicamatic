@@ -25,10 +25,6 @@ public class TabbedPane extends JTabbedPane{
         tabs = new ArrayList<>();
 
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-
-
         Dimension min  = new Dimension(200,100);
         Dimension max = new Dimension(Short.MAX_VALUE,Short.MAX_VALUE);
         Dimension pref = new Dimension(400,200);
@@ -39,10 +35,8 @@ public class TabbedPane extends JTabbedPane{
 
         for (MapNode map : projectView.getMaps()){
 
-            JPanel pan = new JPanel();//pravi novi panel
+            JPanel pan = new JPanel();
 
-            //pravim mapView za svaki mindMap
-            //to do update kad se dodaju nove mape
 
              mapView = new MapView(new FlowLayout(), true, (MindMap) map, projectView);
              mapView.setMindMap((MindMap) map);
@@ -69,10 +63,8 @@ public class TabbedPane extends JTabbedPane{
         Dimension max = new Dimension(Short.MAX_VALUE,Short.MAX_VALUE);
         Dimension pref = new Dimension(400,200);
 
-        JPanel pan = new JPanel();//pravi novi panel
+        JPanel pan = new JPanel();
 
-        //pravim mapView za svaki mindMap
-        //to do update kad se dodaju nove mape
 
         mapView = new MapView(new FlowLayout(), true, map, projectView);
         mapView.setMindMap((MindMap) map);
@@ -89,9 +81,7 @@ public class TabbedPane extends JTabbedPane{
 
     }
 
-    public void setTabs(){
 
-    }
 
 
 }

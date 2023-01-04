@@ -12,7 +12,7 @@ public class ConceptCommand extends AbstractCommand {
     Painter conceptPainter;
     MapView mapView;
     float x,y;
-    Project project;
+
 
     public ConceptCommand(Concept concept, Painter painter, MapView mapView, float x, float y) {
         this.concept = concept;
@@ -20,7 +20,7 @@ public class ConceptCommand extends AbstractCommand {
         this.mapView = mapView;
         this.x = x;
         this.y = y;
-        project=mapView.getMindMap().getP();
+
 
     }
 
@@ -28,14 +28,20 @@ public class ConceptCommand extends AbstractCommand {
     public void doCommand() {
         mapView.getPainters().add(conceptPainter);
         mapView.getMindMap().addElement(concept);
-        //project.setChanged(true);
+
+        concept.getParent().setChanged(true);
+
+
+
     }
 
     @Override
     public void undoCommand() {
         mapView.getPainters().remove(conceptPainter);
         mapView.getMindMap().removeElement(concept);
-        project.setChanged(true);
+
+        concept.getParent().setChanged(true);
+
 
 
     }

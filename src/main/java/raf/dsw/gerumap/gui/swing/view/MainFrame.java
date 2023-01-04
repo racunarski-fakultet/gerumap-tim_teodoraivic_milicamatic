@@ -41,8 +41,6 @@ public class MainFrame extends JFrame {
 
     private ProjectView projectView;
 
-    private MapView mapView;
-
     List<ProjectView>projectViewList;
 
 
@@ -65,14 +63,9 @@ public class MainFrame extends JFrame {
         if(currentMapNode instanceof Project) {
             Project pr = (Project)currentMapNode;
             ProjectView pv = this.replaceProjectView();
-//            pv.setMaps(pr.getChildren());
-//            pv.setTabbedPane();
-//            desktop.removeAll();
-//            desktop.add(pv);
-//            desktop.revalidate();
-//            desktop.repaint();
+
             if(!this.getProjectViewList().contains(pv)) {
-                System.out.println("contains je false");
+
                 pv.setMaps(pr.getChildren());
                 pv.setTabbedPane();
                 desktop.removeAll();
@@ -87,28 +80,29 @@ public class MainFrame extends JFrame {
                 desktop.add(pv);
                 desktop.revalidate();
                 desktop.repaint();
-                System.out.println("contains je true");
+
                 projectView = pv;
             }
         }
-        System.out.println("SHOW PV: "+MainFrame.getInstance().getProjectView());
+
 
     }
     public void loadProjectView(Project project){
+
         projectView = new ProjectView(project);
 
-        //if(!this.getProjectViewList().contains(pv)) {
+
             projectView.setMaps(project.getChildren());
-             projectView.setTabbedPane();
+            projectView.setTabbedPane();
             desktop.removeAll();
             desktop.add(projectView);
             desktop.revalidate();
             desktop.repaint();
             this.getProjectViewList().add(projectView);
-            //projectView = pv;
 
-       // }
-        System.out.println("LOAD PV "+ projectView);
+
+
+
 
         }
 
@@ -124,7 +118,7 @@ public class MainFrame extends JFrame {
                 }
                 mapView.getPainters().add(painter);
 
-                System.out.println("pPAINTERS iz nove metode " + mapView.getPainters());
+
             }
         }
 
@@ -132,8 +126,9 @@ public class MainFrame extends JFrame {
     }
 
     public void addNewMindMap(){
+
         MapNode currentMapNode = this.getMapTree().getSelectedNode().getMapNode();
-        //MapTreeItem = this.getMapTree().getSelectedNode();
+
 
         if(currentMapNode instanceof Project){
             if(projectView != null){
@@ -152,10 +147,6 @@ public class MainFrame extends JFrame {
 
 
         }
-
-
-        // treba mi da se na tabbedpane doda novi tab
-        //
 
     }
 
@@ -180,7 +171,6 @@ public class MainFrame extends JFrame {
 
 
 
-        //pravim po jedan panel za radnu povrsinu i za project explore
         desktop=new JPanel();
 
 
@@ -200,22 +190,22 @@ public class MainFrame extends JFrame {
         if (!projectViewList.isEmpty()) {
             for (ProjectView pv : projectViewList) {
                 if (pv.getProject().equals((Project) this.getMapTree().getSelectedNode().getMapNode())) {
-                    System.out.println("Uso u if replace project viewa");
+
                     projectView = pv;
                     return projectView;
                 }
             }
         }
-        System.out.println("nije uso u if replace projecta");
+
 
 
             projectView = new ProjectView((Project) this.getMapTree().getSelectedNode().getMapNode());
-            //projectViewList.add(projectView);
+
 
 
 
         return projectView;
-//
+
     }
 
     public ProjectView getProjectView() {
@@ -240,9 +230,6 @@ public class MainFrame extends JFrame {
         return mapTree;
     }
 
-    public void setMapTree(MapTree mapTree) {
-        this.mapTree = mapTree;
-    }
 
     public JPanel getDesktop() {
         return desktop;
