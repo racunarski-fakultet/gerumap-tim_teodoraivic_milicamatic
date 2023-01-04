@@ -104,8 +104,6 @@ public class ConnectionState extends State {
              connection.setTo(x,y);
              painter.changeCoordinates(x,y);
 
-//             m.getMindMap().addElement(connection);
-//             m.getPainters().add(painter);
 
              AbstractCommand command=new ConnectionCommand(connection,painter,m,x,y);
              AppCore.getInstance().getGui().getCommandManager().addCommand(command);

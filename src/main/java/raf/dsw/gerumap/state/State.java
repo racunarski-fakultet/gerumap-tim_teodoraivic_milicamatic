@@ -10,9 +10,7 @@ public abstract class State {
     }
 
 
-
     public void misPritisnut(int x, int y,MapView m){
-        //koristim ovo dok vucem mis
 
     }
 

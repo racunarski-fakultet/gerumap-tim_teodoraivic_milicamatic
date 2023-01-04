@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ExportAction extends AbstractGeRuMapAction{
 
-    MapView mapView;// current view
+    MapView mapView;
     File file;
     MyChooser fc= new MyChooser();
 

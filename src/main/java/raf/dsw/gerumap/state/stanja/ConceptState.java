@@ -24,7 +24,7 @@ public class ConceptState extends State{
 
 
   @Override
-  public void misKliknut(int x, int y, MapView m) { //kliknut
+  public void misKliknut(int x, int y, MapView m) {
 
     Project project=m.getMindMap().getP();
 

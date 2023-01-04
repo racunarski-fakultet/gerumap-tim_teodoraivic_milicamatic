@@ -27,7 +27,7 @@ public class ConnectionCommand extends AbstractCommand {
     public void doCommand() {
         mapView.getPainters().add(painter);
         mapView.getMindMap().addElement(connection);
-        p.setChanged(true);
+        //p.setChanged(true);
 
 
     }

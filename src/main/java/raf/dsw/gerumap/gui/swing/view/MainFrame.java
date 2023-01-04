@@ -7,7 +7,12 @@ import raf.dsw.gerumap.gui.swing.controller.MyMouseListener;
 import raf.dsw.gerumap.gui.swing.jTree.MapTree;
 import raf.dsw.gerumap.gui.swing.jTree.MapTreeImplementation;
 import raf.dsw.gerumap.gui.swing.jTree.view.MapTreeView;
+import raf.dsw.gerumap.gui.swing.view.painters.ConceptPainter;
+import raf.dsw.gerumap.gui.swing.view.painters.ConnectionPainter;
+import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.composite.MapNode;
+import raf.dsw.gerumap.repository.implementation.Concept;
+import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.repository.implementation.MindMap;
 import raf.dsw.gerumap.repository.implementation.Project;
 
@@ -86,8 +91,46 @@ public class MainFrame extends JFrame {
                 projectView = pv;
             }
         }
+        System.out.println("SHOW PV: "+MainFrame.getInstance().getProjectView());
 
     }
+    public void loadProjectView(Project project){
+        projectView = new ProjectView(project);
+
+        //if(!this.getProjectViewList().contains(pv)) {
+            projectView.setMaps(project.getChildren());
+             projectView.setTabbedPane();
+            desktop.removeAll();
+            desktop.add(projectView);
+            desktop.revalidate();
+            desktop.repaint();
+            this.getProjectViewList().add(projectView);
+            //projectView = pv;
+
+       // }
+        System.out.println("LOAD PV "+ projectView);
+
+        }
+
+    public void paintNewElements(){
+
+        Painter painter;
+        for (MapView mapView: projectView.getMapViews()) {
+            for (Element element : mapView.getMindMap().getElements()) {
+                if (element instanceof Concept) {
+                    painter = new ConceptPainter(element, mapView);
+                } else {
+                    painter = new ConnectionPainter(element, mapView);
+                }
+                mapView.getPainters().add(painter);
+
+                System.out.println("pPAINTERS iz nove metode " + mapView.getPainters());
+            }
+        }
+
+
+    }
+
     public void addNewMindMap(){
         MapNode currentMapNode = this.getMapTree().getSelectedNode().getMapNode();
         //MapTreeItem = this.getMapTree().getSelectedNode();

@@ -27,13 +27,10 @@ public class MapTreeImplementation implements MapTree {
 
     private MapTreeModel treeModel;
 
-    //private CommandManager commandManager;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
         MapTreeItem root = new MapTreeItem(projectExplorer);
-      //  commandManager = new CommandManager();
-
 
         treeModel = new MapTreeModel(root);
         treeView = new MapTreeView(treeModel);
@@ -55,7 +52,6 @@ public class MapTreeImplementation implements MapTree {
 
         AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 
-       // ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
 
@@ -70,16 +66,12 @@ public class MapTreeImplementation implements MapTree {
         }
         if (parent instanceof MindMap)
             return new ElementFactory().createNode("Element", parent);
-        //to do: napraviti brojac
         return null;
     }
 
     public void removeChild(DefaultMutableTreeNode root){
-        DefaultMutableTreeNode parent = (DefaultMutableTreeNode) root.getParent(); // root je ono sto se brise
+        DefaultMutableTreeNode parent = (DefaultMutableTreeNode) root.getParent();
         treeModel.removeNodeFromParent(root);
-//        MapNode mapNodeParent = ((MapTreeItem)parent).getMapNode(); //pravljenje Node-a od parenta
-//        MapNode mapNodeChild = ((MapTreeItem)root).getMapNode(); // pravljenje node-a od root-a
-//        ((MapNodeComposite)mapNodeParent).removeChild(mapNodeChild);
         AbstractCommand command=new DeleteCommand((MapTreeItem) parent, (MapTreeItem) root);
         AppCore.getInstance().getGui().getCommandManager().addCommand(command);
 

@@ -1,7 +1,6 @@
 package raf.dsw.gerumap.state.stanja;
 
 import raf.dsw.gerumap.gui.swing.view.MapView;
-import raf.dsw.gerumap.gui.swing.view.painters.Painter;
 import raf.dsw.gerumap.repository.implementation.Element;
 import raf.dsw.gerumap.state.State;
 

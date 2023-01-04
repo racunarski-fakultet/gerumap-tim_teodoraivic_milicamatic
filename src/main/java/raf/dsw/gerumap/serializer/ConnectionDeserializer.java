@@ -16,7 +16,7 @@ public class ConnectionDeserializer extends JsonDeserializer<Connection> {
     public Connection deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         // Read the JSON data and create a MyObject instance
-        Connection obj = new Connection("Concept", MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
+        Connection obj = new Connection("Conection", MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
         obj.setName(node.get("name").asText());
         obj.setY2(node.get("y2").asInt());
         obj.setY1(node.get("y1").asInt());

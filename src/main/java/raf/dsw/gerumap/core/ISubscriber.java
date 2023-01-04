@@ -6,6 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreType;
 public interface ISubscriber {
 
 
-    void update(Object notification); // moze da prosledi bilo koji objekat, ne mora poruku
+    void update(Object notification);
 
 }

@@ -22,32 +22,14 @@ public class DeleteElementAction extends AbstractGeRuMapAction{
     public void actionPerformed(ActionEvent e) {
 
 
+        MainFrame m = MainFrame.getInstance();
 
+        ProjectView projectView = m.getProjectView();
 
-        MainFrame m = MainFrame.getInstance(); //nasa aplikacija
-
-        ProjectView projectView = m.getProjectView(); //nas mediator
-
-        projectView.startDeleteState(); //zapocni stanje brisanja
+        projectView.startDeleteState();
 
         projectView.getCurrentState();
 
-//        List<Element> selectedElements = projectView.getMapView().getMindMap().getSelectedElements();
-//
-//        System.out.println("Lista selektovanih iz actiona je" + selectedElements);
-//
-//        MapView mapView = (MapView) projectView.getTp().getSelectedComponent();
-//
-//
-//
-//        if(!selectedElements.isEmpty()){
-//            // treba da se uklone elementi i njihovi painteri iz liste
-//            for(Element element: selectedElements){
-//
-//
-//            }
-//
-//        }
 
     }
 }

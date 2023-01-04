@@ -15,7 +15,6 @@ public class LinkAction extends AbstractGeRuMapAction{
     public void actionPerformed(ActionEvent e) {
 
 
-
         MainFrame m = MainFrame.getInstance();
 
         ProjectView projectView = m.getProjectView();

@@ -32,9 +32,7 @@ public class CommandManager {
         }
     }
 
-    /*
-     * Metoda koja poziva redo konkretne komande
-     */
+
     public void undoCommand(){
         if(currentCommand > 0){
             AppCore.getInstance().getGui().enableRedoAction();
