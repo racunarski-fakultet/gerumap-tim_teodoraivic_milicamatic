@@ -1,35 +1,37 @@
 package raf.dsw.gerumap.repository.implementation;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import raf.dsw.gerumap.repository.composite.MapNode;
 
 
 
-public class Concept extends Element{ //model
+public class Concept extends Element{
 
     @JsonIgnore
     private Element e;
-    //String name;
+
     @JsonIgnore
     transient private int size;
-    float x,y; //koordinate getpoints metoda
+
+    @JsonProperty
+    float x,y;
+    @JsonProperty
     float width=60;
+    @JsonProperty
     float height=35;
 
     @JsonProperty
     private String type = "concept";
 
 
-    //koordinate uzimam iz metode
 
 
     public Concept() {
+        super(null,null);
     }
 
-    public Concept(String name, MapNode parent) {
+   // @JsonCreator
+    public Concept(String name,MapNode parent) {
         super(name, parent);
     }
 
@@ -39,7 +41,14 @@ public class Concept extends Element{ //model
         this.x = x;
         this.y = y;
     }
-    public Concept(String name, MapNode parent, Integer color,int stroke, float x, float y) {
+
+
+    public Concept(String name,
+                    MapNode parent,
+                    Integer color,
+                    int stroke,
+                   float x,
+                  float y) {
         super(name,parent,color,stroke);
        // this.name = name;
         this.x = x;
@@ -104,7 +113,7 @@ public class Concept extends Element{ //model
         return type;
     }
 
-    @Override
+    //@Override
     public String toString() {
         return "Concept{" +
                 "name='" + super.getName() + '\'' +

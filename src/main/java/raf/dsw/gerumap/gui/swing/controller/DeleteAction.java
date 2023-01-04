@@ -53,8 +53,8 @@ public class DeleteAction extends AbstractGeRuMapAction {
 
         else if(selected.getMapNode() instanceof MindMap) {
             // brisanje mind mapa
-                          m.getMapTree().removeChild(selected);
-            if (projectView!=null) {
+            m.getMapTree().removeChild(selected);
+            if (projectView != null) {
                 projectView.getTp().removeAll();
                 projectView.setTabbedPane();
             }
@@ -62,7 +62,12 @@ public class DeleteAction extends AbstractGeRuMapAction {
 
             desktop.revalidate();
 
-        }else if(selected.getMapNode() instanceof Project){
+        }else if (projectView==null){
+                m.getMapTree().removeChild(selected);
+                ((Project) selected.getMapNode()).getChildren().clear();
+            }
+
+        else if(selected.getMapNode() instanceof Project){
             m.getMapTree().removeChild(selected);
             ((Project) selected.getMapNode()).getChildren().clear();
             projectView.getMaps().clear();
@@ -71,6 +76,7 @@ public class DeleteAction extends AbstractGeRuMapAction {
             desktop.removeAll();
             desktop.revalidate();
         }
+       
 
     }
 

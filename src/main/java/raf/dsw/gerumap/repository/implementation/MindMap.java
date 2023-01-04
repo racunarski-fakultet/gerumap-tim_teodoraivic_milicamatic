@@ -1,9 +1,6 @@
 package raf.dsw.gerumap.repository.implementation;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
@@ -14,12 +11,18 @@ import java.util.List;
 
 public class MindMap extends MapNodeComposite {
     @JsonIgnore
-    transient List<MapNode> children = super.getChildren();
+     List<MapNode> children = super.getChildren();
+
+    @JsonProperty
     List<Element> elements;
-    @JsonIgnore
-    transient Project p = (Project) this.getParent();
+
+    //@JsonIgnore
+     Project p = (Project) this.getParent();
 
     Integer drawColor = 0x000000;
+
+    @JsonProperty
+    private String type = "mindmap";
 
     @JsonIgnore
     Color color = new Color(drawColor);
@@ -31,12 +34,22 @@ public class MindMap extends MapNodeComposite {
     int stroke = 1;
 
     public MindMap() {
+        super(null,null);
     }
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
         strokeList.add(stroke);
         elements=new ArrayList<>();
+    }
+
+    @JsonCreator
+    public MindMap(@JsonProperty("name") String name,@JsonProperty("parent") MapNode parent,
+                   @JsonProperty("elements") List<Element>elements) {
+        super(name, parent);
+        strokeList.add(stroke);
+        this.elements=elements;
+
     }
 
     @Override
@@ -65,17 +78,18 @@ public class MindMap extends MapNodeComposite {
         notifySubscribers("repaint");
     }
 
+    @JsonIgnore
     public void addElement(Element element){
         elements.add(element);
-        p.setChanged(true);
+       // p.setChanged(true);
 
         notifySubscribers("dodatt element");
 
     }
-
+    @JsonIgnore
     public void removeElement(Element element){
         elements.remove(element);
-        p.setChanged(true);
+      //  p.setChanged(true);
         notifySubscribers("obrisan element");
     }
     public void addToSelectedElements(Element element){
@@ -93,6 +107,7 @@ public class MindMap extends MapNodeComposite {
         strokeList.add(stroke);
     }
 
+    @JsonIgnore
     public void setNewStroke(int stroke){
 
         strokeList.add(stroke);
@@ -115,11 +130,12 @@ public class MindMap extends MapNodeComposite {
         strokeList.remove(strokeList.size()-1);
     }
 
+    @JsonIgnore
     public void setDrawColor(Integer drawColor) {
         this.drawColor = drawColor;
         p.setChanged(true);
     }
-
+    @JsonIgnore
     public void recolorSelection(Integer color){
         for(Element e: selectedElements){
             p.setChanged(true);
@@ -127,6 +143,7 @@ public class MindMap extends MapNodeComposite {
         }
        // selectedElements.clear();
     }
+    @JsonIgnore
     public void recolorElement(Integer color){
         for(Element e: elements){
             p.setChanged(true);

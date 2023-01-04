@@ -27,7 +27,7 @@ public class ConceptDeserialization extends JsonDeserializer<Concept>{
         obj.setY(node.get("y").asInt());
         obj.setHeight(node.get("height").asInt());
         obj.setWidth(node.get("width").asInt());
-        obj.setColor(node.get("color").asInt());
+        obj.setColor(node.get("colour").asInt());
         obj.setStroke(node.get("stroke").asInt());
         
         return obj;

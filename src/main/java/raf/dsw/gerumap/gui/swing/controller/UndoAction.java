@@ -2,7 +2,6 @@ package raf.dsw.gerumap.gui.swing.controller;
 
 import raf.dsw.gerumap.AppCore;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class UndoAction extends AbstractGeRuMapAction{

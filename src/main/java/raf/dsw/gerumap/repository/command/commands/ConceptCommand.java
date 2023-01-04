@@ -28,7 +28,7 @@ public class ConceptCommand extends AbstractCommand {
     public void doCommand() {
         mapView.getPainters().add(conceptPainter);
         mapView.getMindMap().addElement(concept);
-        project.setChanged(true);
+        //project.setChanged(true);
     }
 
     @Override

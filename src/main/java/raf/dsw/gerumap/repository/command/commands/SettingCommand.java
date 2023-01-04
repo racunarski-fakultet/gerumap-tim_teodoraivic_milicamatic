@@ -1,5 +1,4 @@
 package raf.dsw.gerumap.repository.command.commands;
-
 import raf.dsw.gerumap.gui.swing.view.MapView;
 import raf.dsw.gerumap.repository.command.AbstractCommand;
 import raf.dsw.gerumap.repository.implementation.Element;
@@ -39,8 +38,6 @@ public class SettingCommand extends AbstractCommand {
     public void undoCommand() {
 
         List<Element>lista=mapView.getMindMap().getSelectedElements();
-
-
 
 
     }

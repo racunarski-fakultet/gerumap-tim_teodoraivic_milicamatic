@@ -32,7 +32,6 @@ public class FileLogger implements LoggerInterface, ISubscriber {
             fw.close();
         } catch (IOException e) {
 
-            //To do alert umesto sout
             System.out.println("GRESKA: " + e.getMessage());
 
         }

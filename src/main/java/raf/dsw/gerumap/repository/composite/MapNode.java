@@ -1,9 +1,6 @@
 package raf.dsw.gerumap.repository.composite;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 import raf.dsw.gerumap.core.IPublisher;
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.repository.implementation.Element;
@@ -11,14 +8,23 @@ import raf.dsw.gerumap.repository.implementation.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-//@JsonTypeInfo(use = Element.class,
-  //      include = JsonTypeInfo.As.PROPERTY, property = "type")
-public abstract class MapNode implements IPublisher { //ne moze da ima decu
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property ="type"
+
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = MapNodeComposite.class, name = "mapnodecomposite"),
+        @JsonSubTypes.Type(value = Element.class, name = "element")
+}
+)
+public abstract class MapNode implements IPublisher {
 
     private String name;
 
     @JsonIgnore
-    private transient MapNode parent; //transient kada ne treba serijalizer da ga pamti
+    private transient MapNode parent;
     @JsonIgnore
     private transient List<ISubscriber> subscribers = new ArrayList<>();
 
@@ -26,18 +32,19 @@ public abstract class MapNode implements IPublisher { //ne moze da ima decu
 
     }
 
-    public MapNode(String name, MapNode parent) {
+
+    @JsonCreator
+    public MapNode(@JsonProperty("name") String name, @JsonProperty("parent") MapNode parent) {
         this.name = name;
         this.parent = parent;
-        //subscribers = new ArrayList<>();
     }
 
-    @JsonGetter
+    //@JsonGetter
     public String getName() {
         return name;
     }
 
-    @JsonSetter
+   // @JsonSetter
     public void setName(String name) {
         this.name = name;
         notifySubscribers("name changed");

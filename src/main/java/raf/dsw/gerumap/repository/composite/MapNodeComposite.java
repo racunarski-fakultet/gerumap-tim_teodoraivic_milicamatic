@@ -1,20 +1,37 @@
 package raf.dsw.gerumap.repository.composite;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
+import raf.dsw.gerumap.repository.implementation.MindMap;
+import raf.dsw.gerumap.repository.implementation.Project;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MapNodeComposite extends MapNode { // moze da ima decu
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property ="type"
+
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Project.class, name = "project"),
+        @JsonSubTypes.Type(value = MindMap.class, name = "mindmap")
+}
+)
+
+public abstract class MapNodeComposite extends MapNode {
 
     List <MapNode> children;
+
+    @JsonProperty
+    private String type = "mapnodecomposite";
 
     public MapNodeComposite(){
 
     }
 
-    public MapNodeComposite(String name, MapNode parent) {
+    @JsonCreator
+    public MapNodeComposite(@JsonProperty("name") String name,@JsonProperty("parent") MapNode parent) {
         super(name, parent);
         this.children = new ArrayList<>();
     }

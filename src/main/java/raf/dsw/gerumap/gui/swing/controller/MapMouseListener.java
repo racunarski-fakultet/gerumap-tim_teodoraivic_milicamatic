@@ -15,21 +15,16 @@ public class MapMouseListener implements MouseListener {
     ProjectView projectView = m.getProjectView();
 
 
-
-
     @Override
     public void mouseClicked(MouseEvent e) {
-
-        //projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getTp().getSelectedComponent());
-        //kada se desi press uzmi mediatora i aktiviraj analognu metodu za nas trenutni state
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("iz mouse press "+projectView);
 
         projectView.misKliknut(e.getX(), e.getY(),(MapView) projectView.getTp().getSelectedComponent());
-        //uzima x1,y1 za line2D
 
     }
 
@@ -37,7 +32,6 @@ public class MapMouseListener implements MouseListener {
     public void mouseReleased(MouseEvent e) {
 
         projectView.misPusten(e.getX(), e.getY(),(MapView) projectView.getTp().getSelectedComponent());
-        //uzima x2,y2 za line2D
 
     }
 

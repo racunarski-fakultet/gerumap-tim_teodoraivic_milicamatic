@@ -2,7 +2,6 @@ package raf.dsw.gerumap.gui.swing.message;
 import raf.dsw.gerumap.core.IPublisher;
 import raf.dsw.gerumap.core.ISubscriber;
 import raf.dsw.gerumap.core.MessageGenerator;
-import raf.dsw.gerumap.gui.swing.controller.ActionManager;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,38 +1,38 @@
 package raf.dsw.gerumap.repository.implementation;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import raf.dsw.gerumap.repository.composite.MapNode;
 import raf.dsw.gerumap.repository.composite.MapNodeComposite;
 
 import java.util.List;
 
-@JsonRootName("Project")
 public class Project extends MapNodeComposite {
 
     protected String filePath;
+
     @JsonIgnore
-    protected transient boolean changed = true; //svuda gde je promena na nivou projekta
+     transient boolean changed = true; //svuda gde je promena na nivou projekta
 
      String autor;
 
-    @JsonIgnore
+    //@JsonIgnore
     private transient MindMap mindMap;
-    @JsonIgnore
+   //@JsonIgnore
     private transient List<MapNode> children;
 
+    @JsonProperty
+    private String type = "project";
 
-    public Project(String name, MapNode parent) {
 
+    @JsonCreator
+    public Project(@JsonProperty("name") String name,@JsonProperty("parent") MapNode parent) {
         super(name, parent);
-
-
     }
+
     public Project(){
-
+        super(null,null);
     }
+
 
     @Override
     public void addChild(MapNode child) {
@@ -61,12 +61,12 @@ public class Project extends MapNodeComposite {
     }
 
 
-    @JsonGetter
+    //@JsonGetter
     public String getAutor() {
         return autor;
     }
 
-    @JsonSetter
+    //@JsonSetter
     public void setAutor(String autor) {
         this.autor = autor;
         changed=true;
@@ -88,15 +88,17 @@ public class Project extends MapNodeComposite {
         return filePath;
     }
 
-   @JsonSetter
+    @JsonSetter
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
+    @JsonIgnore
     public boolean isChanged() {
         return changed;
     }
 
+    @JsonIgnore
     public void setChanged(boolean changed) {
         this.changed = changed;
     }
