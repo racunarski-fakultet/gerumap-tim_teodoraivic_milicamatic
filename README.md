@@ -4,4 +4,4 @@ gerumap-tim_teodoraivic_milicamatic created by GitHub Classroom
 Teodora Ivic RN 58/21
 Milica Matic RN 55/21
 
-Notion: https://www.notion.so/GeRuMap-Softver-za-kreiranje-mapa-uma-b2f215c3d57545cd8e67d820b15fb8ba
+Notion: https://gaudy-stage-970.notion.site/Dijagram-sekvence-za-crtanje-veze-u-GeRuMap-u-733c4f07fab74e58989113bcfcfb6659
